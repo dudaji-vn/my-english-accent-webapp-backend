@@ -1,0 +1,163 @@
+word/expression,Phonetic,Korean,Vietnamese,example,meanimg-VI,meanimg-KR,Type
+Noun,,,,,,,
+Stack,stæk,기술 스택,Stack,"To recruit the best fit developer, specify the technology stack of the service on the open position page.","Để tuyển dụng nhà phát triển phù hợp nhất, chỉ định ngăn xếp công nghệ của dịch vụ trên trang vị trí mở.","가장 적합한 개발자를 찾으려면, 구인 공고 페이지에 
+ 기술 스택을 명시해주세요.",Noun
+Full-Stack,fʊl-stæk,풀스택,Full-Stack,I've become a full-stack developer due to the lack of developers on the team.,Tôi đã trở thành một nhà phát triển đầy đủ do thiếu nhà phát triển trong nhóm.,팀에 개발자가 부족해서 풀스택 개발자가 되었습니다.,Noun
+Headless,ˈhɛdləs,헤드리스,Không đầu,A headless browser is a web browser that has no graphical user interface.,Trình duyệt không đầu là trình duyệt web không có giao diện người dùng đồ họa.,"헤드리스 브라우저는 그래픽 유저 인터페이스가 없는 
+ 웹 브라우저 입니다.",Noun
+Variable,ˈveərɪəbᵊl,변수,Biến,Declare an integer variable containing the number of participants.,Tuyên bố một biến số nguyên chứa số lượng người tham gia.,참가자 수를 담는 정수 변수를 선언하세요.,Noun
+Constant,ˈkɒnstᵊnt,상수,hằng số,This is a constant which cannot be reassigned.,Đây là một hằng số không thể được chỉ định lại.,이것은 상수로 다시 할당될 수 없습니다.,Noun
+Function,ˈfʌŋkʃᵊn,함수,chức năng,The function returns an integer.,Hàm trả về một số nguyên.,이 함수는 정수를 반환합니다.,Noun
+Class,klɑːs,클래스,lớp,The code defining the class is too complicated to understand.,Mã xác định lớp quá phức tạp để hiểu.,클래스를 정의하는 코드가 이해하기 너무 어렵습니다.,Noun
+Type,taɪp,"타입, 자료형",Loại,"A string is a data type which is made up of ordered sequesnces of characters like ""GeekHaus"".","Một chuỗi là một kiểu dữ liệu được tạo thành từ các chuỗi các ký tự được đặt hàng như ""Geekhaus"".","문자열은 ""GeekHaus""처럼 순서가 있는 문자의 나열로 구성되는 데이터 타입입니다.",Noun
+Array,əˈreɪ,배열,dãy,You can store a fixed-size collection of data in an array.,Bạn có thể lưu trữ một bộ sưu tập dữ liệu có kích thước cố định trong một mảng.,"배열에는 고정된 크기의 데이터 컬렉션을 저장할 수 
+ 있습니다.",Noun
+Debugging,diːˈbʌɡɪŋ,디버깅,gỡ lỗi,This screen shows system logs that help with debugging.,Màn hình này hiển thị nhật ký hệ thống giúp gỡ lỗi.,이 스크린은 디버깅을 돕는 시스템 로그를 보여줍니다.,Noun
+Legacy System,ˈlɛɡəsi ˈsɪstəm,레거시 시스템,hệ thống kế thừa,We have to replace the legacy system by July as part of the integration process.,Chúng tôi phải thay thế hệ thống kế thừa vào tháng 7 như một phần của quy trình tích hợp.,"통합 프로세스의 일부로, 레거시 시스템을 7월까지 
+ 교체해야 합니다.",Noun
+Backlog,ˈbæklɒɡ,백로그,tồn đọng,There are massive backlogs we have to handle by this week.,Có những tồn đọng lớn mà chúng tôi phải xử lý trong tuần này.,이번 주까지 처리해야 하는 엄청난 백로그가 있습니다.,Noun
+Client-Server Architecture,ˈklaɪᵊnt-ˈsɜːvər ˈɑːkɪtɛkʧə,클라이언트-서버 아키텍처,Mô hình khách chủ,"In a typical clinet-server architecture, you can think of the client as a consumer","Trong một kiến ​​trúc máy chủ phòng Clinet điển hình, bạn có thể nghĩ về khách hàng như một người tiêu dùng","일반적인 클라이언트-서버 아키텍처에서, 클라이어트는 소비자로 생각할 수 있습니다.",Noun
+Module,ˈmɒʤuːl,모듈,Module,This module is not compatible with the existing program.,Mô -đun này không tương thích với chương trình hiện có.,이 모듈은 현재 프로그램과 호환되지 않습니다.,Noun
+Sandbox,ˈsændbɒks,샌드박스,Hộp cát,We need additional sandbox testing before the official launch.,Chúng tôi cần thêm thử nghiệm hộp cát trước khi ra mắt chính thức.,공식 런친 전에 추가적인 샌드박스 테스팅이 필요합니다.,Noun
+Open source,ˈəʊpᵊn sɔːs,오픈 소스,Mã nguồn mở,You can save a lot of time by leveraging open source projects. We don't have to develop everythinh from scratch.,Bạn có thể tiết kiệm rất nhiều thời gian bằng cách tận dụng các dự án nguồn mở. Chúng ta không phải phát triển mọi thứ từ đầu.,"오픈소스를 활용하면 많은 시간을 절약할 수 있습니다. 
+ 모든 것을 처음부터 개발하지 않아도 됩니다.",Noun
+Runtime,ˈrʌntaɪm,런타임,Thời gian chạy,This module works with a specific version and runtime.,Mô -đun này hoạt động với một phiên bản cụ thể và thời gian chạy.,이 모듈은 특정 버전과 런타임에서만 작동합니다.,Noun
+Git,ɡɪt,깃,hệ thống quản lý các phiên bản dưới dạng phân tán,Gihub is one of the most popular git hosting services.,Gihub là một trong những dịch vụ lưu trữ Git phổ biến nhất.,깃허브는 가장 인기 있는 깃 호스팅 서비스 중 하나입니다.,Noun
+Refactoring,ˌriːˈfæktərɪŋ,리팩터링,cải tiến mã nguồn,The refactoring will result in faster performance.,Việc tái cấu trúc sẽ dẫn đến hiệu suất nhanh hơn.,리팩토링하면 성능이 더 빨라집니다.,Noun
+PR (Pull Request),piː-ɑː (pʊl rɪˈkwɛst),,PR (Pull Request),I submitted a PR to fix the critical bug. Please let me know when you've merged it.,Tôi đã gửi PR để sửa lỗi quan trọng. Xin vui lòng cho tôi biết khi bạn đã hợp nhất nó.,치명적인 버그를 수정하기 위한 풀 리퀘스트를 제출했습니다. 풀 리퀘스트가 병합되면 알려주세요.,Noun
+HTTP (HyperText Transfer Protocol),eɪʧ-tiː-tiː-piː (ˈhaɪpərˌtɛkst ˈtrænsfɜː ˈprəʊtəkɒl),,HTTP,HTTPS is a combination of HTTP with SSL which uses encrypted HTTP data.,HTTPS là sự kết hợp của HTTP với SSL sử dụng dữ liệu HTTP được mã hóa.,"HTTPS는 HTTP와 SSL이 결합되어, 암호화된 HTTP 
+ 데이터를 사용합니다.",Noun
+HTML (HyperText Markup Language),eɪʧ-tiː-ɛm-ɛl (ˈhaɪpərˌtɛkst ˈmɑːkˈʌp ˈlæŋɡwɪʤ),,HTML,Web browsers interpret HTML and display the resulting web pages.,Trình duyệt web diễn giải HTML và hiển thị các trang web kết quả.,"웹 브라우저는 HTML을 해석하고 결과 웹 페이지를 
+ 표시합니다.",Noun
+API (Application Programming Interface),eɪ-piː-aɪ (ˌæplɪˈkeɪʃᵊn ˈprəʊɡræmɪŋ ˈɪntəˌfeɪs),,Giao diện lập trình ứng dụng,The API access for developers will be shut down in 30 days.,Truy cập API cho các nhà phát triển sẽ ngừng hoạt động trong 30 ngày.,개발자를 위한 API 접근이 30일 후 종료될 것입니다.,Noun
+REST (Representational State Transfer),rɛst (ˌrɛprɪzɛnˈteɪʃᵊnᵊl steɪt ˈtrænsfɜː),,REST,You can use the REST API to monitor the server through HTTP requests.,Bạn có thể sử dụng API REST để theo dõi máy chủ thông qua các yêu cầu HTTP.,"REST API를 사용하면 HTTP 요청으로 서버를 모니터링할 
+ 수 있습니다.",Noun
+CMS (Content Management System),siː-ɛm-ɛs (ˈkɒntɛnt ˈmænɪʤmənt ˈsɪstəm),,Hệ quản trị nội dung,It's time to migrate to a new CMS.,Đã đến lúc di chuyển đến một CMS mới.,새로운 콘텐츠 관리 시스템으로 옮길 때가 되었습니다.,Noun
+DNS (Domain Name System),diː-ɛn-ɛs (dəʊˈmeɪn neɪm ˈsɪstəm),,Hệ thống phân giải tên miền,A DNS is like the phone book for the internet.,Một DNS giống như danh bạ điện thoại cho Internet.,DNS는 인터넷을 위한 전화번호부와 같습니다.,Noun
+IDE (Integrated Development Environment),aɪ-diː-iː (ˈɪntɪɡreɪtɪd dɪˈvɛləpmənt ɪnˈvaɪərənmənt),,Môi trường phát triển tích hợp,"IDEs let developers code, test, debug, and deploy their product.","IDES cho phép các nhà phát triển mã, kiểm tra, gỡ lỗi và triển khai sản phẩm của họ.","개발자는 IDE를 통해 코드를 작성하고, 테스트하고, 
+ 디버깅하고, 배포할 수 있습니다.",Noun
+JSON (JavaScript Object Notation),ʤeɪ-ɛs-əʊ-ɛn (ˈʤɑːvəskrɪpt ˈɒbʤɪkt nəʊˈteɪʃᵊn),,JSON,JSON is a standard text-based format for representing structured data based on JavaScript object syntax.,JSON là một định dạng dựa trên văn bản tiêu chuẩn để thể hiện dữ liệu có cấu trúc dựa trên cú pháp đối tượng JavaScript.,"JSON은 자바스크립트 객체 rans을 기반으로 구조화된 
+ 데이터를 나타내는 텍스트 기반의 포맷입니다.",Noun
+WYSIWYG (What You See is What you Get),ˈdʌbᵊljuː-waɪ-ɛs-aɪ-ˈdʌbᵊljuː-waɪ-ʤiː (wɒt juː siː ɪz wɒt juː ɡɛt),,Giao diện tương tác tức thời,This WYSIWYG editor is very handy for content editing.,Biên tập viên WYSIWYG này rất tiện dụng để chỉnh sửa nội dung.,이 위지윅 에디터는 콘텐트를 편집하기 매우 편리합니다.,Noun
+CDN (Content Delivery Network),siː-diː-ɛn (ˈkɒntɛnt dɪˈlɪvəri ˈnɛtwɜːk),,Mạng phân phối nội dung,A CDN is a group of geographically distributed servers or data centers which are inter connected.,CDN là một nhóm các máy chủ phân phối địa lý hoặc trung tâm dữ liệu được kết nối với nhau.,"CDN은 지리적으로 분산된 서버 또는 데이터 센터 
+ 그룹으로, 상호 연결되어 있습니다.",Noun
+"CRUD (Create, Read, Update, Delete)","siː-ɑː-juː-diː (kriˈeɪt, riːd, ʌpˈdeɪt, dɪˈliːt)",,CRUD,CRUD refers to the 4 basic data process operations.,CRUD đề cập đến 4 hoạt động quy trình dữ liệu cơ bản.,CRUD는 4가지 기본 데이터 처리 작업을 의미합니다.,Noun
+TDD (Test-Driven Development),tiː-diː-diː (tɛst-ˈdrɪvᵊn dɪˈvɛləpmənt),,Phát triển theo hướng thử nghiệm,We are going to implement TDD from now on.,Chúng tôi sẽ thực hiện TDD từ bây giờ.,우리는 지금부터 TDD를 도입할 것입니다.,Noun
+"MVC (Model, View, Controller)","ɛm-viː-siː (ˈmɒdᵊl, vjuː, kənˈtrəʊlə)",,MVC,The MVC pattern is one of the most widely used software design patterns.,Mẫu MVC là một trong những mẫu thiết kế phần mềm được sử dụng rộng rãi nhất.,"MVC 패턴은 소프트웨어 디자인 패턴에서 가장 널리 
+ 사용되는 패턴 중 하나입니다.",Noun
+CI/ CD (Continuos Integration/ Continuous Deployment),siː-aɪ/ siː-diː (Continuos ˌɪntɪˈɡreɪʃᵊn/ kənˈtɪnjuəs dɪˈplɔɪmənt,,Tích hợp/Phân phối liên tục,Jenkins is one of the most popular solutions for creating CI/CD environment.,Jenkins là một trong những giải pháp phổ biến nhất để tạo môi trường CI/CD.,"Jenkins는 CI/CD 환경을 만들기 위한 가장 인기 있는 
+ 솔루션 중 하나입니다.",Noun
+RegEX (Regular Expression),ˈrɛɡjələr ɪkˈsprɛʃᵊn,,Biểu thức chính quy,A RegEX specifies a set of strings that matches it.,Một regex chỉ định một tập hợp các chuỗi phù hợp với nó.,정규식은 일치하는 문자열 집합을 지정합니다.,Noun
+Typed,taɪpt,"(문자, 정수, 실수와 같은 데이터 형태에 
+ 따라) 타입화된",Typed,This code block needs to be strongly typed to prevent any issues.,Khối mã này cần được gõ mạnh để ngăn chặn bất kỳ vấn đề nào.,"문제를 방지하기 위해 이 코드 블록은 강력하게 
+ 타입화되어야 합니다.",Noun
+Vulnerability,ˌvʌlnᵊrəˈbɪləti,취약점,Dễ tổn thương,There could be a lot of security vulnerabilities in this code.,Có thể có rất nhiều lỗ hổng bảo mật trong mã này.,이 코드에서 다수의 보안 취약점이 있을 수 있습니다.,Noun
+Yield,jiːld,"(결과를) 산출하다, 반환하다, 
+ (다른 객체에게) 양도하다",mang lại,The state will yield the old value in this case.,Nhà nước sẽ mang lại giá trị cũ trong trường hợp này.,이러한 경우에 상태는 이전의 값을 반환할 것입니다.,Noun
+,,,,,,,
+Verb,,,,,,,
+Access,ˈæksɛs,"접근하다, 접속하다, 이용하다",Truy cập,Cannot access the variable before initialization.,Không thể truy cập biến trước khi khởi tạo.,초기화 전에는 변수에 접근할 수 없음,Verb
+Activate,ˈæktɪveɪt,"활성화하다, 작동시키다",Kích hoạt,Activate build caching to reduce the build time.,Kích hoạt bộ nhớ đệm xây dựng để giảm thời gian xây dựng.,빌드 시간을 단축하기 위해 빌드 캐싱을 활성화해주세요.,Verb
+Allocate,ˈæləʊkeɪt,"(자원을) 할당하다, 배분하다",Phân bổ,Can we allocate more RAM to a specific process?,Chúng ta có thể phân bổ thêm RAM cho một quy trình cụ thể không?,특정 프로세스에 RAM을 더 할당할 수 있을까요?,Verb
+Argument,ˈɑːɡjəmənt,(함수의) 인자,Đối số,The argument will pass actual data to the function.,Đối số sẽ chuyển dữ liệu thực tế cho chức năng.,인자는 실제 데이터를 함수에 전달할 것입니다.,Verb
+Assign,əˈsaɪn,"(변수에 값을) 할당하다, (일, 책임을) 
+ 맡기다, (사람을) 배치하다",Định,"You can assign a value to a variable with the assignment operator, ""="".","Bạn có thể gán một giá trị cho một biến với toán tử gán, ""="".","할당 연산자 ""=""를 통해 변수에 값을 할당할 수 있습니다.",Verb
+Assemble,əˈsɛmbᵊl,"모으다, 조립하다",Tập hợp,"Fianlly, we can assemble all the components and see the result.","Fianlly, chúng ta có thể lắp ráp tất cả các thành phần và xem kết quả.","마침내, 우리는 모든 컴포넌트를 모아 결과를 볼 수 
+ 있게 되었습니다.",Verb
+Asynchronous,əˈsɪŋkrənəs,비동기적인,Không đồng bộ,Asynchronous calls do not wait for the API call to return from the server.,Các cuộc gọi không đồng bộ không đợi cuộc gọi API trả về từ máy chủ.,"비동기 호출은 API 콜에 대한 서버의 결과(Return)를 
+ 기다리지 않습니다.",Verb
+Backward-compatible,ˈbækwəd-kəmˈpætəbᵊl,하위 호환되는,tương thích ngược,"The new version is backward-compatible, which means you can still use the old version.","Phiên bản mới tương thích ngược, có nghĩa là bạn vẫn có thể sử dụng phiên bản cũ.","새 버전은 하위 호환 가능합니다. 즉, 이전 버전도 여전히 
+ 사용할 수 있습니다.",Verb
+Build,bɪld,"(프로덕트를) 만들어내다, 
+ (건물을) 짓다, 결과물",Xậy dựng,We are building a program that utilizes the latest tech stacks.,Chúng tôi đang xây dựng một chương trình sử dụng các ngăn xếp công nghệ mới nhất.,"우리는 최신 기술 스택을 활용해 프로그램을 빌드하고 
+ 있습니다.",Verb
+Bundle,ˈbʌndᵊl,"묶다, (소프트웨어 등을) 추가로 주다, 묶음, 번들",Gói,The default applications are bundled with the operating system.,Các ứng dụng mặc định được gói với hệ điều hành.,기본 애플리케이션들은 운영 체제와 함께 제공됩니다.,Verb
+By default,baɪ dɪˈfɔːlt,"기본적으로, 디폴트로",Mặc định,The service requests the GPS permission by default.,Dịch vụ yêu cầu quyền GPS theo mặc định.,서비스는 기본적으로 GPS 권한을 요청합니다.,Verb
+Call,kɔːl,"호출하다, 부르다, 호출, 요청",Gọi,I'm not sure if this code calls the API in the right way.,Tôi không chắc mã này có gọi API đúng cách không.,이 코드가 API를 제대로 부르는지 확실하지 않습니다.,Verb
+Compile,kəmˈpaɪl,"명령어를 번역하다, 
+ (여러 출처에서 자료를 가져와) 엮다",Biên dịch,TypeScript is a typed superset of JavaScript that compiles to plain JavaScript,"TypeScript là một superset được đánh máy của JavaScript, biên dịch cho JavaScript đơn giản","타입스크립트는 일반적인 자바스크립트로 컴파일되지 
+ 자바스크립트의 타입화 된 상위 집합 입니다.",Verb
+Constant,ˈkɒnstᵊnt,"상수, 변하지 않는 값, 끊임없는, 
+ 변함없는",hằng số,A constant is a data item whose value cannot change during the program's execution.,Hằng số là một mục dữ liệu có giá trị không thể thay đổi trong quá trình thực hiện của chương trình.,"상수는 프로그램이 실행되는 동안 값이 변하지 않는 
+ 데이터 항목입니다.",Verb
+Convert,kənˈvɜːt,"전환시키다, 전환하다",Chuyển đổi,Convert the timestamps from staring to date format.,Chuyển đổi dấu thời gian từ định dạng nhìn chằm chằm đến ngày.,타임스탬프를 문자열에서 날짜 포맷으로 변환하세요.,Verb
+Deactivate,diːˈæktɪveɪt,"비활성화하다, 정지시키다",vô hiệu hóa,Deactivate the verbose logging.,Hủy kích hoạt ghi nhật ký dài dòng.,장황한(verbose) 로깅을 비활성화하세요.,Verb
+Define,dɪˈfaɪn,"정의하다, 규정하다",định nghĩa,Please define the scope of work clearly.,Vui lòng xác định phạm vi công việc rõ ràng.,업무 범위를 명확하게 규정해 주세요.,Verb
+Dependency,dɪˈpɛndənsi,의존성,phụ thuộc,A piece of software that relies on another one is called a dependency.,Một phần mềm dựa vào một phần mềm khác được gọi là phụ thuộc.,"소프트웨어의 일부가 다른 소프트웨어에 의존하는 것을 
+ 의존성이라고 합니다.",Verb
+Deploy,dɪˈplɔɪ,배포하다,triển khai,Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy and maintain,Ansible là một nền tảng tự động hóa CNTT đơn giản hoàn toàn giúp các ứng dụng và hệ thống của bạn dễ dàng triển khai và duy trì,"Ansible은 애플리케이션이나 시스템을 쉽게 배포하고 
+ 유지 보수하는 매우 간편한 IT 자동화 플랫폼입니다.",Verb
+Deprecate,ˈdɛprɪkeɪt,사용을 권장하지 않다,Phản đối,Warning: this method is deprecated,CẢNH BÁO: Phương pháp này không được chấp nhận,경고 : 이 메소드는 더 이상 사용을 권장하지 않습니다.,Verb
+Embed,ɪmˈbɛd,"박다, 끼워넣다, 내장시키다","Cắm, nhúng",There is an embedded image in README file explaining how this program works.,Có một hình ảnh được nhúng trong tệp readme giải thích cách chương trình này hoạt động.,"README 파일에 삽입된 이미지는 이 프로그램이 어떻게 
+ 작동하는지 설명합니다.",Verb
+Execute,ˈɛksɪkjuːt,"(프로그램을) 실행하다, 
+ (기술적인 종작을) 해내다",Thực thi,This complied version finally executes our program.,Phiên bản tuân thủ này cuối cùng thực hiện chương trình của chúng tôi.,마침내 이 컴파일 버전이 우리 프로그램을 실행합니다.,Verb
+Extract,ɪksˈtrækt,"추출하다, 얻어내다","Trích, khai",How can we extract metadata here?,Làm thế nào chúng ta có thể trích xuất siêu dữ liệu ở đây?,여기서 메타데이터를 어떻게 추출할까요?,Verb
+Fork,fɔːk,"새로운 독립적인 프로젝트를 만들다, 
+ 분기하다",Phân nhánh,I think we should fork now as our direction is different from the vision of the current project.,Tôi nghĩ rằng chúng ta nên ngã ba vì hướng đi của chúng ta khác với tầm nhìn của dự án hiện tại.,"저희는 현재 프로젝트의 비전과 방향이 다르기 때문에, 
+ 지금 포크해야 한다고 생각합니다.",Verb
+Generate,ˈʤɛnəreɪt,"만들어내다, 발생시키다",Tạo ra,A hard fork is a backward-incompatible upgrade.,Một hard fork là một bản nâng cấp không tương thích lạc hậu.,하드포크는 하위 호환되지 않는 업그레이드입니다.,Verb
+Generic,ʤɪˈnɛrɪk,"포괄적인, 일반적인",Chung,Is it possible to generate some mock data?,Có thể tạo ra một số dữ liệu giả?,모의 데이터를 만들 수 있나요?,Verb
+Immutable,ɪˈmjuːtəbᵊl,"변경할 수 없는, 불변의",Bất biến,Generic software can be used for a number of different purposes without requring modification.,Phần mềm chung có thể được sử dụng cho một số mục đích khác nhau mà không cần sửa đổi.,"일반적 소프트웨어는 변경할 필요 없이 다양한 용도로 
+ 사용될 수 있습니다.",Verb
+Implement,ˈɪmplɪmənt,"제공하다, 활용하다, 도입하다, 구현하다",Thực hiện,React components implement a render() method that takes input data and returns what to display.,React Các thành phần thực hiện phương thức kết xuất () lấy dữ liệu đầu vào và trả về những gì cần hiển thị.,"리엑트 컴포넌트는 입력 데이터를 받아 화면에 표시할 
+ 내용을 반환하는 render() 메소드를 제공합니다.",Verb
+Initialize,ɪˈnɪʃᵊlaɪz,초기화하다,Khởi tạo,The Variable needs to be intialized. Please assign the intial value to the variable.,Biến cần phải được inialized. Vui lòng gán giá trị intial cho biến.,"변수를 초기화해야 합니다. 변수에 초깃값을 할당해 
+ 주세요.",Verb
+Integrate,ˈɪntɪɡreɪt,"통합하다, 연동하다",Tích hợp,Extensions are software components that extend and deepy integrate with kubernetes.,Phần mở rộng là các thành phần phần mềm mở rộng và tích hợp sâu sắc với Kubernetes.,"익스텐션은 쿠버네티스를 확장하고 깊이 있게 연동하는 
+ 소프트웨어 컴포넌트입니다.",Verb
+Invoke,ɪnˈvəʊk,"실행(호출)하다, 불러일으키다",Gọi ra,StrictMode already tests this by invoking updater function twice.,StrictMode đã kiểm tra điều này bằng cách gọi hàm cập nhật hai lần.,"StrictMode는 업데이터 함수를 2번 실행함으로써 이미 이
+ 상황을 테스트합니다.",Verb
+Map,mæp,"연관시키다, 매핑하다",Bản đồ,Mapping in programming means taking several things and then somehow asscociating each of them with another thing.,Lập bản đồ trong lập trình có nghĩa là lấy một số thứ và sau đó bằng cách nào đó ám ảnh mỗi người trong số họ bằng một điều khác.,"프로그램에서 ""매핑""은 무언가를 다른 대상과 연관시키는 
+ 것을 의미합니다.",Verb
+Modify,ˈmɒdɪfaɪ,"변경하다, 수정하다",Tùy chỉnh,This section lists charges where you have to modify your code,Phần này liệt kê các khoản phí mà bạn phải sửa đổi mã của mình,이섹션은 코드를 수정해야 하는 변경 사항을 나열합니다.,Verb
+Mount,maʊnt,"올리다, 증가하다, 시작하다",gắn kết,The mount command attaches the filesystem of an external device to the filesystem of a system.,Lệnh Mount đính kèm hệ thống tập tin của một thiết bị bên ngoài vào hệ thống tập tin của một hệ thống.,마운트 명령어는 외부 디바이스의 파일 시스템을 시스템의 파일 시스템에 붙입니다.,Verb
+Navigate,ˈnævɪɡeɪt,"돌아다니다, 둘러보다, 항해하다",điều hướng,It also makes the site harder for web crawlers to navigate.,Nó cũng làm cho trang web khó khăn hơn cho các trình thu thập thông tin web để điều hướng.,"또한 이는 웹 크롤러가 사이트를 돌아다니기 어렵게
+ 만듭니다.",Verb
+Out of the box,aʊt ɒv ðə bɒks,"설정이나 설치 없이 바로 사용 가능한, 
+ 기존의 틀을 꺠는",Tính năng có sẵn,"Out-of-the-box software, also called off-the-shelf, efers to software that is ready-made for the general public.","Phần mềm vượt trội, còn được gọi là ngoài luồng, đưa ra phần mềm được làm sẵn cho công chúng nói chung.","off the shelf 라고도 불리는 out of the box 소프트웨어는 
+ 대중이 바로 사용할 수 있는 (ready made, 기성품의) 소프트웨어를 의미합니다.",Verb
+Opinionated,əˈpɪnjəneɪtɪd,"체계와 시스템을 강하게 갖춘, 독선적인",Khuôn khổ,Opinionated frameworks assume that there are best practices and design patterns to use the frameworks.,Các khung có ý kiến ​​cho rằng có các thực tiễn và mô hình thiết kế tốt nhất để sử dụng các khung.,"오피니언화된 프레임워크는 해당 프레임워크를 사용하기 
+ 위한 가장 적합한 관행과 디자인 패턴이 있다고 가정합니다.",Verb
+Optimize,ˈɒptɪmaɪz,최적화하다,Tối ưu hóa,Can we optimize this code block to make it faster?,Chúng ta có thể tối ưu hóa khối mã này để làm cho nó nhanh hơn không?,이 코드 블록을 더 빠르게 최적화 할 수 있을까요?,Verb
+Overwrite,ˌəʊvəˈraɪt,덮어쓰다,Ghi đè lên,This can cause corruption in the values themselves but can also overwrite other parts of the encided data.,Điều này có thể gây ra tham nhũng trong các giá trị nhưng cũng có thể ghi đè lên các phần khác của dữ liệu được mã hóa.,"이는 값 자체를 손상시키거나 다른 인코딩된 데이터를 
+ 덮어씌울 수 있습니다.",Verb
+Parameter,pəˈræmɪtə,"매개변수, 한계",tham số,A parameter is the variable listed inside the parentheses in the function definition.,Một tham số là biến được liệt kê bên trong dấu ngoặc đơn trong định nghĩa hàm.,"파라미터는 함수 정의에서 괄호 안에 나열된 변수를 
+ 의미합니다.",Verb
+Parse,pɑːz,"분석하다, 가공하여 해석하다",Phân tách,The parsed components will be analyzed for correct syntax.,Các thành phần phân tích phân tích sẽ được phân tích cho cú pháp chính xác.,파싱된 컴포넌트는 올바른 구문을 위해 분석될 것입니다.,Verb
+Pass,pɑːs,"전달하다, 통과하다, 나아가다",chuyển đến,"If it is a string, the value is passed to the bytes library for parsing","Nếu đó là một chuỗi, giá trị được chuyển đến thư viện byte để phân tích cú pháp","만약 문자열이라면, 값은 파싱을 위해 바이트 
+ 라이브러리로 전달됩니다.",Verb
+Route,ruːt,"전송하다, 라우팅하다, 노선, 도로",định tuyến,The routing system is too complicated in this architecture.,Hệ thống định tuyến quá phức tạp trong kiến ​​trúc này.,이 아키텍처는 라우팅 시스템이 너무 복잡합니다.,Verb
+Render,ˈrɛndə,"데이터와 UI컴포넌트를 모아 
+ 웹페이지를 만들다, 2D/3D 그래픽 요소를 그리다",Kết xuất đồ họa,The component will be re-rendered when the state changes.,Thành phần sẽ được kết xuất lại khi trạng thái thay đổi.,상태가 변하면 컴포넌트가 다시 렌더링 될 것입니다,Verb
+Release,rɪˈliːs,"배포하다, 배포, 릴리즈",phát hành,The update will be released soon,Bản cập nhật sẽ sớm được phát hành,업데이트가 곧 배포될 것입니다.,Verb
+Revert,rɪˈvɜːt,"되돌리다, 되돌아가다",hoàn nguyên,It will revert unless a view or pure function is called.,Nó sẽ hoàn nguyên trừ khi một chế độ xem hoặc chức năng thuần túy được gọi.,"View 또는 Pure 함수가 호출되지 않는 한 되돌아 갈 
+ 것입니다.",Verb
+Return,rɪˈtɜːn,"반환하다, 되돌아가다, 반환값, 반환",trả lại,This function returns the sum of its arguments.,Hàm này trả về tổng của các đối số của nó.,이 함수는 인자들의 합을 반환합니다.,Verb
+Run,rʌn,실행하다,khởi động,Run this program to see the result,Chạy chương trình này để xem kết quả,결과를 보려면 이 프로그램을 실행하세요.,Verb
+Store,stɔː,"저장하다, 보관하다",Lưu trữ,The keys and the values stored with localStorage are always in the UTF-16 string format.,Các phím và các giá trị được lưu trữ với localStorage luôn ở định dạng chuỗi UTF-16.,"로컬스토리지에 저장되는 키와 값은 항상 UTF-16 문자열 
+ 포맷이어야 합니다.",Verb
+Syntax,ˈsɪntæks,"구문, (프로그래밍 언어의) 문법",Cú pháp,Warning: syntax error,Cảnh báo: Lỗi cú pháp,경고 : 문법 오류,Verb
+Transform,trænsˈfɔːm,"변형시키다, 바꿔놓다, 변환하다",Biến đổi,The syntax will be transformed at build time.,Cú pháp sẽ được chuyển đổi tại thời điểm xây dựng.,구문은 빌드 시 변환될 것입니다.,Verb
+Trim,trɪm,좌우 공백을 제거하다,Sắp xếp,You can remove the leading and trailing whitespace by trimming the string.,Bạn có thể loại bỏ khoảng trắng dẫn đầu và dấu vết bằng cách cắt chuỗi.,"문자열을 트리밍하여 선행 및 후행 공백을 제거할 수 
+ 있습니다.",Verb
+Truncate,ˈtrʌŋkeɪt,"짧게 하다, 잘라내다",cắt ngắn,The auth token needs to be truncated.,Mã thông báo auth cần phải được cắt ngắn.,인증 토큰 길이를 줄여야 합니다.,Verb
+Typed,taɪpt,"(문자, 정수, 실수와 같은 데이터 형태에 
+ 따라) 타입화된",Typed,This code block needs to be strongly typed to prevent any issues.,Khối mã này cần được gõ mạnh để ngăn chặn bất kỳ vấn đề nào.,"문제를 방지하기 위해 이 코드 블록은 강력하게 
+ 타입화되어야 합니다.",Verb
+Add A to B,æd ə tuː biː,(A를 B에 추가하다),thêm A vào B,Let me add this example to the doc,Hãy để tôi thêm ví dụ này vào tài liệu,문서에 이 예제를 추가하겠습니다.,Verb
+Pass {data} to {function or component},pɑːs {ˈdeɪtə} tuː {ˈfʌŋkʃᵊn ɔː kəmˈpəʊnənt},"(함수, 컴포넌트에 데이터를 전달하다)",Chuyển dữ liệu đến,This code passes argument to the function we defined above.,Mã này chuyển đối số cho chức năng mà chúng tôi đã xác định ở trên.,이 코드는 위에서 정의한 함수에 인자를 전달합니다.,Verb
+change A to B,ʧeɪnʤ ə tuː biː,(A를 B로 바꾸다),Thay đổi A thành B,"I changed the branch name to ""develop""","Tôi đã thay đổi tên chi nhánh thành ""Phát triển""","브랜치명을 ""develop""으로 바꾸었습니다.",Verb
+Lead A to B,liːd ə tuː biː,(A를 B로 이끌다),Dẫn A đến B,Our new manager will lead our project to success.,Người quản lý mới của chúng tôi sẽ dẫn đầu dự án của chúng tôi đến thành công.,새로 부임한 매니저는 우리 프로젝트를 성공으로 이끌 것입니다.,Verb
+,,,,,,,
+Place / Time,,,,,,,
+On the server,ɒn ðə ˈsɜːvə,(서버),trên máy chủ,The module licated on the server will process the input data.,Mô -đun được cấp phép trên máy chủ sẽ xử lý dữ liệu đầu vào.,서버에 위치한 모듈이 입력 데이터를 처리할 것입니다.,Place / Time
+On Windows/ MacOS/ Linux,ɒn ˈwɪndəʊz/ mækɒs/ ˈlɪnəks,(운영체제),Trên Windows/ MacOS/ Linux,This application runs on Windows only.,Ứng dụng này chỉ chạy trên Windows.,이 응용 프로그램은 윈도우에서만 작동합니다.,Place / Time
+On Github,ɒn ɡɪthʌb,"(서비스, 애플리케이션)",Trên Github,You can review the codebase on Github.,Bạn có thể xem lại CodeBase trên GitHub.,깃허브에서 코드베이스를 검토할 수 있습니ㅏㄷ.,Place / Time
+In the database,ɪn ðə ˈdeɪtəˌbeɪs,(데이터베이스),trong cơ sở dữ liệu,The transaction data stored in the database will be deleted in 3 months.,Dữ liệu giao dịch được lưu trữ trong cơ sở dữ liệu sẽ bị xóa trong 3 tháng.,"데이터베이스에 저장된 거래 데이터는 3개월 후에 
+ 삭제될 것입니다.",Place / Time
+In the code,ɪn ðə kəʊd,(코드),trong dòng code,I think this function iterating over the array causes the performance issue. I will look into the problems in the code.,Tôi nghĩ rằng chức năng này lặp lại trên mảng gây ra vấn đề hiệu suất. Tôi sẽ xem xét các vấn đề trong mã.,"배열을 도는 이 함수가 성능 이슈의 원인이 되는 것 
+ 같습니다. 코드에서 문제를 자세히 살펴보겠습니다.",Place / Time
+In Python,ɪn ˈpaɪθᵊn,(프로그래밍 언어),ở Python,I can easily write a script in Typescript.,Tôi có thể dễ dàng viết một tập lệnh trong TypeScript.,Typescript로 쉽게 스크립트를 작성할 수 있습니다.,Place / Time
+"In the header, In the footer","ɪn ðə ˈhɛdə, ɪn ðə ˈfʊtə",(웹사이트 구성요소),"Ở đầu trang, chân trang",The buttons in the header are too big.,Các nút trong tiêu đề là quá lớn.,헤더의 버튼들이 너무 큽니다.,Place / Time
+In the section,ɪn ðə ˈsɛkʃᵊn,(섹션),trong phần,The image in the hero section is not attractive enough.,Hình ảnh trong phần anh hùng không đủ hấp dẫn.,히어로 섹션의 이미지가 충분히 매력적이지 않습니다.,Place / Time

@@ -1,0 +1,9 @@
+word/expression,Phonetic,Korean,Vietnamese,example,meanimg-VI,meanimg-KR,Type
+GUI (Graphic User Interface),ʤiː-juː-aɪ (ˈɡræfɪk ˈjuːzər ˈɪntəˌfeɪs),GUI (그래픽 사용자 인터페이스),GUI (Giao diện người dùng đồ họa),The GUI enables people to quickly and easily communicate with computers.,GUI cho phép mọi người nhanh chóng và dễ dàng giao tiếp với máy tính.,"GUI를 통해 사람들은 컴퓨터와 빠르고 쉽게 통신할 수 
+ 있습니다.",Noun
+Navigate,ˈnævɪɡeɪt,탐색,Điều hướng,It also makes the site harder for web crawlers to navigate.,Nó cũng làm cho trang web khó khăn hơn cho các trình thu thập thông tin web để điều hướng.,"또한 이는 웹 크롤러가 사이트를 돌아다니기 어렵게
+ 만듭니다.",Verb
+Render,ˈrɛndə,세우다,Kết xuất,The component will be re-rendered when the state changes.,Thành phần sẽ được kết xuất lại khi trạng thái thay đổi.,상태가 변하면 컴포넌트가 다시 렌더링 될 것입니다,Verb
+Transform,trænsˈfɔːm,변환,Biến đổi,The syntax will be transformed at build time.,Cú pháp sẽ được chuyển đổi tại thời điểm xây dựng.,구문은 빌드 시 변환될 것입니다.,Verb
+Trim,trɪm,손질,Cắt,You can remove the leading and trailing whitespace by trimming the string.,Bạn có thể loại bỏ khoảng trắng dẫn đầu và dấu vết bằng cách cắt chuỗi.,"문자열을 트리밍하여 선행 및 후행 공백을 제거할 수 
+ 있습니다.",Verb

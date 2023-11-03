@@ -1,0 +1,11 @@
+POST http://localhost:5000/api/record
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTIzNjUyYmE3NTkxN2E4NWRmZWFjNWIiLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTY5OTU5OTIsImV4cCI6MTY5OTU4Nzk5Mn0.aCIl7ILy4Qx-dvqertuU-OiOfKQqBwQ_Rl5g1DZQTsI
+Content-Type: application/json
+
+{
+  "recordUrl": {
+    "word": "example_word",
+    "sentence": "example_sentence"
+  },
+  "vocabularyId": "6528c17b0187283073293cb4"
+}

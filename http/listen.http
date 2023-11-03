@@ -1,0 +1,43 @@
+POST http://localhost:5000/api/listen/listenRecord
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQxYzdmNjkwZjY1MDI0ZjQ1YjY5N2QiLCJlbWFpbCI6ImxpbmhAZ21haWwuY29tIiwiaWF0IjoxNjk4ODE5OTE0LCJleHAiOjE3MDE0MTE5MTR9.ZipwTtGieb14EQRJBfbNXn_FesTfFN4eRHFDUgTSTg4
+Content-Type: application/json
+
+{
+  "recordId":"65321d929411c482b8ae8c3f",
+  "groupId":"652e0ee488fc106458535bc8"
+}
+
+
+###
+GET http://10.0.100.81:5000/api/listen/getUserProgress
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTIzNjUyYmE3NTkxN2E4NWRmZWFjNWIiLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTY5OTU5OTIsImV4cCI6MTY5OTU4Nzk5Mn0.aCIl7ILy4Qx-dvqertuU-OiOfKQqBwQ_Rl5g1DZQTsI
+
+
+###
+GET http://localhost:5000/api/listen/listenDetail
+?userId=6523734d422f636658a02c65
+&category=general
+&sortBy=latestFile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTIzNjUyYmE3NTkxN2E4NWRmZWFjNWIiLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTY5OTU5OTIsImV4cCI6MTY5OTU4Nzk5Mn0.aCIl7ILy4Qx-dvqertuU-OiOfKQqBwQ_Rl5g1DZQTsI
+
+
+
+
+###
+GET http://localhost:5000/api/listen/listenDetailInGroup
+?groupId=652e0ee488fc106458535bc8
+ &category=developer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTIzNjUyYmE3NTkxN2E4NWRmZWFjNWIiLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTY5OTU5OTIsImV4cCI6MTY5OTU4Nzk5Mn0.aCIl7ILy4Qx-dvqertuU-OiOfKQqBwQ_Rl5g1DZQTsI
+
+
+
+###
+GET http://localhost:5000/api/listen/audioList/65363532cd68f0be1a253348
+?groupId=652e0ee488fc106458535bc8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTIzNjUyYmE3NTkxN2E4NWRmZWFjNWIiLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTY5OTU5OTIsImV4cCI6MTY5OTU4Nzk5Mn0.aCIl7ILy4Qx-dvqertuU-OiOfKQqBwQ_Rl5g1DZQTsI
+
+
+###
+GET http://localhost:5000/api/listen/getUserAudioInGroup/65363532cd68f0be1a253348
+?groupId=652e0ee488fc106458535bc8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTIzNjUyYmE3NTkxN2E4NWRmZWFjNWIiLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTY5OTU5OTIsImV4cCI6MTY5OTU4Nzk5Mn0.aCIl7ILy4Qx-dvqertuU-OiOfKQqBwQ_Rl5g1DZQTsI
