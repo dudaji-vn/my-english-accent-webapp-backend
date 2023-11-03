@@ -1,0 +1,26 @@
+###
+POST http://10.0.100.81:5000/api/club/addOrUpdateClub
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQxZjIzODhmY2U5YWM5MjQ1MWRhYWYiLCJlbWFpbCI6ImxpbmhAZ21haWwuY29tIiwiaWF0IjoxNjk4ODIxMTM4LCJleHAiOjE3MDE0MTMxMzh9.sq-NHccWLvFzSHQ_2kI916Y9_4dRXCdl-88fU27nYpo
+Content-Type: application/json
+
+{
+   "clubName": "Test Club",  
+   "lectures": ["6540bd721860dada50828bf3","6540bd721860dada50828c4d"]
+}
+
+###
+POST http://10.0.100.81:5000/api/club/addOrUpdateClub
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQxZjIzODhmY2U5YWM5MjQ1MWRhYWYiLCJlbWFpbCI6ImxpbmhAZ21haWwuY29tIiwiaWF0IjoxNjk4ODIxMTM4LCJleHAiOjE3MDE0MTMxMzh9.sq-NHccWLvFzSHQ_2kI916Y9_4dRXCdl-88fU27nYpo
+Content-Type: application/json
+
+{
+   "clubId": "6542121c3544f08498aa946a",  
+   "members": ["6541fc85a3ad61d7f4d067b8"]
+}
+
+
+###
+GET http://10.0.100.81:5000/api/club/getClubsOwner
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQxZjIzODhmY2U5YWM5MjQ1MWRhYWYiLCJlbWFpbCI6ImxpbmhAZ21haWwuY29tIiwiaWF0IjoxNjk4ODIxMTM4LCJleHAiOjE3MDE0MTMxMzh9.sq-NHccWLvFzSHQ_2kI916Y9_4dRXCdl-88fU27nYpo
+
+

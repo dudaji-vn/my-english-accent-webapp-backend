@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Target ECMAScript version
+    "module": "CommonJS", // Use CommonJS modules
+    "outDir": "./dist", // Output directory for compiled code
+    "strict": true, // Enable strict type checking
+    "esModuleInterop": true, // Allow default imports from CommonJS modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true // Ensure consistent filename casing
+  },
+  "include": ["src/**/*.ts"], // Include TypeScript source files
+  "exclude": ["node_modules"] // Exclude node_modules directory
+}

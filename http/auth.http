@@ -1,0 +1,24 @@
+
+// Login
+POST  http://10.0.100.81:5000/api/auth/login
+Content-Type:  application/json
+
+{
+    "email":"hao@gmail.com",
+    "googleId":"1234"
+}
+
+
+###
+POST  http://10.0.100.81:5000/api/auth/register
+Content-Type:  application/json
+
+{
+  "googleId": "1234",
+  "avatarUrl": "avatar.jpg",
+  "email": "hao@gmail.com",
+  "nickName": "John",
+  "displayLanguage":"en",
+  "nativeLanguage": "vn"
+   //"class":[0,1,5]
+}
