@@ -5,6 +5,8 @@ import fileRouter from './file.router'
 import userRouter from './user.router'
 import scriptRouter from './script.router'
 import clubRouter from './club.router'
+import lectureRouter from './lecture.router'
+import challengeRouter from './challenge.router'
 
 const apiRouterV1 = express.Router()
 
@@ -28,6 +30,14 @@ const listApi = [
   {
     path: PATH.script,
     router: scriptRouter
+  },
+  {
+    path: PATH.lecture,
+    router: lectureRouter
+  },
+  {
+    path: PATH.challenge,
+    router: challengeRouter
   }
 ]
 listApi.forEach((item) => {
