@@ -1,8 +1,5 @@
 import { injectable } from 'tsyringe'
-import {
-  IClubDisplay,
-  IClubRequest
-} from '../interfaces/dto/club.dto'
+import { IClubDisplay, IClubRequest } from '../interfaces/dto/club.dto'
 import ClubModel from '../entities/Club'
 import { BadRequestError } from '../middleware/error'
 import ChallengeModel from '../entities/Challenge'
@@ -13,6 +10,7 @@ import { convertToGroupDTO } from '../coverter/club.mapping'
 @injectable()
 export default class ClubService {
   async addOrUpdateClub(payload: IClubRequest) {
+    let clubId
     if (!payload.ownerUser) {
       throw new BadRequestError('ownerUserId is required')
     }
@@ -29,6 +27,7 @@ export default class ClubService {
         lectures: payload.lectures,
         owner_user: payload.ownerUser
       })
+      clubId = club._id
       const challengePayload = {
         club: club._id,
         challenge_name: 'Word-guessing with colleagues'
@@ -51,26 +50,26 @@ export default class ClubService {
     } else {
       await ClubModel.findByIdAndUpdate(
         payload.clubId,
-        { $set: { members: payload.members } },
+        { $addToSet: { members: payload.members } },
         { new: true }
       )
     }
-    return true
+    return clubId || payload.clubId
   }
   async getClubsOwner(me: string): Promise<IClubDisplay> {
     const clubsOwner = await ClubModel.find({
       owner_user: me
     })
+      .populate('lectures')
+      .sort({ created: -1 })
     const clubJoined = await ClubModel.find({
       members: { $in: [me] }
     })
+      .populate('lectures')
+      .sort({ created: -1 })
     return {
-      clubsJoined: clubJoined.map((item: any) =>
-        convertToGroupDTO(item)
-      ),
-      clubsOwner: clubsOwner.map((item: any) =>
-        convertToGroupDTO(item)
-      )
+      clubsJoined: clubJoined.map((item: any) => convertToGroupDTO(item)),
+      clubsOwner: clubsOwner.map((item: any) => convertToGroupDTO(item))
     }
   }
 }
