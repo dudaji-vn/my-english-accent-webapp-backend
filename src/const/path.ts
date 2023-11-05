@@ -3,5 +3,7 @@ export const PATH = {
   file: '/file',
   user: '/user',
   club: '/club',
-  script: '/script'
+  script: '/script',
+  lecture: '/lecture',
+  challenge: '/challenge'
 }
