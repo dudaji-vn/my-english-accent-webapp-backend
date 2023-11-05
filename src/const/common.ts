@@ -25,3 +25,9 @@ export enum EClass {
   Designer = 1,
   General = 2
 }
+
+export enum StageExercise {
+  Inprogress = 0,
+  Open = 1,
+  Close = 2
+}
