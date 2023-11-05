@@ -8,7 +8,13 @@ export const convertToGroupDTO = (club: IClubDAO): IClubDTO => {
     description: club.description,
     members: club.members,
     ownerUserId: club.owner_user,
-    lectures: club.lectures,
+    lectures: club.lectures.map((item) => {
+      return {
+        lectureName: item.lecture_name,
+        class: item.class,
+        imgSrc: item.img_src
+      }
+    }),
     created: club.created,
     updated: club.updated
   }
