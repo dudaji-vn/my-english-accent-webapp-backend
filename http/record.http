@@ -1,11 +1,22 @@
-POST http://localhost:5000/api/record
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTIzNjUyYmE3NTkxN2E4NWRmZWFjNWIiLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTY5OTU5OTIsImV4cCI6MTY5OTU4Nzk5Mn0.aCIl7ILy4Qx-dvqertuU-OiOfKQqBwQ_Rl5g1DZQTsI
+GET http://localhost:5000/api/vocabulary/getAllVocabulariesByLecture
+?lectureId=6540bd721860dada50828c4d&stage=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
+
+
+###
+POST https://r5200nc8-5000.asse.devtunnels.ms/api/record/addRecord
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 Content-Type: application/json
 
 {
-  "recordUrl": {
-    "word": "example_word",
-    "sentence": "example_sentence"
-  },
-  "vocabularyId": "6528c17b0187283073293cb4"
+      "voiceSrc": "https://firebasestorage.googleapis.com/v0/b/my-english-accent-239fb.appspot.com/o/audio%2Fnonclub%2FqTfvWPj98FY1iBGRlvFe%2FDRzkoxv6bLW6FP7aVrZh?alt=media&token=54df59f3-44db-4dd1-870a-215e875e1d6a",
+      "vocabularyId": "6541daf81860dada50d18c3e"
+     // "challengeId": "6542121d3544f08498aa946c"
+  
 }
+
+
+###
+GET http://localhost:5000/api/record/getMyRecordsByLecture
+?lectureId=6540bd721860dada50828c4d&stage=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
