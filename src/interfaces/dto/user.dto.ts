@@ -26,10 +26,20 @@ export interface IUserUpdateDTO {
   nativeLanguage?: Language
   autoDownload?: boolean
 }
+export interface IUserEnrollRequest {
+  lectureId?: string
+  enrollmentId?: string
+  totalStep?: number
+  user: string
+}
 
-export interface IAddOrRemoveFavoriteUser {
-  me: string
+export interface IUserPracticeResponseType {
+  lectureId: string
+  lectureName: string
+  imgSrc: string
+  stage: number
+  currentStep: number
   userId: string
-  //type: add |remove
-  type: string
+  enrollmentId: string
+  totalStep: number
 }
