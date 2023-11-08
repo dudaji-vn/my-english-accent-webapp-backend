@@ -11,7 +11,6 @@ const lectureRouter = express.Router()
 
 lectureRouter.get(
   '/all',
-  auth,
   catchAsync(lectureController.getAllLectures.bind(lectureController))
 )
 

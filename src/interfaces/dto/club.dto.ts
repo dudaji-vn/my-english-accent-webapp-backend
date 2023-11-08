@@ -1,4 +1,5 @@
 import { EClass } from '../../const/common'
+import { ILectureDTO } from './lecture.dto'
 
 export interface IClubRequest {
   clubId?: string
@@ -13,7 +14,7 @@ export interface IClubDTO {
   description: string
   members: string[]
   ownerUserId: string
-  lectures: string[]
+  lectures: ILectureDTO[]
   updated: Date
   created: Date
   clubId: string
