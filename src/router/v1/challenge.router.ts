@@ -15,4 +15,25 @@ challengeRouter.get(
   catchAsync(challengeController.getChallengesInClub.bind(challengeController))
 )
 
+challengeRouter.get(
+  '/getChallengeDetailInClub/:challengeId',
+  auth,
+  catchAsync(
+    challengeController.getChallengeDetailInClub.bind(challengeController)
+  )
+)
+
+challengeRouter.patch(
+  '/updateChallengeMember/:challengeId',
+  auth,
+  catchAsync(
+    challengeController.updateChallengeMember.bind(challengeController)
+  )
+)
+challengeRouter.get(
+  '/getRecordByChallenge/:challengeId',
+  auth,
+  catchAsync(challengeController.getRecordByChallenge.bind(challengeController))
+)
+
 export default challengeRouter
