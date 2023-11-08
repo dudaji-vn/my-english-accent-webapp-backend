@@ -1,4 +1,8 @@
 export type Language = 'vi' | 'en' | 'kr'
+
+export interface IRecorded {
+  voiceSrc: string
+}
 export interface IClubVocabularyTypeResponse {
   challengeId: string
   vocabularyId: string

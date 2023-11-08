@@ -30,6 +30,35 @@ export default class VocabularyService {
       },
       {
         $lookup: {
+          from: 'records',
+          localField: '_id',
+          foreignField: 'vocabulary',
+          as: 'records'
+        }
+      },
+      {
+        $addFields: {
+          record: {
+            $arrayElemAt: [
+              {
+                $filter: {
+                  input: '$records',
+                  as: 'record',
+                  cond: {
+                    $eq: [
+                      '$$record.user',
+                      new mongoose.Types.ObjectId(payload.userId)
+                    ]
+                  }
+                }
+              },
+              0
+            ]
+          }
+        }
+      },
+      {
+        $lookup: {
           from: 'native_translations',
           localField: '_id',
           foreignField: 'vocabulary',
@@ -52,14 +81,20 @@ export default class VocabularyService {
           'vocabulary.title_display_language': '$title_display_language',
           'vocabulary.phonetic_display_language': '$phonetic_display_language',
           'vocabulary.lecture': '$lecture',
+          'vocabulary.voice_src': '$record.voice_src',
           _id: '$voca_native._id',
           title_native_language: '$voca_native.title_native_language',
           native_language: '$voca_native.native_language'
         }
+      },
+      {
+        $sort: {
+          'vocabulary.voice_src': -1
+        }
       }
     ]
     if (stage === StageExercise.Open) {
-      const vocabularies = await VocabularyModel.aggregate(aggQuery)
+      const vocabularies = await VocabularyModel.aggregate(aggQuery as any)
       return {
         currentStep: 0,
         enrollmentId: null,
@@ -74,7 +109,7 @@ export default class VocabularyService {
       user: userId,
       lecture: lectureId
     })
-    const vocabularies = await VocabularyModel.aggregate(aggQuery)
+    const vocabularies = await VocabularyModel.aggregate(aggQuery as any)
     return {
       currentStep: currentEnrollMent?.current_step ?? 0,
       enrollmentId: currentEnrollMent?._id,

@@ -8,17 +8,10 @@ const recordController = container.resolve<RecordController>(RecordController)
 
 const recordRouter = express.Router()
 
-recordRouter.get(
-  '/getAllVocabulariesByLecture',
-  auth,
-  catchAsync(
-    recordController.getAllVocabulariesByLectures.bind(recordController)
-  )
-)
 recordRouter.post(
-  '/addRecord',
+  '/addOrUpdateRecord',
   auth,
-  catchAsync(recordController.addRecord.bind(recordController))
+  catchAsync(recordController.addOrUpdateRecord.bind(recordController))
 )
 
 recordRouter.get(
