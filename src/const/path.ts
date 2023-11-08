@@ -5,5 +5,7 @@ export const PATH = {
   club: '/club',
   script: '/script',
   lecture: '/lecture',
-  challenge: '/challenge'
+  challenge: '/challenge',
+  record: '/record',
+  vocabulary: '/vocabulary'
 }
