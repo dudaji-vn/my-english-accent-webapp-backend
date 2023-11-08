@@ -1,11 +1,11 @@
 ####
-GET http://localhost:5000/api/user/myPractice
+GET http://localhost:5000/api/user/lectures?stage=0&sort=-1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 
 //Add
 ####
 POST https://r5200nc8-5000.asse.devtunnels.ms/api/user/addOrUpdateEnrollment
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWJlY2Q4OTliOTVjMTM5YTFkZjEiLCJlbWFpbCI6InRoaWVudGF1cnVzMjgwNEBnbWFpbC5jb20iLCJpYXQiOjE2OTkzNzE3NDEsImV4cCI6MTcwMTk2Mzc0MX0.V6T6Ef6A6ufeNQolyhMaNZuCKX70xwkuriqf1QcyUIM
 Content-Type: application/json
 
 {

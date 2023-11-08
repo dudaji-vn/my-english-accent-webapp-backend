@@ -35,6 +35,7 @@ export function convertToUserPractice(item: any): IUserPracticeResponseType {
     stage: item.stage,
     currentStep: item.current_step,
     enrollmentId: item._id,
-    userId: item.user
+    userId: item.user,
+    totalStep: item.total_step
   }
 }

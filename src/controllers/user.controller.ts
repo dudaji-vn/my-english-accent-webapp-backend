@@ -2,6 +2,7 @@ import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
 import UserService from '../services/user.service'
 import { IUserEnrollRequest } from '../interfaces/dto/user.dto'
+import { StageExercise } from '../const/common'
 
 @injectable()
 export default class UserController {
@@ -18,7 +19,12 @@ export default class UserController {
     return res.success(result)
   }
   async getMyPractice(req: IRequest, res: IResponse) {
-    const result = await this.userService.getMyPractice(req.user._id)
+    const { stage, sort } = req.query
+    const result = await this.userService.getMyPractice(
+      req.user._id,
+      stage as any,
+      parseInt((sort ?? 1) as any)
+    )
     return res.success(result)
   }
 }

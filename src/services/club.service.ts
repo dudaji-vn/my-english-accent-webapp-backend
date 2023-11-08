@@ -6,6 +6,7 @@ import ChallengeModel from '../entities/Challenge'
 import ClubVocabularyModel from '../entities/ClubVocabulary'
 import VocabularyModel from '../entities/Vocabulary'
 import { convertToGroupDTO } from '../coverter/club.mapping'
+import { findRandomIndexWord } from '../common/findRandomIndexWord'
 
 @injectable()
 export default class ClubService {
@@ -40,11 +41,12 @@ export default class ClubService {
       if (!vocaList || vocaList.length === 0) {
         throw new BadRequestError('vocalist not found')
       }
-      vocaList.forEach((item: any) => {
-        ClubVocabularyModel.create({
+
+      vocaList.forEach(async (item: any) => {
+        await ClubVocabularyModel.create({
           challenge: challenge._id,
           vocabulary: item._id,
-          number: 2
+          number: findRandomIndexWord(item.title_display_language)
         })
       })
     } else {
