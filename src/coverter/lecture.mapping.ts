@@ -4,7 +4,6 @@ import { ILectureDTO } from '../interfaces/dto/lecture.dto'
 export const convertToLectureDTO = (lecture: ILectureDAO): ILectureDTO => {
   return {
     lectureId: lecture._id,
-    class: lecture.class,
     imgSrc: lecture.img_src,
     lectureName: lecture.lecture_name
   }
