@@ -4,6 +4,7 @@ import {
 } from '../interfaces/dao/vocabulary.dao'
 import {
   INativeVocabularyDTO,
+  IRecorded,
   IVocabularyDTO
 } from '../interfaces/dto/vocabulary.dto'
 
@@ -20,7 +21,8 @@ export function convertToVocabularyDTO(voca: IVocabularyDAO): IVocabularyDTO {
 
 export function convertToVocabularyWithNativeDTO(
   voca: any
-): IVocabularyDTO & INativeVocabularyDTO {
+): IVocabularyDTO & INativeVocabularyDTO & IRecorded {
+  console.log(voca)
   return {
     vocabularyId: voca.vocabulary._id,
     vCreated: voca.vocabulary.created,
@@ -30,6 +32,7 @@ export function convertToVocabularyWithNativeDTO(
     lectureId: voca.vocabulary.lecture,
     language: voca.native_language,
     nativeVocabulary: voca._id,
-    titleNativeLanguage: voca.title_native_language
+    titleNativeLanguage: voca.title_native_language,
+    voiceSrc: voca?.vocabulary?.voice_src ?? ''
   }
 }

@@ -15,10 +15,10 @@ export default class RecordController {
     })
     return res.success(data)
   }
-  async addRecord(req: IRequest, res: IResponse) {
+  async addOrUpdateRecord(req: IRequest, res: IResponse) {
     const payload = req.body as IRecordRequest
     payload.userId = req.user._id
-    const data = await this.recordService.addRecord(payload)
+    const data = await this.recordService.addOrUpdateRecord(payload)
     return res.success(data)
   }
   async getMyRecordsByLecture(req: IRequest, res: IResponse) {

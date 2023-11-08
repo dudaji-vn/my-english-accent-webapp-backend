@@ -98,17 +98,26 @@ export default class RecordService {
     const data = await LectureModel.aggregate(aggregateQuery)
     return data.map((item) => convertToRecordsByLectureDTO(item))
   }
-  async addRecord(payload: IRecordRequest) {
+  async addOrUpdateRecord(payload: IRecordRequest) {
     const { challengeId, userId, vocabularyId, voiceSrc } = payload
     if (!vocabularyId || !voiceSrc) {
       throw new BadRequestError('Fields required: vocabularyId, voiceSrc')
     }
-    await RecordModel.create({
-      challenge: challengeId,
-      user: userId,
-      vocabulary: vocabularyId,
-      voice_src: voiceSrc
-    })
+
+    if (!challengeId) {
+      await RecordModel.findOneAndUpdate(
+        { user: userId, vocabulary: vocabularyId },
+        { voice_src: voiceSrc },
+        { upsert: true }
+      )
+    } else {
+      await RecordModel.findOneAndUpdate(
+        { user: userId, vocabulary: vocabularyId, challenge: challengeId },
+        { voice_src: voiceSrc },
+        { upsert: true }
+      )
+    }
+
     return true
   }
 }
