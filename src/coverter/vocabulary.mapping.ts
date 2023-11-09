@@ -36,3 +36,13 @@ export function convertToVocabularyWithNativeDTO(
     voiceSrc: voca?.vocabulary?.voice_src ?? ''
   }
 }
+
+export function convertToDetailVocabularyByLecture(item: any) {
+  return {
+    vocabularyId: item._id,
+    numberOrder: item.number_order ?? 0,
+    lectureName: item?.lecture?.lecture_name,
+    titleDisplay: item.title_display_language,
+    phonetic: item.phonetic_display_language
+  }
+}
