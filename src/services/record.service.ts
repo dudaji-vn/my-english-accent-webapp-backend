@@ -16,34 +16,6 @@ import { convertToRecordsByLectureDTO } from '../coverter/record.mapping'
 
 @injectable()
 export default class RecordService {
-  async getAllVocabulariesByLectures(payload: IVocaByLectureRequest) {
-    const { stage, lectureId, userId } = payload
-    if (stage === StageExercise.Open) {
-      const vocabularies = await VocabularyModel.find({ lecture: lectureId })
-      return {
-        currentStep: 0,
-        enrollmentId: null,
-        lectureId: lectureId,
-        stage: StageExercise.Open,
-        vocabularies: vocabularies
-      }
-    }
-    const currentEnrollMent = await EnrollmentModel.findOne({
-      user: userId,
-      lecture: lectureId
-    })
-    const vocabularies = await VocabularyModel.find({ lecture: lectureId })
-    return {
-      currentStep: currentEnrollMent?.current_step,
-      enrollmentId: currentEnrollMent?._id,
-      lectureId: lectureId,
-      stage: currentEnrollMent?.stage,
-      vocabularies: vocabularies.map((item: any) =>
-        convertToVocabularyDTO(item)
-      )
-    }
-  }
-
   async getMyRecordsByLecture(payload: IRecordByLectureRequest) {
     const { lectureId, userId } = payload
     const aggregateQuery = [
@@ -61,42 +33,58 @@ export default class RecordService {
         }
       },
       {
+        $unwind: '$vocabularies'
+      },
+      {
         $lookup: {
           from: 'records',
-          localField: 'vocabularies._id',
-          foreignField: 'vocabulary',
-          as: 'records'
+          let: { voca: '$vocabularies._id' },
+          pipeline: [
+            {
+              $match: {
+                $and: [
+                  {
+                    $expr: {
+                      $and: [
+                        { $eq: ['$vocabulary', '$$voca'] },
+                        { $eq: ['$user', new mongoose.Types.ObjectId(userId)] }
+                      ]
+                    }
+                  },
+                  {
+                    challenge: { $exists: false }
+                  }
+                ]
+              }
+            },
+            { $limit: 1 }
+          ],
+          as: 'vocabularies.record'
+        }
+      },
+      // {
+      //   $match: {
+      //     'vocabularies.record': { $ne: [] }
+      //   }
+      // },
+      {
+        $addFields: {
+          'vocabularies.record': { $arrayElemAt: ['$vocabularies.record', 0] }
         }
       },
       {
-        $addFields: {
-          'vocabularies.record': {
-            $arrayElemAt: [
-              {
-                $filter: {
-                  input: '$records',
-                  as: 'record',
-                  cond: {
-                    $and: [
-                      {
-                        $eq: [
-                          '$$record.user',
-                          new mongoose.Types.ObjectId(userId)
-                        ]
-                      },
-                      { $not: { $ifNull: ['$$record.challenge', false] } }
-                    ]
-                  }
-                }
-              },
-              0
-            ]
-          }
+        $group: {
+          _id: '$_id',
+          lecture_name: { $first: '$lecture_name' },
+          img_src: { $first: '$img_src' },
+          created: { $first: '$created' },
+          updated: { $first: '$updated' },
+          vocabularies: { $push: '$vocabularies' }
         }
       }
     ]
     const data = await LectureModel.aggregate(aggregateQuery)
-    return data.map((item) => convertToRecordsByLectureDTO(item))
+    return data.map((item) => convertToRecordsByLectureDTO(item))[0]
   }
   async addOrUpdateRecord(payload: IRecordRequest) {
     const { challengeId, userId, vocabularyId, voiceSrc } = payload

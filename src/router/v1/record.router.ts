@@ -8,7 +8,7 @@ const recordController = container.resolve<RecordController>(RecordController)
 
 const recordRouter = express.Router()
 
-recordRouter.post(
+recordRouter.put(
   '/addOrUpdateRecord',
   auth,
   catchAsync(recordController.addOrUpdateRecord.bind(recordController))
