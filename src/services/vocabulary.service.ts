@@ -1,11 +1,12 @@
 import { injectable } from 'tsyringe'
 import NativeTranslationModel from '../entities/NativeTranslation'
 import {
+  convertToDetailVocabularyByLecture,
   convertToVocabularyDTO,
   convertToVocabularyWithNativeDTO
 } from '../coverter/vocabulary.mapping'
 import { IVocaByLectureRequest } from '../interfaces/dto/record.dto'
-import { StageExercise } from '../const/common'
+import { Language, StageExercise } from '../const/common'
 import EnrollmentModel from '../entities/Enrollment'
 import VocabularyModel from '../entities/Vocabulary'
 import mongoose from 'mongoose'
@@ -21,7 +22,7 @@ export default class VocabularyService {
     )
   }
   async getAllVocabulariesByLectures(payload: IVocaByLectureRequest) {
-    const { stage, lectureId, userId } = payload
+    const { lectureId, userId } = payload
     const aggQuery = [
       {
         $match: {
@@ -93,18 +94,7 @@ export default class VocabularyService {
         }
       }
     ]
-    if (stage === StageExercise.Open) {
-      const vocabularies = await VocabularyModel.aggregate(aggQuery as any)
-      return {
-        currentStep: 0,
-        enrollmentId: null,
-        lectureId: lectureId,
-        stage: StageExercise.Open,
-        vocabularies: vocabularies.map((item: any) =>
-          convertToVocabularyWithNativeDTO(item)
-        )
-      }
-    }
+
     const currentEnrollMent = await EnrollmentModel.findOne({
       user: userId,
       lecture: lectureId
@@ -112,12 +102,69 @@ export default class VocabularyService {
     const vocabularies = await VocabularyModel.aggregate(aggQuery as any)
     return {
       currentStep: currentEnrollMent?.current_step ?? 0,
-      enrollmentId: currentEnrollMent?._id,
+      enrollmentId: currentEnrollMent?._id ?? null,
       lectureId: lectureId,
-      stage: currentEnrollMent?.stage,
+      stage: currentEnrollMent?.stage ?? StageExercise.Open,
       vocabularies: vocabularies.map((item: any) =>
         convertToVocabularyWithNativeDTO(item)
       )
     }
+  }
+
+  async getVocabularyByLectureId(lectureId: string) {
+    const aggQuery = [
+      {
+        $match: {
+          lecture: new mongoose.Types.ObjectId(lectureId)
+        }
+      },
+
+      {
+        $lookup: {
+          from: 'lectures',
+          localField: 'lecture',
+          foreignField: '_id',
+          as: 'lecture'
+        }
+      },
+      {
+        $unwind: '$lecture'
+      },
+      {
+        $lookup: {
+          from: 'native_translations',
+          localField: '_id',
+          foreignField: 'vocabulary',
+          as: 'native_translations'
+        }
+      },
+      {
+        $unwind: '$native_translations'
+      }
+    ]
+    const listVoca = await VocabularyModel.find({
+      lecture: lectureId
+    })
+      .lean()
+      .populate('lecture')
+
+    const listVocaPromise = listVoca.map(async (item) => {
+      const textVn = await NativeTranslationModel.findOne({
+        vocabulary: item._id,
+        native_language: Language.Vn
+      }).lean()
+      const textKorean = await NativeTranslationModel.findOne({
+        vocabulary: item._id,
+        native_language: Language.Kr
+      }).lean()
+
+      return {
+        textVN: textVn?.title_native_language ?? '',
+        textKR: textKorean?.title_native_language ?? '',
+        ...convertToDetailVocabularyByLecture(item)
+      }
+    })
+
+    return await Promise.all(listVocaPromise)
   }
 }

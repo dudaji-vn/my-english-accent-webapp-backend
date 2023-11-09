@@ -21,7 +21,6 @@ export interface IRecordDTO {
 
 export interface IVocaByLectureRequest {
   lectureId: string
-  stage: StageExercise
   userId: string
 }
 export interface IRecordByLectureRequest {

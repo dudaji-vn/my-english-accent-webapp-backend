@@ -86,6 +86,13 @@ export default class ScriptService {
         title_display_language: 'Test',
         title_native_language: 'Kiểm thử',
         native_language: 'vn'
+      },
+      {
+        class: 1,
+        lecture: '6540bd721860dada50828cad',
+        phonetic_display_language: `/ˌriːjuːzəˈbɪləti ɪz wʌn ʌv ðə ki ˈfæktərz ɪn dɪˈzaɪnɪŋ greɪt kəmˈpoʊnənts/`,
+        title_display_language: 'Test',
+        title_native_language: 'Kiểm thử'
       }
     ]
 

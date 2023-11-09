@@ -12,12 +12,18 @@ export default class VocabularyController {
     return res.success(data)
   }
   async getAllVocabulariesByLectures(req: IRequest, res: IResponse) {
-    const { lectureId, stage } = req.query
+    const { lectureId } = req.query
     const data = await this.vocabularyService.getAllVocabulariesByLectures({
       lectureId: lectureId as any,
-      stage: parseInt(stage as any),
       userId: req.user._id
     })
+    return res.success(data)
+  }
+  async getAllVocabularyByLectureId(req: IRequest, res: IResponse) {
+    const { lectureId } = req.query
+    const data = await this.vocabularyService.getVocabularyByLectureId(
+      lectureId as string
+    )
     return res.success(data)
   }
 }

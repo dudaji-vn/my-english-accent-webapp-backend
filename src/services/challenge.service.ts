@@ -59,7 +59,7 @@ export default class ChallengeService {
       }
     ]
     const data = await ChallengeModel.aggregate(query)
-    return data.map((item) => convertToDetailChallengeDTO(item))
+    return data.map((item) => convertToDetailChallengeDTO(item)).shift()
   }
 
   async getAllRecordInChallenge() {}

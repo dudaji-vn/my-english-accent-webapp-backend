@@ -9,7 +9,6 @@ export interface IClubVocabularyTypeResponse {
   updated: Date
   created: Date
   number: number
-  clubVocabularyId: string
 }
 export interface IVocabularyDTO {
   vCreated: string

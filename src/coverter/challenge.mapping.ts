@@ -14,11 +14,10 @@ export function convertToChallengeDisplayDTO(item: any): IChallengeDisplay {
     vocabularies: item.vocabularies.map((voca: any) => {
       return {
         challengeId: voca.challenge,
-        vocabularyId: voca.vocabulary,
+        vocabularyId: voca._id,
         updated: voca.updated,
         created: voca.created,
-        number: voca.number,
-        clubVocabularyId: voca._id
+        number: voca.number
       }
     })
   }
