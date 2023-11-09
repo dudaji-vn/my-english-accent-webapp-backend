@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 const vocabularySchema = new mongoose.Schema(
   {
+    number_order: { type: Number, default: 0 },
     lecture: { type: mongoose.Types.ObjectId, ref: 'lecture' },
     phonetic_display_language: {
       type: String,
