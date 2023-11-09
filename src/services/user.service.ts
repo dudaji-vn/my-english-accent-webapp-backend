@@ -9,6 +9,7 @@ import { BadRequestError } from '../middleware/error'
 import { convertToUserPractice } from '../coverter/user.mapping'
 import VocabularyModel from '../entities/Vocabulary'
 import mongoose from 'mongoose'
+import { convertToEnrollmentDTO } from '../coverter/enrollment.mapping'
 
 @injectable()
 export default class UserService extends BaseService {
@@ -27,17 +28,17 @@ export default class UserService extends BaseService {
       throw new BadRequestError('lectureId is required')
     }
     if (!enrollmentId) {
-      await EnrollmentModel.findOneAndUpdate(
+      const data = await EnrollmentModel.findOneAndUpdate(
         { lecture: lectureId, user: user },
         {
           current_step: 1,
           stage: StageExercise.Inprogress,
           user: user
         },
-        { upsert: true }
+        { upsert: true, new: true }
       )
 
-      return true
+      return convertToEnrollmentDTO(data)
     } else {
       const enrollment = await EnrollmentModel.findById(enrollmentId)
       const totalStep = await VocabularyModel.countDocuments({
@@ -48,7 +49,7 @@ export default class UserService extends BaseService {
       }
       const nextStep = enrollment.current_step + 1
 
-      await EnrollmentModel.findByIdAndUpdate(
+      const data = await EnrollmentModel.findByIdAndUpdate(
         enrollmentId,
         {
           stage:
@@ -59,7 +60,7 @@ export default class UserService extends BaseService {
         },
         { new: true }
       )
-      return true
+      return convertToEnrollmentDTO(data)
     }
   }
   async getMyPractice(me: string, stage: StageExercise, sort: number) {

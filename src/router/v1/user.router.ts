@@ -14,7 +14,7 @@ userRouter.get(
   auth,
   catchAsync(userController.getMyPractice.bind(userController))
 )
-userRouter.post(
+userRouter.put(
   '/addOrUpdateEnrollment',
   auth,
   catchAsync(userController.addOrUpdateEnrollment.bind(userController))

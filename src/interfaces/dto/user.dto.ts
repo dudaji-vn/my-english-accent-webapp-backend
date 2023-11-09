@@ -5,6 +5,10 @@ export interface IUserLoginDTO {
   googleId: string
   email: string
 }
+export interface IUserAdminDTO {
+  username: string
+  password: string
+}
 export interface IUserDTO {
   userId: string
   googleId: string
@@ -42,4 +46,11 @@ export interface IUserPracticeResponseType {
   userId: string
   enrollmentId: string
   totalStep: number
+}
+
+export interface IEnrollmentResponse {
+  stage: number
+  currentStep: number
+  lectureId: string
+  enrollmentId: string
 }
