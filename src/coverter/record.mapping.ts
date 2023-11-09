@@ -7,21 +7,23 @@ export const convertToRecordsByLectureDTO = (
     imgSrc: item.img_src,
     lectureName: item.lecture_name,
     lectureId: item._id,
-    vocabularies: item?.vocabularies.map((voca: any) => {
-      return {
-        vCreated: voca.created,
-        vphoneticDisplayLanguage: voca.phonetic_display_language,
-        vtitleDisplayLanguage: voca.title_display_language,
-        lectureId: voca.lecture,
-        vUpdated: voca.updated,
-        vocabularyId: voca._id,
-        recordId: voca.record._id,
-        challengeId: voca.record.challenge, // Example of a null value
-        rCreated: voca.record.created,
-        rUpdated: voca.record.updated,
-        userId: voca.record.user,
-        rVoiceSrc: voca.record.voice_src
-      }
-    })
+    vocabularies: item?.vocabularies
+      .filter((item: any) => item.record)
+      .map((voca: any) => {
+        return {
+          vCreated: voca.created,
+          vphoneticDisplayLanguage: voca.phonetic_display_language,
+          vtitleDisplayLanguage: voca.title_display_language,
+          lectureId: voca.lecture,
+          vUpdated: voca.updated,
+          vocabularyId: voca._id,
+          recordId: voca.record._id,
+          challengeId: voca.record.challenge,
+          rCreated: voca.record.created,
+          rUpdated: voca.record.updated,
+          userId: voca.record.user,
+          rVoiceSrc: voca.record.voice_src
+        }
+      })
   }
 }

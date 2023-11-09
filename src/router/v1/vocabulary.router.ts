@@ -21,5 +21,11 @@ vocabularyRouter.get(
     vocabularyController.getAllVocabulariesByLectures.bind(vocabularyController)
   )
 )
+vocabularyRouter.get(
+  '/getAllVocabulariesByLectureId',
+  catchAsync(
+    vocabularyController.getAllVocabularyByLectureId.bind(vocabularyController)
+  )
+)
 
 export default vocabularyRouter

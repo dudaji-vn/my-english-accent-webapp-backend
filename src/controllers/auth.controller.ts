@@ -1,6 +1,10 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import { IUserLoginDTO, IUserDTO } from '../interfaces/dto/user.dto'
+import {
+  IUserLoginDTO,
+  IUserDTO,
+  IUserAdminDTO
+} from '../interfaces/dto/user.dto'
 import AuthService from '../services/auth.service'
 
 @injectable()
@@ -20,6 +24,17 @@ export class AuthController {
   }
   async getProfile(req: IRequest, res: IResponse) {
     const dataRes = req.user
+    return res.success(dataRes)
+  }
+
+  async adminLogin(req: IRequest, res: IResponse) {
+    const userRequestDto = req.body as IUserAdminDTO
+    const login = await this.authService.adminLogin(userRequestDto)
+    return res.success(login)
+  }
+  async adminRegister(req: IRequest, res: IResponse) {
+    const userRequestDto = req.body as IUserAdminDTO
+    const dataRes = await this.authService.adminRegister(userRequestDto)
     return res.success(dataRes)
   }
 }

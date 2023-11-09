@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { CLASS } from '../const/common'
+
 const nativeTranslationSchema = new mongoose.Schema(
   {
     native_language: {

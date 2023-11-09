@@ -31,3 +31,9 @@ export enum StageExercise {
   Inprogress = 1,
   Close = 2
 }
+
+export const Language = {
+  Vn: 'vn',
+  Kr: 'kr',
+  Us: 'us'
+}

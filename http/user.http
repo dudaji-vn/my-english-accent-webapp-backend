@@ -4,8 +4,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyM
 
 //Add
 ####
-POST https://r5200nc8-5000.asse.devtunnels.ms/api/user/addOrUpdateEnrollment
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWJlY2Q4OTliOTVjMTM5YTFkZjEiLCJlbWFpbCI6InRoaWVudGF1cnVzMjgwNEBnbWFpbC5jb20iLCJpYXQiOjE2OTkzNzE3NDEsImV4cCI6MTcwMTk2Mzc0MX0.V6T6Ef6A6ufeNQolyhMaNZuCKX70xwkuriqf1QcyUIM
+PUT https://r5200nc8-5000.asse.devtunnels.ms/api/user/addOrUpdateEnrollment
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRiYjgzODE0NjNmYmJhY2ExMzRjYjgiLCJlbWFpbCI6InZ5QGdtYWlsLmNvbSIsImlhdCI6MTY5OTUxMTkzOSwiZXhwIjoxNzAyMTAzOTM5fQ.XIHmbJMHczAA_Wk3hVpVIkcBZ_DXFMm2hF00k9fZf4k
 Content-Type: application/json
 
 {
@@ -15,11 +15,11 @@ Content-Type: application/json
 
 //Update
 ####
-POST https://r5200nc8-5000.asse.devtunnels.ms/api/user/addOrUpdateEnrollment
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
+PUT https://r5200nc8-5000.asse.devtunnels.ms/api/user/addOrUpdateEnrollment
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTRiYjgzODE0NjNmYmJhY2ExMzRjYjgiLCJlbWFpbCI6InZ5QGdtYWlsLmNvbSIsImlhdCI6MTY5OTUxMTkzOSwiZXhwIjoxNzAyMTAzOTM5fQ.XIHmbJMHczAA_Wk3hVpVIkcBZ_DXFMm2hF00k9fZf4k
 Content-Type: application/json
 
 {
-   "enrollmentId":"6544a4041860dada50582327",
+   "enrollmentId":"654c86551860dada50ac77ad",
    "lectureId": "6540bd721860dada50828c4d"
 }
