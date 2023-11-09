@@ -1,15 +1,15 @@
 GET http://localhost:5000/api/vocabulary/getAllVocabulariesByLecture
-?lectureId=6540bd721860dada50828c4d&stage=1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
+?lectureId=6540bd721860dada50828c4d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWJlY2Q4OTliOTVjMTM5YTFkZjEiLCJlbWFpbCI6InRoaWVudGF1cnVzMjgwNEBnbWFpbC5jb20iLCJpYXQiOjE2OTk1MDUyNjUsImV4cCI6MTcwMjA5NzI2NX0.qQP2macweuPBAC_HGhuD2YFHb2RzS1aDpcD_bwVKXCs
 
 
 ###
-POST https://r5200nc8-5000.asse.devtunnels.ms/api/record/addRecord
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
+POST https://r5200nc8-5000.asse.devtunnels.ms/api/record/addOrUpdateRecord
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWJlY2Q4OTliOTVjMTM5YTFkZjEiLCJlbWFpbCI6InRoaWVudGF1cnVzMjgwNEBnbWFpbC5jb20iLCJpYXQiOjE2OTk0MTExNTIsImV4cCI6MTcwMjAwMzE1Mn0.jjg2Lhvyea7g6Z6Mglsd5dUE9Ffl5xPDB20JHJUyA_E
 Content-Type: application/json
 
 {
-      "voiceSrc": "https://firebasestorage.googleapis.com/v0/b/my-english-accent-239fb.appspot.com/o/audio%2Fnonclub%2FqTfvWPj98FY1iBGRlvFe%2FDRzkoxv6bLW6FP7aVrZh?alt=media&token=54df59f3-44db-4dd1-870a-215e875e1d6a",
+      "voiceSrc": "http://firebasestorage.googleapis.com/v0/b/my-english-accent-239fb.appspot.com/o/audio%2Fnonclub%2FqTfvWPj98FY1iBGRlvFe%2FDRzkoxv6bLW6FP7aVrZh?alt=media&token=54df59f3-44db-4dd1-870a-215e875e1d6a",
       "vocabularyId": "6541daf81860dada50d18c3e"
      // "challengeId": "6542121d3544f08498aa946c"
   
@@ -18,5 +18,5 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/api/record/getMyRecordsByLecture
-?lectureId=6540bd721860dada50828c4d&stage=1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
+?lectureId=6540bd721860dada50828c4d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWJlY2Q4OTliOTVjMTM5YTFkZjEiLCJlbWFpbCI6InRoaWVudGF1cnVzMjgwNEBnbWFpbC5jb20iLCJpYXQiOjE2OTk0NjAxNTksImV4cCI6MTcwMjA1MjE1OX0.s9CJswLLZ9xWNPoWcyXYv7m-blUA6z9jToGE8Arcd1o

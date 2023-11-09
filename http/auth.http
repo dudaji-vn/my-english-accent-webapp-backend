@@ -1,24 +1,48 @@
 
 // Login
-POST  http://10.0.100.81:5000/api/auth/login
+POST  http://localhost:5000/api/auth/login
 Content-Type:  application/json
 
 {
-    "email":"thientaurus2804@gmail.com",
-    "googleId":"n1A2y6KL6lN41cqaEhaa0mdXOFX2"
+    //"email":"thientaurus2804@gmail.com",
+    //"googleId":"n1A2y6KL6lN41cqaEhaa0mdXOFX2"
+     "email":"vy@gmail.com",
+     "googleId":"1234"
 }
 
 
 ###
-POST  http://10.0.100.81:5000/api/auth/register
+POST  http://localhost:5000/api/auth/register
 Content-Type:  application/json
 
 {
   "googleId": "1234",
   "avatarUrl": "avatar.jpg",
-  "email": "hao@gmail.com",
+  "email": "vy@gmail.com",
   "nickName": "John",
   "displayLanguage":"en",
   "nativeLanguage": "vn"
    //"class":[0,1,5]
+}
+
+
+
+// Login
+###
+POST  http://localhost:5000/api/auth/adminLogin
+Content-Type:  application/json
+
+{
+    "username":"admin",
+    "password":"123"
+}
+
+
+###
+POST  http://10.0.100.81:5000/api/auth/adminRegister
+Content-Type:  application/json
+
+{
+  "username":"admin",
+  "password": "123"
 }
