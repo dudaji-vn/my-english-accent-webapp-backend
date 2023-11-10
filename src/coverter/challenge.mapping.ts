@@ -36,11 +36,11 @@ export function convertToDetailChallengeDTO(
     vocabularies: item.vocabularies.map((voca: any) => {
       return {
         challengeId: voca.challenge,
-        vocabularyId: voca.vocabulary,
+        vocabularyId: voca._id,
         updated: voca.updated,
         created: voca.created,
         number: voca.number,
-        clubVocabularyId: voca._id,
+
         vCreated: voca.created,
         vUpdated: voca.updated,
         vphoneticDisplayLanguage: voca.title_display_language,
