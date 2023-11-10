@@ -73,7 +73,7 @@ export default class ChallengeService {
       .lean()
     const records = await RecordModel.find({
       challenge: challengeId,
-      user: new mongoose.Types.ObjectId('65421becd899b95c139a1df1')
+      user: new mongoose.Types.ObjectId(userId)
     }).populate('vocabulary')
     return {
       challengeName: challengeInfo?.challenge_name,
