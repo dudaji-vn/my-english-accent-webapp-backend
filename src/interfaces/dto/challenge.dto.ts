@@ -1,3 +1,5 @@
+import { IRecordDTO } from './record.dto'
+import { IUserDTO } from './user.dto'
 import { IClubVocabularyTypeResponse, IVocabularyDTO } from './vocabulary.dto'
 export interface IChallengeResponseType {
   challengeName: string
@@ -19,4 +21,8 @@ export interface IChallengeDisplay {
 
 export interface IChallengeDetailDisplay extends IChallengeResponseType {
   vocabularies: IVocabularyDTO[] & IClubVocabularyTypeResponse[]
+}
+export interface IChallengeSummaryDisplay {
+  participants: IUserDTO[]
+  vocabularies: IVocabularyDTO[] & IRecordDTO[]
 }

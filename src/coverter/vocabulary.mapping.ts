@@ -33,7 +33,7 @@ export function convertToVocabularyWithNativeDTO(
     language: voca.native_language,
     nativeVocabulary: voca._id,
     titleNativeLanguage: voca.title_native_language,
-    voiceSrc: voca?.vocabulary?.voice_src ?? ''
+    voiceSrc: voca?.voice_src ?? ''
   }
 }
 

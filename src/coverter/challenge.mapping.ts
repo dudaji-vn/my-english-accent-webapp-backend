@@ -1,7 +1,9 @@
+import { IUserDAO } from '../interfaces/dao/user.dao'
 import {
   IChallengeDetailDisplay,
   IChallengeDisplay
 } from '../interfaces/dto/challenge.dto'
+import { IUserDTO } from '../interfaces/dto/user.dto'
 
 export function convertToChallengeDisplayDTO(item: any): IChallengeDisplay {
   return {
@@ -43,6 +45,36 @@ export function convertToDetailChallengeDTO(
 
         vCreated: voca.created,
         vUpdated: voca.updated,
+        vphoneticDisplayLanguage: voca.title_display_language,
+        vtitleDisplayLanguage: voca.phonetic_display_language,
+        lectureId: voca.lecture
+      }
+    })
+  }
+}
+
+export function convertToChallengeSummary(item: any): any {
+  return {
+    challengeId: item._id,
+    challengeName: item.challenge_name,
+    clubId: item.club,
+    created: item.created,
+    updated: item.updated,
+    participants: item.challenge?.participants.map((user: IUserDAO) => {
+      return {
+        avatarUrl: user.avatar_url,
+        userId: user._id,
+        displayLanguage: user.display_language,
+        nickName: user.nick_name,
+        nativeLanguage: user.native_language
+      }
+    }),
+    vocabularies: item.vocabulary.map((voca: any) => {
+      return {
+        record: voca.record,
+        challengeId: voca.challenge,
+        vocabularyId: voca._id,
+        number: voca.number,
         vphoneticDisplayLanguage: voca.title_display_language,
         vtitleDisplayLanguage: voca.phonetic_display_language,
         lectureId: voca.lecture
