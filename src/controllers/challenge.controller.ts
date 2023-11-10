@@ -22,7 +22,14 @@ export default class ChallengeController {
     return res.success(data)
   }
 
-  async getAllRecordInChallenge() {}
+  async getAllRecordInChallenge(req: IRequest, res: IResponse) {
+    const { challengeId } = req.params
+    const data = await this.challengeService.getAllRecordInChallenge(
+      challengeId,
+      req.user._id
+    )
+    return res.success(data)
+  }
   async updateChallengeMember(req: IRequest, res: IResponse) {
     const { challengeId } = req.params
     const data = await this.challengeService.updateChallengeMember(

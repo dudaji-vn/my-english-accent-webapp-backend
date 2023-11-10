@@ -5,13 +5,18 @@ import mongoose from 'mongoose'
 import ChallengeModel from '../entities/Challenge'
 import {
   convertToChallengeDisplayDTO,
+  convertToChallengeSummary,
   convertToDetailChallengeDTO
 } from '../coverter/challenge.mapping'
 import { IRecordRequest } from '../interfaces/dto/record.dto'
 import RecordModel from '../entities/Record'
 import { BadRequestError } from '../middleware/error'
 import ClubVocabularyModel from '../entities/ClubVocabulary'
-import { convertToVocabularyDTO } from '../coverter/vocabulary.mapping'
+import {
+  convertToVocabularyDTO,
+  convertToVocabularyWithNativeDTO
+} from '../coverter/vocabulary.mapping'
+import { convertToUserDTO } from '../coverter/user.mapping'
 
 @injectable()
 export default class ChallengeService {
@@ -62,7 +67,26 @@ export default class ChallengeService {
     return data.map((item) => convertToDetailChallengeDTO(item)).shift()
   }
 
-  async getAllRecordInChallenge() {}
+  async getAllRecordInChallenge(challengeId: string, userId: string) {
+    const challengeInfo = await ChallengeModel.findById(challengeId)
+      .populate('participants')
+      .lean()
+    const records = await RecordModel.find({
+      challenge: challengeId,
+      user: new mongoose.Types.ObjectId('65421becd899b95c139a1df1')
+    }).populate('vocabulary')
+    return {
+      challengeName: challengeInfo?.challenge_name,
+      club: challengeInfo?.club,
+      participants: challengeInfo?.participants.map((item: any) =>
+        convertToUserDTO(item)
+      ),
+      challengeId: challengeInfo?._id,
+      vocabularies: records.map((item) =>
+        convertToVocabularyWithNativeDTO(item)
+      )
+    }
+  }
   async updateChallengeMember(challengeId: string, me: string) {
     await ChallengeModel.findByIdAndUpdate(
       challengeId,
