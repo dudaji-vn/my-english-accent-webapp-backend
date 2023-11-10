@@ -30,5 +30,4 @@ export interface IClubVocabularyTypeResponse {
   updated: Date
   created: Date
   number: number
-  clubVocabularyId: string
 }
