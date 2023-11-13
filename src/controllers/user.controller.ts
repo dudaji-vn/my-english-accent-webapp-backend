@@ -8,7 +8,8 @@ import { StageExercise } from '../const/common'
 export default class UserController {
   constructor(private readonly userService: UserService) {}
   async getAllUser(req: IRequest, res: IResponse) {
-    const users = await this.userService.getAll()
+    const me = req.user._id
+    const users = await this.userService.getAll(me)
     return res.success(users)
   }
 

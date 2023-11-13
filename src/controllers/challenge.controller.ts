@@ -39,12 +39,14 @@ export default class ChallengeController {
     return res.success(data)
   }
 
-  async getRecordByChallenge(req: IRequest, res: IResponse) {
+  async getRecordToListenByChallenge(req: IRequest, res: IResponse) {
     const { challengeId } = req.params
-    const data = await this.challengeService.getRecordByChallenge(
+    const data = await this.challengeService.getRecordToListenByChallenge(
       challengeId,
       req.user._id
     )
     return res.success(data)
   }
+
+  
 }
