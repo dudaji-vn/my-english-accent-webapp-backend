@@ -8,7 +8,11 @@ import { catchAsync } from '../../middleware/catchAsync'
 const userController = container.resolve<UserController>(UserController)
 
 const userRouter = express.Router()
-
+userRouter.get(
+  '/allUsers',
+  auth,
+  catchAsync(userController.getAllUser.bind(userController))
+)
 userRouter.get(
   '/lectures',
   auth,

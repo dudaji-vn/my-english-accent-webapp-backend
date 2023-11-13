@@ -5,7 +5,6 @@ import { IUserDTO, IUserPracticeResponseType } from '../interfaces/dto/user.dto'
 export function convertToUserDAO(user: IUserDTO): IUserDAO {
   return {
     avatar_url: user.avatarUrl,
-    class: user.class,
     display_language: user.displayLanguage,
     email: user.email,
     google_id: user.googleId,
@@ -18,7 +17,6 @@ export function convertToUserDTO(user: IUserDAO): IUserDTO {
   return {
     userId: user._id ?? '',
     avatarUrl: user.avatar_url,
-    class: user.class,
     displayLanguage: user.display_language,
     email: user.email,
     googleId: user.google_id,
