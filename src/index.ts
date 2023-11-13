@@ -12,7 +12,10 @@ const app = express()
 app.use(express.json())
 app.use(
   cors({
-    origin: ['http://localhost:3000']
+    origin: [
+      'http://localhost:3000',
+      'https://r5200nc8-3000.asse.devtunnels.ms'
+    ]
   })
 )
 
@@ -28,11 +31,9 @@ app.get('/', (req: Request, res: Response) => {
   return (res as IResponse).success('Hello')
 })
 
-app.use(
-  (err: Error, req: Request, res: Response, next: NextFunction) => {
-    res.status(500).json({ error: err.message })
-  }
-)
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  res.status(500).json({ error: err.message })
+})
 app.use('/api', apiRouterV1)
 const mongoUrl = process.env.MONGODB_URL
 if (mongoUrl) {

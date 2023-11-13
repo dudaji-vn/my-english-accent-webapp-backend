@@ -7,11 +7,12 @@ const lectureSchema = new mongoose.Schema(
     },
     class: {
       type: Number,
-      enum: [CLASS.Designer, CLASS.Developer, CLASS.Other],
-      required: true
+      enum: [CLASS.Designer, CLASS.Developer, CLASS.Other]
     },
     lecture_name: {
-      type: String
+      type: String,
+      required: true,
+      unique: true
     },
     img_src: {
       type: String

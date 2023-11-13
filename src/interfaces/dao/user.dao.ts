@@ -5,7 +5,6 @@ export interface IUserDAO {
   google_id: string
   email: string
   avatar_url: string
-  class: EClass[]
   display_language: string
   nick_name: string
   native_language: string
