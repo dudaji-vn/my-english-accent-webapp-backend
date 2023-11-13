@@ -19,4 +19,9 @@ export default class ClubController {
     const result = await this.clubService.getClubsOwner(req.user._id)
     return res.success(result)
   }
+  async getMembersInfo(req: IRequest, res: IResponse) {
+    const { clubId } = req.params
+    const data = await this.clubService.getMembersInfo(clubId)
+    return res.success(data)
+  }
 }

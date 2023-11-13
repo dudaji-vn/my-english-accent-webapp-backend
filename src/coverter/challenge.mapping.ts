@@ -5,11 +5,15 @@ import {
 } from '../interfaces/dto/challenge.dto'
 import { IUserDTO } from '../interfaces/dto/user.dto'
 
-export function convertToChallengeDisplayDTO(item: any): IChallengeDisplay {
+export function convertToChallengeDisplayDTO(
+  item: any,
+  club: any
+): IChallengeDisplay {
   return {
     challengeId: item._id,
     challengeName: item.challenge_name,
     clubId: item.club,
+    clubName: club.club_name,
     created: item.created,
     participants: item.participants,
     updated: item.updated,
@@ -42,11 +46,10 @@ export function convertToDetailChallengeDTO(
         updated: voca.updated,
         created: voca.created,
         number: voca.number,
-
         vCreated: voca.created,
         vUpdated: voca.updated,
-        vphoneticDisplayLanguage: voca.title_display_language,
-        vtitleDisplayLanguage: voca.phonetic_display_language,
+        vphoneticDisplayLanguage: voca.phonetic_display_language,
+        vtitleDisplayLanguage: voca.title_display_language,
         lectureId: voca.lecture
       }
     })
@@ -75,8 +78,8 @@ export function convertToChallengeSummary(item: any): any {
         challengeId: voca.challenge,
         vocabularyId: voca._id,
         number: voca.number,
-        vphoneticDisplayLanguage: voca.title_display_language,
-        vtitleDisplayLanguage: voca.phonetic_display_language,
+        vphoneticDisplayLanguage: voca.phonetic_display_language,
+        vtitleDisplayLanguage: voca.title_display_language,
         lectureId: voca.lecture
       }
     })
