@@ -22,7 +22,7 @@ Content-Type:  application/json
   "nickName": "John",
   "displayLanguage":"en",
   "nativeLanguage": "vn"
-   //"class":[0,1,5]
+  
 }
 
 
