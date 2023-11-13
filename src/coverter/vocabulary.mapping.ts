@@ -13,27 +13,27 @@ export function convertToVocabularyDTO(voca: IVocabularyDAO): IVocabularyDTO {
     vocabularyId: voca._id,
     vCreated: voca.created,
     vUpdated: voca.updated,
-    vphoneticDisplayLanguage: voca.title_display_language,
-    vtitleDisplayLanguage: voca.phonetic_display_language,
+    vphoneticDisplayLanguage: voca.phonetic_display_language,
+    vtitleDisplayLanguage: voca.title_display_language,
     lectureId: voca.lecture
   }
 }
 
 export function convertToVocabularyWithNativeDTO(
-  voca: any
+  record: any
 ): IVocabularyDTO & INativeVocabularyDTO & IRecorded {
-  console.log(voca)
   return {
-    vocabularyId: voca.vocabulary._id,
-    vCreated: voca.vocabulary.created,
-    vUpdated: voca.vocabulary.updated,
-    vphoneticDisplayLanguage: voca.vocabulary.phonetic_display_language,
-    vtitleDisplayLanguage: voca.vocabulary.title_display_language,
-    lectureId: voca.vocabulary.lecture,
-    language: voca.native_language,
-    nativeVocabulary: voca._id,
-    titleNativeLanguage: voca.title_native_language,
-    voiceSrc: voca?.voice_src ?? ''
+    vocabularyId: record.vocabulary._id,
+    vCreated: record.vocabulary.created,
+    vUpdated: record.vocabulary.updated,
+    vphoneticDisplayLanguage: record.vocabulary.phonetic_display_language,
+    vtitleDisplayLanguage: record.vocabulary.title_display_language,
+    lectureId: record.vocabulary.lecture,
+    language: record.native_language,
+    nativeVocabulary: record._id,
+    titleNativeLanguage: record.title_native_language,
+    voiceSrc: record?.voice_src ?? '',
+    recordId: record._id
   }
 }
 

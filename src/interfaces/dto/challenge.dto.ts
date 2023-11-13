@@ -16,6 +16,7 @@ export interface IChallengeDisplay {
   updated: Date
   created: Date
   challengeId: string
+  clubName: string
   vocabularies: IClubVocabularyTypeResponse[]
 }
 

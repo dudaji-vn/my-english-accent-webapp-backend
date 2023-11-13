@@ -14,7 +14,6 @@ export interface IUserDTO {
   googleId: string
   email: string
   avatarUrl: string
-  class: EClass[]
   displayLanguage: string
   nickName: string
   nativeLanguage: string
