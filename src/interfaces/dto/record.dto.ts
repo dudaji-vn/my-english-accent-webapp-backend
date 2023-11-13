@@ -1,5 +1,6 @@
 import { StageExercise } from '../../const/common'
 import { ILectureDTO } from './lecture.dto'
+import { IUserDTO } from './user.dto'
 import { IVocabularyDTO } from './vocabulary.dto'
 
 export interface IRecordRequest {
@@ -16,7 +17,7 @@ export interface IRecordDTO {
   rUpdated: string
   userId: string
   vocabularyId: string
-  rVoiceSrc: string
+  voiceSrc: string
 }
 
 export interface IVocaByLectureRequest {
@@ -30,4 +31,13 @@ export interface IRecordByLectureRequest {
 }
 export interface IRecordByLectureDTO extends ILectureDTO {
   vocabularies: IVocabularyDTO[] & IRecordDTO[]
+}
+
+export interface IRecordOfUser extends IVocabularyDTO {
+  recordUser: Omit<IUserDTO & IRecordDTO, 'googleId' | 'email'>[]
+}
+
+export interface IRecordToListen {
+  participants: IRecordOfUser[]
+  vocabularies: IVocabularyDTO[]
 }

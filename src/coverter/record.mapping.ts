@@ -22,7 +22,7 @@ export const convertToRecordsByLectureDTO = (
           rCreated: voca.record.created,
           rUpdated: voca.record.updated,
           userId: voca.record.user,
-          rVoiceSrc: voca.record.voice_src
+          voiceSrc: voca.record.voice_src
         }
       })
   }
