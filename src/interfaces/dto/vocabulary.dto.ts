@@ -2,6 +2,7 @@ export type Language = 'vi' | 'en' | 'kr'
 
 export interface IRecorded {
   voiceSrc: string
+  recordId: string
 }
 export interface IClubVocabularyTypeResponse {
   challengeId: string
@@ -30,5 +31,14 @@ export interface IClubVocabularyTypeResponse {
   updated: Date
   created: Date
   number: number
-  clubVocabularyId: string
+}
+
+export interface IVocabularyRequest {
+  numberOrder: string
+  lectureId: string
+  titleDisplay: string
+  phonetic: string
+  vocabularyId?: string
+  textVN: string
+  textKR: string
 }

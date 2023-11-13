@@ -6,15 +6,21 @@ import { IUserEnrollRequest, IUserUpdateDTO } from '../interfaces/dto/user.dto'
 import EnrollmentModel from '../entities/Enrollment'
 import { BaseService } from './base.service'
 import { BadRequestError } from '../middleware/error'
-import { convertToUserPractice } from '../coverter/user.mapping'
+import {
+  convertToUserDTO,
+  convertToUserPractice
+} from '../coverter/user.mapping'
 import VocabularyModel from '../entities/Vocabulary'
 import mongoose from 'mongoose'
 import { convertToEnrollmentDTO } from '../coverter/enrollment.mapping'
 
 @injectable()
 export default class UserService extends BaseService {
-  async getAll() {
-    return await UserModel.find()
+  async getAll(me: string) {
+    const data = await UserModel.find()
+      .find({ _id: { $ne: me } })
+      .lean()
+    return data.map((item: any) => convertToUserDTO(item))
   }
   async updateUser(updateData: IUserUpdateDTO, userId: string) {
     return await UserModel.findByIdAndUpdate(userId, updateData, {
