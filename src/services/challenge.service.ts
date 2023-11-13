@@ -17,10 +17,12 @@ import {
   convertToVocabularyWithNativeDTO
 } from '../coverter/vocabulary.mapping'
 import { convertToUserDTO } from '../coverter/user.mapping'
+import ClubModel from '../entities/Club'
 
 @injectable()
 export default class ChallengeService {
   async getChallengesInClub(clubId: string) {
+    const club = await ClubModel.findById(clubId).lean()
     const query = [
       {
         $match: {
@@ -37,7 +39,7 @@ export default class ChallengeService {
       }
     ]
     const data = await ChallengeModel.aggregate(query)
-    return data.map((item) => convertToChallengeDisplayDTO(item))
+    return data.map((item) => convertToChallengeDisplayDTO(item, club))
   }
   async getChallengeDetailInClub(challengeId: string) {
     const query = [
@@ -77,7 +79,7 @@ export default class ChallengeService {
     }).populate('vocabulary')
     return {
       challengeName: challengeInfo?.challenge_name,
-      club: challengeInfo?.club,
+      clubId: challengeInfo?.club,
       participants: challengeInfo?.participants.map((item: any) =>
         convertToUserDTO(item)
       ),
@@ -95,12 +97,11 @@ export default class ChallengeService {
     )
     return challengeId
   }
-  async getRecordByChallenge(challengeId: string, me: string) {
+  async getRecordToListenByChallenge(challengeId: string, me: string) {
     const vocabularies = await ClubVocabularyModel.find({
       challenge: challengeId
     }).populate('vocabulary')
 
-    //const participants=await
     return {
       vocabularies: vocabularies.map((item) =>
         convertToVocabularyDTO(item.vocabulary as any)
