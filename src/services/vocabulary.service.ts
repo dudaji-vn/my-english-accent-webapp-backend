@@ -10,16 +10,18 @@ import { Language, StageExercise } from '../const/common'
 import EnrollmentModel from '../entities/Enrollment'
 import VocabularyModel from '../entities/Vocabulary'
 import mongoose from 'mongoose'
+import { ILectureDTO } from '../interfaces/dto/lecture.dto'
+import { IVocabularyRequest } from '../interfaces/dto/vocabulary.dto'
+import { BadRequestError } from '../middleware/error'
 
 @injectable()
 export default class VocabularyService {
-  async getVocabularyById(vocabularyId: string) {
-    const vocabularies = await NativeTranslationModel.find({
-      vocabulary: vocabularyId
+  async getVocabularyById(vocabularyId: string, nativeLanguage: string) {
+    const vocabulary = await NativeTranslationModel.findOne({
+      vocabulary: vocabularyId,
+      native_language: nativeLanguage
     }).populate('vocabulary')
-    return vocabularies.map((item: any) =>
-      convertToVocabularyWithNativeDTO(item)
-    )
+    return convertToVocabularyWithNativeDTO(vocabulary)
   }
   async getAllVocabulariesByLectures(payload: IVocaByLectureRequest) {
     const { lectureId, userId } = payload
@@ -112,51 +114,39 @@ export default class VocabularyService {
   }
 
   async getVocabularyByLectureId(lectureId: string) {
-    const aggQuery = [
-      {
-        $match: {
-          lecture: new mongoose.Types.ObjectId(lectureId)
-        }
-      },
+    let listVoca: any = []
+    if (!lectureId) {
+      listVoca = await VocabularyModel.find()
+        .lean()
+        .sort({
+          lecture: 1, // Sort by lecture in ascending order
+          number_order: 1 // Sort by number_order in ascending order
+        })
+        .populate('lecture')
+    } else {
+      listVoca = await VocabularyModel.find({
+        lecture: lectureId
+      })
+        .lean()
+        .sort({
+          lecture: 1, // Sort by lecture in ascending order
 
-      {
-        $lookup: {
-          from: 'lectures',
-          localField: 'lecture',
-          foreignField: '_id',
-          as: 'lecture'
-        }
-      },
-      {
-        $unwind: '$lecture'
-      },
-      {
-        $lookup: {
-          from: 'native_translations',
-          localField: '_id',
-          foreignField: 'vocabulary',
-          as: 'native_translations'
-        }
-      },
-      {
-        $unwind: '$native_translations'
-      }
-    ]
-    const listVoca = await VocabularyModel.find({
-      lecture: lectureId
-    })
-      .lean()
-      .populate('lecture')
+          number_order: 1 // Sort by number_order in ascending order
+        })
+        .populate('lecture')
+    }
 
-    const listVocaPromise = listVoca.map(async (item) => {
-      const textVn = await NativeTranslationModel.findOne({
-        vocabulary: item._id,
-        native_language: Language.Vn
-      }).lean()
-      const textKorean = await NativeTranslationModel.findOne({
-        vocabulary: item._id,
-        native_language: Language.Kr
-      }).lean()
+    const listVocaPromise = listVoca.map(async (item: any) => {
+      const [textVn, textKorean] = await Promise.all([
+        NativeTranslationModel.findOne({
+          vocabulary: item._id,
+          native_language: Language.Vn
+        }).lean(),
+        NativeTranslationModel.findOne({
+          vocabulary: item._id,
+          native_language: Language.Kr
+        }).lean()
+      ])
 
       return {
         textVN: textVn?.title_native_language ?? '',
@@ -166,5 +156,98 @@ export default class VocabularyService {
     })
 
     return await Promise.all(listVocaPromise)
+  }
+
+  async addOrUpdateVocabulary(payload: IVocabularyRequest) {
+    const {
+      lectureId,
+      phonetic,
+      titleDisplay,
+      textKR,
+      textVN,
+      vocabularyId,
+      numberOrder
+    } = payload
+    if (
+      !lectureId ||
+      !phonetic ||
+      !titleDisplay ||
+      !textKR ||
+      !textVN ||
+      parseInt(numberOrder) < 0
+    ) {
+      throw new BadRequestError('missing fields')
+    }
+    if (vocabularyId) {
+      await VocabularyModel.findByIdAndUpdate(payload.vocabularyId, {
+        number_order: numberOrder,
+        title_display_language: titleDisplay,
+        lecture: lectureId,
+        phonetic_display_language: phonetic
+      })
+      await NativeTranslationModel.findOneAndUpdate(
+        {
+          vocabulary: vocabularyId,
+          native_language: Language.Kr
+        },
+        {
+          title_native_language: textKR
+        },
+        {
+          upsert: true
+        }
+      )
+      await NativeTranslationModel.findOneAndUpdate(
+        {
+          vocabulary: vocabularyId,
+          native_language: Language.Vn
+        },
+        {
+          title_native_language: textVN
+        },
+        {
+          upsert: true
+        }
+      )
+    } else {
+      const existName = await VocabularyModel.exists({
+        title_display_language: titleDisplay
+      })
+      if (existName) {
+        throw new BadRequestError('vocabulary is exist')
+      }
+      let newVoca = await VocabularyModel.create({
+        number_order: numberOrder,
+        title_display_language: titleDisplay,
+        lecture: lectureId,
+        phonetic_display_language: phonetic
+      })
+      await NativeTranslationModel.findOneAndUpdate(
+        {
+          vocabulary: newVoca._id,
+          native_language: Language.Kr
+        },
+        {
+          title_native_language: textKR
+        },
+        {
+          upsert: true
+        }
+      )
+      await NativeTranslationModel.findOneAndUpdate(
+        {
+          vocabulary: newVoca._id,
+          native_language: Language.Vn
+        },
+        {
+          title_native_language: textVN
+        },
+        {
+          upsert: true
+        }
+      )
+    }
+
+    return true
   }
 }

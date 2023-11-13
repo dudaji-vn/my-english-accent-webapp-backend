@@ -7,9 +7,17 @@ import ClubVocabularyModel from '../entities/ClubVocabulary'
 import VocabularyModel from '../entities/Vocabulary'
 import { convertToGroupDTO } from '../coverter/club.mapping'
 import { findRandomIndexWord } from '../common/findRandomIndexWord'
+import { convertToUserDTO } from '../coverter/user.mapping'
 
 @injectable()
 export default class ClubService {
+  async getMembersInfo(clubId: string) {
+    const result = await ClubModel.findById(clubId).populate('members').lean()
+    if (!result?.members) {
+      return []
+    }
+    return result?.members.map((item: any) => convertToUserDTO(item))
+  }
   async addOrUpdateClub(payload: IClubRequest) {
     let clubId
     if (!payload.ownerUser) {

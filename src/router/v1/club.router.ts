@@ -8,7 +8,7 @@ const clubController = container.resolve<ClubController>(ClubController)
 
 const clubRouter = express.Router()
 
-clubRouter.post(
+clubRouter.put(
   '/addOrUpdateClub',
   auth,
   catchAsync(clubController.addOrUpdateClub.bind(clubController))
@@ -20,4 +20,9 @@ clubRouter.get(
   catchAsync(clubController.getClubsOwner.bind(clubController))
 )
 
+clubRouter.get(
+  '/getMembersInfo/:clubId',
+  auth,
+  catchAsync(clubController.getMembersInfo.bind(clubController))
+)
 export default clubRouter

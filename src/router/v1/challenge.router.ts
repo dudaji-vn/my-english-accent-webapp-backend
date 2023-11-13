@@ -31,9 +31,11 @@ challengeRouter.patch(
   )
 )
 challengeRouter.get(
-  '/getRecordByChallenge/:challengeId',
+  '/getRecordToListenByChallenge/:challengeId',
   auth,
-  catchAsync(challengeController.getRecordByChallenge.bind(challengeController))
+  catchAsync(
+    challengeController.getRecordToListenByChallenge.bind(challengeController)
+  )
 )
 
 challengeRouter.get(
@@ -43,4 +45,5 @@ challengeRouter.get(
     challengeController.getAllRecordInChallenge.bind(challengeController)
   )
 )
+
 export default challengeRouter

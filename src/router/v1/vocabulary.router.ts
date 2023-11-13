@@ -28,4 +28,10 @@ vocabularyRouter.get(
   )
 )
 
+vocabularyRouter.put(
+  '/addOrUpdateVocabulary',
+  catchAsync(
+    vocabularyController.addOrUpdateVocabulary.bind(vocabularyController)
+  )
+)
 export default vocabularyRouter

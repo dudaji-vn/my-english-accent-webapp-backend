@@ -13,5 +13,8 @@ lectureRouter.get(
   '/all',
   catchAsync(lectureController.getAllLectures.bind(lectureController))
 )
-
+lectureRouter.put(
+  '/addOrUpdateLecture',
+  catchAsync(lectureController.addOrUpdateLecture.bind(lectureController))
+)
 export default lectureRouter
