@@ -14,7 +14,8 @@ app.use(
   cors({
     origin: [
       'http://localhost:3000',
-      'https://r5200nc8-3000.asse.devtunnels.ms'
+      'https://r5200nc8-3000.asse.devtunnels.ms',
+      'https://my-english-accent-239fb.web.app'
     ]
   })
 )

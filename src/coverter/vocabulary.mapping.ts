@@ -32,8 +32,8 @@ export function convertToVocabularyWithNativeDTO(
     language: record.native_language,
     nativeVocabulary: record._id,
     titleNativeLanguage: record.title_native_language,
-    voiceSrc: record?.voice_src ?? '',
-    recordId: record._id
+    voiceSrc: record?.vocabulary.voice_src ?? '',
+    recordId: record?.vocabulary.record_id ?? ''
   }
 }
 
