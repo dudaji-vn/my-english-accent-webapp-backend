@@ -11,14 +11,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyM
 
 
 ###
-PATCH  https://r5200nc8-5000.asse.devtunnels.ms/api/challenge/updateChallengeMember/6542121d3544f08498aa946c
+PATCH  https://techtalk-02ik.onrender.com/api/challenge/updateChallengeMember/6542121d3544f08498aa946c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 
 
 ###
-GET https://r5200nc8-5000.asse.devtunnels.ms/api/challenge/getRecordByChallenge/6542121d3544f08498aa946c
+GET https://r5200nc8-5000.asse.devtunnels.ms/api/challenge/getRecordToListenByChallenge/6542121d3544f08498aa946c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 
 ###
-GET https://r5200nc8-5000.asse.devtunnels.ms/api/challenge/getAllRecordByChallenge/6544b92a85e6a70b283c4dd9
+GET  https://techtalk-02ik.onrender.com/api/challenge/getAllRecordByChallenge/6544b92a85e6a70b283c4dd9
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
