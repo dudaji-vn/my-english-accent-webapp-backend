@@ -27,10 +27,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    // class: {
-    //   type: Array,
-    //   default: [CLASS.Other]
-    // },
     user_name: {
       type: String
     },
