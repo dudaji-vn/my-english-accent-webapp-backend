@@ -7,5 +7,6 @@ export const PATH = {
   lecture: '/lecture',
   challenge: '/challenge',
   record: '/record',
-  vocabulary: '/vocabulary'
+  vocabulary: '/vocabulary',
+  listen: '/listen'
 }
