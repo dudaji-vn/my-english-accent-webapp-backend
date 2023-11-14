@@ -37,7 +37,8 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String
     },
-    favorite_user_ids: [{ type: mongoose.Types.ObjectId, ref: 'user' }]
+    favorite_user_ids: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
+    favorite_lecture_ids: [{ type: mongoose.Types.ObjectId, ref: 'lecture' }]
   },
   {
     timestamps: {

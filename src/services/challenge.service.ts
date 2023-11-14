@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { injectable } from 'tsyringe'
 import LectureModel from '../entities/Lecture'
 import { convertToLectureDTO } from '../coverter/lecture.mapping'
@@ -8,16 +9,22 @@ import {
   convertToChallengeSummary,
   convertToDetailChallengeDTO
 } from '../coverter/challenge.mapping'
-import { IRecordRequest } from '../interfaces/dto/record.dto'
+import {
+  IRecordOfUser,
+  IRecordRequest,
+  IRecordToListen
+} from '../interfaces/dto/record.dto'
 import RecordModel from '../entities/Record'
 import { BadRequestError } from '../middleware/error'
 import ClubVocabularyModel from '../entities/ClubVocabulary'
 import {
+  convertToRecordOfUser,
   convertToVocabularyDTO,
   convertToVocabularyWithNativeDTO
 } from '../coverter/vocabulary.mapping'
 import { convertToUserDTO } from '../coverter/user.mapping'
 import ClubModel from '../entities/Club'
+import { it } from 'node:test'
 
 @injectable()
 export default class ChallengeService {
@@ -97,16 +104,57 @@ export default class ChallengeService {
     )
     return challengeId
   }
-  async getRecordToListenByChallenge(challengeId: string, me: string) {
+  async getRecordToListenByChallenge(
+    challengeId: string,
+    me: string
+  ): Promise<IRecordToListen> {
     const vocabularies = await ClubVocabularyModel.find({
       challenge: challengeId
     }).populate('vocabulary')
+    let participants: IRecordOfUser[] = []
+
+    const challengeById = await ChallengeModel.findById(challengeId).populate(
+      'participants'
+    )
+    if (!challengeById || challengeById.participants.length == 0) {
+      participants = []
+    } else {
+      const userIds = challengeById.participants.map((item: any) =>
+        item?._id.toString()
+      )
+
+      const participantsVoca = vocabularies.map((voca) => {
+        return voca.vocabulary._id.toString()
+      })
+
+      const records = await RecordModel.find({
+        user: { $in: userIds },
+        vocabulary: { $in: participantsVoca },
+        challenge: challengeId
+      }).populate('user')
+
+      participants = vocabularies.map((voca) => {
+        const recordUser = records.filter(
+          (item) =>
+            item.vocabulary._id.toString() === voca.vocabulary._id.toString()
+        )
+        return {
+          lectureId: voca?.vocabulary?.lecture,
+          vCreated: voca?.vocabulary?.created,
+          vocabularyId: voca?.vocabulary._id,
+          vphoneticDisplayLanguage: voca?.vocabulary?.phonetic_display_language,
+          vtitleDisplayLanguage: voca?.vocabulary?.title_display_language,
+          vUpdated: voca?.vocabulary?.updated,
+          recordUser: recordUser.map((item) => convertToRecordOfUser(item))
+        }
+      })
+    }
 
     return {
       vocabularies: vocabularies.map((item) =>
         convertToVocabularyDTO(item.vocabulary as any)
       ),
-      participants: []
+      participants: participants as any
     }
   }
 }
