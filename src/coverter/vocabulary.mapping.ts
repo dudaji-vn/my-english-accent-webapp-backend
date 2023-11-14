@@ -2,6 +2,8 @@ import {
   INativeVocabularyDAO,
   IVocabularyDAO
 } from '../interfaces/dao/vocabulary.dao'
+import { IRecordDTO, IRecordOfUser } from '../interfaces/dto/record.dto'
+import { IUserDTO } from '../interfaces/dto/user.dto'
 import {
   INativeVocabularyDTO,
   IRecorded,
@@ -32,8 +34,8 @@ export function convertToVocabularyWithNativeDTO(
     language: record.native_language,
     nativeVocabulary: record._id,
     titleNativeLanguage: record.title_native_language,
-    voiceSrc: record?.voice_src ?? '',
-    recordId: record._id
+    voiceSrc: record?.vocabulary.voice_src ?? '',
+    recordId: record?.vocabulary.record_id ?? ''
   }
 }
 
@@ -44,5 +46,23 @@ export function convertToDetailVocabularyByLecture(item: any) {
     lectureName: item?.lecture?.lecture_name,
     titleDisplay: item.title_display_language,
     phonetic: item.phonetic_display_language
+  }
+}
+
+export function convertToRecordOfUser(
+  item: any
+): Omit<IUserDTO & IRecordDTO, 'googleId' | 'email'> {
+  return {
+    avatarUrl: item.user.avatar_url,
+    challengeId: item.challenge,
+    displayLanguage: item.user.display_language,
+    nativeLanguage: item.user.native_language,
+    nickName: item.user.nick_name,
+    rCreated: item.created,
+    recordId: item._id,
+    rUpdated: item.updated,
+    voiceSrc: item.voice_src,
+    userId: item.user._id,
+    vocabularyId: item.vocabulary
   }
 }

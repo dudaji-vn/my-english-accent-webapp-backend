@@ -85,6 +85,7 @@ export default class VocabularyService {
           'vocabulary.phonetic_display_language': '$phonetic_display_language',
           'vocabulary.lecture': '$lecture',
           'vocabulary.voice_src': '$record.voice_src',
+          'vocabulary.record_id': '$record._id',
           _id: '$voca_native._id',
           title_native_language: '$voca_native.title_native_language',
           native_language: '$voca_native.native_language'

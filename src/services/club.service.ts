@@ -12,11 +12,17 @@ import { convertToUserDTO } from '../coverter/user.mapping'
 @injectable()
 export default class ClubService {
   async getMembersInfo(clubId: string) {
-    const result = await ClubModel.findById(clubId).populate('members').lean()
+    const result = await ClubModel.findById(clubId)
+      .populate('members owner_user')
+      .lean()
+
     if (!result?.members) {
       return []
     }
-    return result?.members.map((item: any) => convertToUserDTO(item))
+    return {
+      owner: convertToUserDTO(result.owner_user as any),
+      members: result?.members.map((item: any) => convertToUserDTO(item))
+    }
   }
   async addOrUpdateClub(payload: IClubRequest) {
     let clubId
