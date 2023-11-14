@@ -9,6 +9,7 @@ import lectureRouter from './lecture.router'
 import challengeRouter from './challenge.router'
 import recordRouter from './record.router'
 import vocabularyRouter from './vocabulary.router'
+import listenRouter from './listen.router'
 
 const apiRouterV1 = express.Router()
 
@@ -48,6 +49,10 @@ const listApi = [
   {
     path: PATH.vocabulary,
     router: vocabularyRouter
+  },
+  {
+    path: PATH.listen,
+    router: listenRouter
   }
 ]
 listApi.forEach((item) => {
