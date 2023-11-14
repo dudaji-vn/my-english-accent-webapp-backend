@@ -8,6 +8,7 @@ import VocabularyModel from '../entities/Vocabulary'
 import { convertToGroupDTO } from '../coverter/club.mapping'
 import { findRandomIndexWord } from '../common/findRandomIndexWord'
 import { convertToUserDTO } from '../coverter/user.mapping'
+import { IClubDAO } from '../interfaces/dao/club.dao'
 
 @injectable()
 export default class ClubService {
@@ -87,5 +88,11 @@ export default class ClubService {
       clubsJoined: clubJoined.map((item: any) => convertToGroupDTO(item)),
       clubsOwner: clubsOwner.map((item: any) => convertToGroupDTO(item))
     }
+  }
+  async getDetailClub(clubId: string) {
+    const result = (await ClubModel.findById(clubId).populate(
+      'lectures'
+    )) as IClubDAO
+    return convertToGroupDTO(result)
   }
 }
