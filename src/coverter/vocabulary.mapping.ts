@@ -17,7 +17,8 @@ export function convertToVocabularyDTO(voca: IVocabularyDAO): IVocabularyDTO {
     vUpdated: voca.updated,
     vphoneticDisplayLanguage: voca.phonetic_display_language,
     vtitleDisplayLanguage: voca.title_display_language,
-    lectureId: voca.lecture
+    lectureId: voca.lecture,
+    numberOrder: voca.number_order
   }
 }
 

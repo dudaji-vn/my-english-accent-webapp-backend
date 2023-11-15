@@ -4,6 +4,7 @@ export interface IVocabularyDAO {
   _id: string
   title_display_language: string
   phonetic_display_language: string
+  number_order?: number
   lecture: string
   updated: string
   created: string

@@ -52,7 +52,7 @@ export default class RecordService {
                     }
                   },
                   {
-                    challenge: { $exists: false }
+                    challenge: { $eq: null }
                   }
                 ]
               }
@@ -94,7 +94,11 @@ export default class RecordService {
 
     if (!challengeId) {
       await RecordModel.findOneAndUpdate(
-        { user: userId, vocabulary: vocabularyId },
+        {
+          user: userId,
+          vocabulary: vocabularyId,
+          challenge: null
+        },
         { voice_src: voiceSrc },
         { upsert: true }
       )

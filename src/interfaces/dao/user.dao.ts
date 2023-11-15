@@ -1,5 +1,3 @@
-import { EClass } from '../../const/common'
-
 export interface IUserDAO {
   _id?: string
   google_id: string
@@ -8,4 +6,7 @@ export interface IUserDAO {
   display_language: string
   nick_name: string
   native_language: string
+  favorite_lecture_ids?: string[]
+  favorite_user_ids?: string[]
+  completed_lecture_ids?: string[]
 }

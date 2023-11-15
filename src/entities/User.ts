@@ -27,18 +27,24 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    // class: {
-    //   type: Array,
-    //   default: [CLASS.Other]
-    // },
     user_name: {
       type: String
     },
     password: {
       type: String
     },
-    favorite_user_ids: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
-    favorite_lecture_ids: [{ type: mongoose.Types.ObjectId, ref: 'lecture' }]
+    completed_lecture_ids: {
+      type: [{ type: mongoose.Types.ObjectId, ref: 'lecture' }],
+      default: []
+    },
+    favorite_user_ids: {
+      type: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
+      default: []
+    },
+    favorite_lecture_ids: {
+      type: [{ type: mongoose.Types.ObjectId, ref: 'lecture' }],
+      default: []
+    }
   },
   {
     timestamps: {
