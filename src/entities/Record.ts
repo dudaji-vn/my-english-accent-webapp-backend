@@ -3,7 +3,8 @@ const recordSchema = new mongoose.Schema(
   {
     challenge: {
       type: mongoose.Types.ObjectId,
-      ref: 'challenge'
+      ref: 'challenge',
+      default: null
     },
     user: {
       type: mongoose.Types.ObjectId,

@@ -24,4 +24,10 @@ export default class ClubController {
     const data = await this.clubService.getMembersInfo(clubId)
     return res.success(data)
   }
+
+  async getDetailClub(req: IRequest, res: IResponse) {
+    const { clubId } = req.params
+    const data = await this.clubService.getDetailClub(clubId)
+    return res.success(data)
+  }
 }

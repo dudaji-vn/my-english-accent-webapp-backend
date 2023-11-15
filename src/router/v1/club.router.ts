@@ -25,4 +25,9 @@ clubRouter.get(
   auth,
   catchAsync(clubController.getMembersInfo.bind(clubController))
 )
+clubRouter.get(
+  '/getDetailClub/:clubId',
+  auth,
+  catchAsync(clubController.getDetailClub.bind(clubController))
+)
 export default clubRouter

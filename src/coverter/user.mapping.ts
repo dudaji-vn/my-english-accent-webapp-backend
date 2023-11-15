@@ -13,13 +13,12 @@ export function convertToUserDAO(user: IUserDTO): IUserDAO {
   }
 }
 
-export function convertToUserDTO(user: IUserDAO): IUserDTO {
+export function convertToUserDTO(user: IUserDAO): Omit<IUserDTO, 'googleId'> {
   return {
     userId: user._id ?? '',
     avatarUrl: user.avatar_url,
     displayLanguage: user.display_language,
     email: user.email,
-    googleId: user.google_id,
     nativeLanguage: user.native_language,
     nickName: user.nick_name
   }

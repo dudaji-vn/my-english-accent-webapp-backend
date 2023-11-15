@@ -33,12 +33,23 @@ export default class UserService extends BaseService {
     if (!lectureId) {
       throw new BadRequestError('lectureId is required')
     }
+    const totalStep = await VocabularyModel.countDocuments({
+      lecture: lectureId
+    })
     if (!enrollmentId) {
+      if (totalStep === 1) {
+        await UserModel.findByIdAndUpdate(
+          user,
+          { $addToSet: { completed_lecture_ids: [lectureId] } },
+          { new: true }
+        )
+      }
       const data = await EnrollmentModel.findOneAndUpdate(
         { lecture: lectureId, user: user },
         {
           current_step: 1,
-          stage: StageExercise.Inprogress,
+          stage:
+            totalStep === 1 ? StageExercise.Close : StageExercise.Inprogress,
           user: user
         },
         { upsert: true, new: true }
@@ -47,13 +58,19 @@ export default class UserService extends BaseService {
       return convertToEnrollmentDTO(data)
     } else {
       const enrollment = await EnrollmentModel.findById(enrollmentId)
-      const totalStep = await VocabularyModel.countDocuments({
-        lecture: lectureId
-      })
+
       if (!enrollment) {
         throw new BadRequestError('enrollmentId not exist')
       }
       const nextStep = enrollment.current_step + 1
+
+      if (nextStep >= totalStep) {
+        await UserModel.findByIdAndUpdate(
+          user,
+          { $addToSet: { completed_lecture_ids: [lectureId] } },
+          { new: true }
+        )
+      }
 
       const data = await EnrollmentModel.findByIdAndUpdate(
         enrollmentId,

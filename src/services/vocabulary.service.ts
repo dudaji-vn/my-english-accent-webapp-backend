@@ -48,9 +48,16 @@ export default class VocabularyService {
                   input: '$records',
                   as: 'record',
                   cond: {
-                    $eq: [
-                      '$$record.user',
-                      new mongoose.Types.ObjectId(payload.userId)
+                    $and: [
+                      {
+                        $eq: [
+                          '$$record.user',
+                          new mongoose.Types.ObjectId(payload.userId)
+                        ]
+                      },
+                      {
+                        $eq: ['$$record.challenge', null]
+                      }
                     ]
                   }
                 }
