@@ -18,6 +18,7 @@ export interface IVocabularyDTO {
   lectureId: string
   vUpdated: string
   vocabularyId: string
+  numberOrder?: number
 }
 export interface INativeVocabularyDTO {
   vocabularyId: string
