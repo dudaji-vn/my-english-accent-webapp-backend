@@ -23,6 +23,17 @@ export function convertToUserDTO(user: IUserDAO): Omit<IUserDTO, 'googleId'> {
     nickName: user.nick_name
   }
 }
+export function convertToUserDTOWithoutAuth(
+  user: IUserDAO
+): Omit<IUserDTO, 'googleId' | 'email'> {
+  return {
+    userId: user._id ?? '',
+    avatarUrl: user.avatar_url,
+    displayLanguage: user.display_language,
+    nativeLanguage: user.native_language,
+    nickName: user.nick_name
+  }
+}
 
 export function convertToUserPractice(item: any): IUserPracticeResponseType {
   return {
