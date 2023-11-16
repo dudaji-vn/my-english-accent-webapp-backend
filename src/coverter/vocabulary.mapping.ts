@@ -1,13 +1,11 @@
-import {
-  INativeVocabularyDAO,
-  IVocabularyDAO
-} from '../interfaces/dao/vocabulary.dao'
-import { IRecordDTO, IRecordOfUser } from '../interfaces/dto/record.dto'
+import { IVocabularyDAO } from '../interfaces/dao/vocabulary.dao'
+import { IRecordDTO } from '../interfaces/dto/record.dto'
 import { IUserDTO } from '../interfaces/dto/user.dto'
 import {
   INativeVocabularyDTO,
   IRecorded,
-  IVocabularyDTO
+  IVocabularyDTO,
+  Language
 } from '../interfaces/dto/vocabulary.dto'
 
 export function convertToVocabularyDTO(voca: IVocabularyDAO): IVocabularyDTO {
@@ -22,26 +20,51 @@ export function convertToVocabularyDTO(voca: IVocabularyDAO): IVocabularyDTO {
   }
 }
 
-export function convertToVocabularyWithNativeDTO(
-  record: any
+export function convertToVocabularyWithTranslateDTO(
+  voca: IVocabularyDAO,
+  nativeLanguage: Language
+): IVocabularyDTO & INativeVocabularyDTO {
+  return {
+    vocabularyId: voca._id,
+    vCreated: voca.created,
+    vUpdated: voca.updated,
+    vphoneticDisplayLanguage: voca.phonetic_display_language,
+    vtitleDisplayLanguage: voca.title_display_language,
+    lectureId: voca.lecture,
+    numberOrder: voca.number_order,
+    language: nativeLanguage,
+    titleNativeLanguage:
+      nativeLanguage === 'kr'
+        ? voca?.text_translate?.kr
+        : voca?.text_translate?.vn
+  }
+}
+
+export function convertToVocabularyWithRecordedDTO(
+  item: any,
+  nativeLanguage?: Language
 ): IVocabularyDTO & INativeVocabularyDTO & IRecorded {
   return {
-    vocabularyId: record.vocabulary._id,
-    vCreated: record.vocabulary.created,
-    vUpdated: record.vocabulary.updated,
-    vphoneticDisplayLanguage: record.vocabulary.phonetic_display_language,
-    vtitleDisplayLanguage: record.vocabulary.title_display_language,
-    lectureId: record.vocabulary.lecture,
-    language: record.native_language,
-    nativeVocabulary: record._id,
-    titleNativeLanguage: record.title_native_language,
-    voiceSrc: record?.vocabulary.voice_src ?? '',
-    recordId: record?.vocabulary.record_id ?? ''
+    vocabularyId: item.vocabulary._id,
+    vCreated: item.vocabulary.created,
+    vUpdated: item.vocabulary.updated,
+    vphoneticDisplayLanguage: item.vocabulary.phonetic_display_language,
+    vtitleDisplayLanguage: item.vocabulary.title_display_language,
+    lectureId: item.vocabulary.lecture,
+    language: nativeLanguage ?? 'vn',
+    titleNativeLanguage:
+      nativeLanguage === 'kr'
+        ? item?.vocabulary?.text_translate?.kr
+        : item?.vocabulary?.text_translate?.vn,
+    voiceSrc: item?.vocabulary.voice_src ?? '',
+    recordId: item?.vocabulary.record_id ?? ''
   }
 }
 
 export function convertToDetailVocabularyByLecture(item: any) {
   return {
+    textVN: item?.text_translate?.vn,
+    textKR: item?.text_translate?.kr,
     vocabularyId: item._id,
     numberOrder: item.number_order ?? 0,
     lectureName: item?.lecture?.lecture_name,
