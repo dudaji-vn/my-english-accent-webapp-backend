@@ -10,6 +10,16 @@ const vocabularySchema = new mongoose.Schema(
     title_display_language: {
       type: String,
       required: true
+    },
+    text_translate: {
+      vn: {
+        type: String,
+        required: true
+      },
+      kr: {
+        type: String,
+        required: true
+      }
     }
   },
   {
