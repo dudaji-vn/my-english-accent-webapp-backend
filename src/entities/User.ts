@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 export type Role = 'developer' | 'designer' | 'others'
-export type Language = 'en' | 'vi' | 'ko'
+
 const userSchema = new mongoose.Schema(
   {
     email: {
