@@ -28,14 +28,19 @@ export default class ListenController {
   }
 
   async getLecturesAvailable(req: IRequest, res: IResponse) {
-    const result = await this.listenService.getLecturesAvailable()
+    const favorite_lecture_ids = req.user.favorite_lecture_ids
+    const result = await this.listenService.getLecturesAvailable(
+      favorite_lecture_ids
+    )
     return res.success(result)
   }
 
   async getUsersAvailable(req: IRequest, res: IResponse) {
     const myFavoriteLectureIds = req.user.favorite_lecture_ids
+    const myFavoriteUserIds = req.user.favorite_user_ids
     const result = await this.listenService.getUsersAvailable(
-      myFavoriteLectureIds
+      myFavoriteLectureIds,
+      myFavoriteUserIds
     )
     return res.success(result)
   }

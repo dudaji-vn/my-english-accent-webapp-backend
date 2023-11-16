@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { StageExercise } from '../const/common'
 import { convertToLectureDTO } from '../coverter/lecture.mapping'
-import { convertToUserDTO } from '../coverter/user.mapping'
+import { convertToUserDTOWithoutAuth } from '../coverter/user.mapping'
 import {
   convertToRecordOfUser,
   convertToVocabularyDTO
@@ -73,7 +73,7 @@ export class ListenService {
       participants: participants
     }
   }
-  async getLecturesAvailable() {
+  async getLecturesAvailable(favorite_lecture_ids: string[]) {
     const aggQuery = [
       {
         $lookup: {
@@ -104,10 +104,16 @@ export class ListenService {
           vocabularies: 1,
           totalVocabularies: 1
         }
+      },
+      {
+        $sort: {
+          lectureName: 1
+        }
       }
     ]
     const data = await VocabularyModel.aggregate(aggQuery)
     const records = await RecordModel.find({ challenge: null })
+    console.log(favorite_lecture_ids)
 
     return data.map((item) => {
       let totalPeople = 0
@@ -138,13 +144,19 @@ export class ListenService {
         totalPeople: totalPeople,
         totalVocabularies: item.totalVocabularies,
         lectureId: item.lectureId,
-        lectureName: item.lectureName
+        lectureName: item.lectureName,
+        isSelected: favorite_lecture_ids
+          .map((item) => item.toString())
+          .includes(item.lectureId.toString())
       }
     })
   }
 
-  async getUsersAvailable(myFavoriteLectureIds: string[]) {
-    const users = await UserModel.find().lean()
+  async getUsersAvailable(
+    myFavoriteLectureIds: string[],
+    myFavoriteUserIds: string[]
+  ) {
+    const users = await UserModel.find().lean().sort({ nick_name: 1 })
     return users.map((user) => {
       let selectedLectures = []
       if (user.completed_lecture_ids) {
@@ -158,7 +170,10 @@ export class ListenService {
       return {
         numberSelectedLectures: selectedLectures.length,
         numberCompletedLectures: user.completed_lecture_ids.length,
-        ...convertToUserDTO(user)
+        isSelected: myFavoriteUserIds
+          .map((item) => item.toString())
+          .includes(user._id.toString()),
+        ...convertToUserDTOWithoutAuth(user)
       }
     })
   }
