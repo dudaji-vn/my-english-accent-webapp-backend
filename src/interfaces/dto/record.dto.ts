@@ -1,7 +1,6 @@
-import { StageExercise } from '../../const/common'
 import { ILectureDTO } from './lecture.dto'
 import { IUserDTO } from './user.dto'
-import { IVocabularyDTO } from './vocabulary.dto'
+import { IVocabularyDTO, Language } from './vocabulary.dto'
 
 export interface IRecordRequest {
   userId: string
@@ -23,6 +22,7 @@ export interface IRecordDTO {
 export interface IVocaByLectureRequest {
   lectureId: string
   userId: string
+  nativeLanguage?: Language
 }
 export interface IRecordByLectureRequest {
   lectureId: string

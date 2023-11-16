@@ -1,9 +1,8 @@
 import { injectable } from 'tsyringe'
-import LectureModel from '../entities/Lecture'
-import { ILectureDAO } from '../interfaces/dao/lecture.dao'
 import { EClass } from '../const/common'
+import LectureModel from '../entities/Lecture'
 import VocabularyModel from '../entities/Vocabulary'
-import NativeTranslationModel from '../entities/NativeTranslation'
+import { ILectureDAO } from '../interfaces/dao/lecture.dao'
 
 @injectable()
 export default class ScriptService {
@@ -99,11 +98,6 @@ export default class ScriptService {
     for (const item of vocabularies) {
       const voca = await VocabularyModel.findOneAndUpdate(
         { title_display_language: item.title_display_language },
-        item,
-        { upsert: true }
-      )
-      await NativeTranslationModel.findOneAndUpdate(
-        { vocabulary: voca?._id },
         item,
         { upsert: true }
       )
