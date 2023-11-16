@@ -1,18 +1,18 @@
+import mongoose from 'mongoose'
 import { injectable } from 'tsyringe'
 import { StageExercise } from '../const/common'
-import LectureModel from '../entities/Lecture'
-import UserModel from '../entities/User'
-import { IUserEnrollRequest, IUserUpdateDTO } from '../interfaces/dto/user.dto'
-import EnrollmentModel from '../entities/Enrollment'
-import { BaseService } from './base.service'
-import { BadRequestError } from '../middleware/error'
+import { convertToEnrollmentDTO } from '../coverter/enrollment.mapping'
 import {
   convertToUserDTO,
   convertToUserPractice
 } from '../coverter/user.mapping'
+import EnrollmentModel from '../entities/Enrollment'
+import LectureModel from '../entities/Lecture'
+import UserModel from '../entities/User'
 import VocabularyModel from '../entities/Vocabulary'
-import mongoose from 'mongoose'
-import { convertToEnrollmentDTO } from '../coverter/enrollment.mapping'
+import { IUserEnrollRequest } from '../interfaces/dto/user.dto'
+import { BadRequestError } from '../middleware/error'
+import { BaseService } from './base.service'
 
 @injectable()
 export default class UserService extends BaseService {
@@ -21,11 +21,6 @@ export default class UserService extends BaseService {
       .find({ _id: { $ne: me } })
       .lean()
     return data.map((item: any) => convertToUserDTO(item))
-  }
-  async updateUser(updateData: IUserUpdateDTO, userId: string) {
-    return await UserModel.findByIdAndUpdate(userId, updateData, {
-      new: true
-    })
   }
 
   async addOrUpdateEnrollment(payload: IUserEnrollRequest) {

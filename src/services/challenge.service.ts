@@ -20,7 +20,7 @@ import ClubVocabularyModel from '../entities/ClubVocabulary'
 import {
   convertToRecordOfUser,
   convertToVocabularyDTO,
-  convertToVocabularyWithNativeDTO
+  convertToVocabularyWithRecordedDTO
 } from '../coverter/vocabulary.mapping'
 import { convertToUserDTO } from '../coverter/user.mapping'
 import ClubModel from '../entities/Club'
@@ -92,7 +92,7 @@ export default class ChallengeService {
       ),
       challengeId: challengeInfo?._id,
       vocabularies: records.map((item) =>
-        convertToVocabularyWithNativeDTO(item)
+        convertToVocabularyWithRecordedDTO(item)
       )
     }
   }
@@ -111,6 +111,7 @@ export default class ChallengeService {
     const vocabularies = await ClubVocabularyModel.find({
       challenge: challengeId
     }).populate('vocabulary')
+
     let participants: IRecordOfUser[] = []
 
     const challengeById = await ChallengeModel.findById(challengeId).populate(
