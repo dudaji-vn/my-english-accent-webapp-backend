@@ -10,9 +10,12 @@ export default class LectureController {
     const data = await this.lectureService.getAllLectures()
     return res.success(data)
   }
+  async getAllLecturesForAdmin(req: IRequest, res: IResponse) {
+    const data = await this.lectureService.getAllLecturesForAdmin()
+    return res.success(data)
+  }
   async addOrUpdateLecture(req: IRequest, res: IResponse) {
     const payload = req.body as ILectureDTO
-
     const data = await this.lectureService.addOrUpdateLecture(payload)
     return res.success(data)
   }
