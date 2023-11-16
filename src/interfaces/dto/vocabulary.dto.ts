@@ -1,4 +1,4 @@
-export type Language = 'vi' | 'en' | 'kr'
+export type Language = 'vn' | 'en' | 'kr'
 
 export interface IRecorded {
   voiceSrc: string
@@ -20,11 +20,11 @@ export interface IVocabularyDTO {
   vocabularyId: string
   numberOrder?: number
 }
+
 export interface INativeVocabularyDTO {
   vocabularyId: string
   titleNativeLanguage: string
   language: Language
-  nativeVocabulary: string
 }
 export interface IClubVocabularyTypeResponse {
   challengeId: string
@@ -42,4 +42,8 @@ export interface IVocabularyRequest {
   vocabularyId?: string
   textVN: string
   textKR: string
+}
+export interface ITextTranslate {
+  vn: string
+  kr: string
 }
