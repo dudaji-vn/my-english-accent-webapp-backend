@@ -1,6 +1,10 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import { IPlaylistListen, IPlaylistRequest } from '../interfaces/dto/listen.dto'
+import {
+  IPlaylistListen,
+  IPlaylistRequest,
+  IPlaylistSummary
+} from '../interfaces/dto/listen.dto'
 import { ListenService } from '../services/listen.service'
 
 @injectable()
@@ -35,5 +39,13 @@ export default class ListenController {
     )
     return res.success(result)
   }
-  async getSelectedLectures(req: IRequest, res: IResponse) {}
+  async getPlaylistSummary(req: IRequest, res: IResponse) {
+    const payload: IPlaylistSummary = {
+      favoriteLectureIds: req.user.favorite_lecture_ids,
+      favoriteUserIds: req.user.favorite_user_ids
+    }
+
+    const result = await this.listenService.getPlaylistSummary(payload)
+    return res.success(result)
+  }
 }
