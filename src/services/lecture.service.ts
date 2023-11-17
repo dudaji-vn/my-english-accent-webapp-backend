@@ -4,10 +4,23 @@ import { convertToLectureDTO } from '../coverter/lecture.mapping'
 import { ILectureDAO } from '../interfaces/dao/lecture.dao'
 import { ILectureDTO } from '../interfaces/dto/lecture.dto'
 import { BadRequestError } from '../middleware/error'
+import VocabularyModel from '../entities/Vocabulary'
 
 @injectable()
 export default class LectureService {
   async getAllLectures() {
+    const vocabularies = await VocabularyModel.find().lean()
+    const listLectureIds = vocabularies.map((item: any) =>
+      item.lecture.toString()
+    )
+    const distinctLectureIds = [...new Set(listLectureIds)]
+    const lectures = await LectureModel.find({
+      _id: { $in: distinctLectureIds }
+    }).sort({ created: -1 })
+
+    return lectures.map((item: any) => convertToLectureDTO(item))
+  }
+  async getAllLecturesForAdmin() {
     const lectures = await LectureModel.find().sort({ created: -1 })
     return lectures.map((item: any) => convertToLectureDTO(item))
   }

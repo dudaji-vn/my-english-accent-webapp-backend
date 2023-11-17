@@ -1,6 +1,10 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import { IPlaylistListen, IPlaylistRequest } from '../interfaces/dto/listen.dto'
+import {
+  IPlaylistListen,
+  IPlaylistRequest,
+  IPlaylistSummary
+} from '../interfaces/dto/listen.dto'
 import { ListenService } from '../services/listen.service'
 
 @injectable()
@@ -24,16 +28,29 @@ export default class ListenController {
   }
 
   async getLecturesAvailable(req: IRequest, res: IResponse) {
-    const result = await this.listenService.getLecturesAvailable()
+    const favorite_lecture_ids = req.user.favorite_lecture_ids
+    const result = await this.listenService.getLecturesAvailable(
+      favorite_lecture_ids
+    )
     return res.success(result)
   }
 
   async getUsersAvailable(req: IRequest, res: IResponse) {
     const myFavoriteLectureIds = req.user.favorite_lecture_ids
+    const myFavoriteUserIds = req.user.favorite_user_ids
     const result = await this.listenService.getUsersAvailable(
-      myFavoriteLectureIds
+      myFavoriteLectureIds,
+      myFavoriteUserIds
     )
     return res.success(result)
   }
-  async getSelectedLectures(req: IRequest, res: IResponse) {}
+  async getPlaylistSummary(req: IRequest, res: IResponse) {
+    const payload: IPlaylistSummary = {
+      favoriteLectureIds: req.user.favorite_lecture_ids,
+      favoriteUserIds: req.user.favorite_user_ids
+    }
+
+    const result = await this.listenService.getPlaylistSummary(payload)
+    return res.success(result)
+  }
 }
