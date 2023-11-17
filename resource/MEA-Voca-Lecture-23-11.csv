@@ -1,0 +1,156 @@
+#,Lecture name,Word/ Expression,Phonetic,Korean,Vietnamese
+1,Git - advanced 1,Squash the last 3 commits,skwɒʃ ðə lɑːst 3 kəˈmɪts,최근 3개의 commit을 합치다,Hủy bỏ 3 lần commit gần nhất
+2,Git - advanced 1,Push commits to a repository,pʊʃ kəˈmɪts tuː ə rɪˈpɒzɪtᵊri,repository(코드저장소)로 commit  을 전달하다,Đẩy commit lên kho lưu trữ
+3,Git - advanced 1,Merge a feature branch into the base branch,mɜːʤ ə ˈfiːʧə brɑːnʧ ˈɪntuː ðə beɪs brɑːnʧ,기능 branch를 기본 branch 에 병합하다,Gộp nhánh tính năng vào nhánh cơ sở
+4,Git - advanced 1,Push commits to a repository,rɪˈvɜːt ə pʊl rɪˈkwɛst,pull request를 되돌리다(이전상태로 되돌리다),Hoàn nguyên pull request
+5,Git - advanced 1,Request a review,rɪˈkwɛst ə rɪˈvjuː,검토를 요청하다,Yêu cầu đánh giá
+6,Git - advanced 1,Comment on a pull request,ˈkɒmɛnt ɒn ə pʊl rɪˈkwɛst,pull request 에 댓글을 남기다,Bình luận trên pull request
+7,Git - advanced 1,Resolve a merge conflict,rɪˈzɒlv ə mɜːʤ ˈkɒnflɪkt,병합 충돌을 해결하다,Giải quyết merge conflict
+8,Git - advanced 1,Rebase onto another branch,riːˈbeɪs ˈɒntʊ əˈnʌðə brɑːnʧ,다른 branch 로 rebase(bace를 재설정하다) 하다,Rebase lên nhánh khác
+9,Git - advanced 1,Clone a repository ,kləʊn ə rɪˈpɒzɪtᵊri,repository 를 복제하다,Bản sao kho lưu trữ
+10,Git - advanced 1,Close a pull request without merging it into the branch,kləʊz ə pʊl rɪˈkwɛst wɪˈðaʊt mergint ɪt ˈɪntuː ðə brɑːnʧ,full request 를 병합하지 않고 종료하다,Đóng pull request mà không hợp nhất nó vào nhánh
+1,Code review 1,Declare a (variable/ function/ class),dɪˈkleər eɪ,(변수/ 함수/ 클래스)를 선언하다,Khai báo
+2,Code review 1,Declare a pure function.,dɪˈkleər ə pjʊə ˈfʌŋkʃᵊn.,순수 함수(동일한 인자에 대해 항상 도일한 값 반환)를 선언하다.,Khai báo một pure function
+3,Code review 1,Assign a value to a variable,əˈsaɪn ə ˈvæljuː tuː ə ˈveərɪəbᵊl,변수에 값을 할당하다,Gán giá trị cho một biến
+4,Code review 1,Assign 5 to an integer variable.,əˈsaɪn 5 tuː ən ˈɪntɪʤə ˈveərɪəbᵊl.,정수 변수에 5를 할당하다.,Gán 5 cho biến số nguyên
+5,Code review 1,Name a class,neɪm ə klɑːs,class의 이름을 짓다,Định danh cho một lớp
+6,Code review 1,Name a variable,neɪm ə ˈveərɪəbᵊl,변수의 이름을 짓다,Định danh cho một biến
+7,Code review 1,Pass an argument to a function,pɑːs ən ˈɑːɡjəmənt tuː ə ˈfʌŋkʃᵊn,함수에 인자를 전달하다,Truyền đối số cho hàm
+8,Code review 1,Pass arguments to a recursive function,pɑːs ˈɑːɡjəmənts tuː ə ˌriːˈkɜːsɪv ˈfʌŋkʃᵊn,재귀 함수에 인자들을 전달하다.,Truyền đối số cho hàm đệ quy
+9,Code review 1,Return the result of execution,rɪˈtɜːn ðə rɪˈzʌlt ɒv ˌɛksɪˈkjuːʃᵊn,실행 결과를 반환하다,Trả kết quả thực hiện
+10,Code review 1,The function computes a return value,ðə ˈfʌŋkʃᵊn kəmˈpjuːts ə rɪˈtɜːn ˈvæljuː,함수는 변환값을 계산합니다.,Hàm tính toán giá trị trả lại
+1,Code review 2,Call a function,kɔːl ə ˈfʌŋkʃᵊn,함수를 호출하다,Gọi hàm
+2,Code review 2,Function call,fʌŋkʃən kɔl,함수 호출,Function call
+3,Code review 2,Inherit data from a parent object,ɪnˈhɛrɪt ˈdeɪtə frɒm ə ˈpeərᵊnt ˈɒbʤɪkt,부모 객체로부터 데이터를 상속 받다,Kế thừa dữ liệu từ một tập mẫu
+4,Code review 2,A child class inherited from its parent class,ə ʧaɪld klɑːs ɪnˈhɛrɪtɪd frɒm ɪts ˈpeərᵊnt klɑːs,부모 클래스로부터 상속 받은 자식 클래스,Tập con kế thừa từ tập mẫu
+5,Code review 2,Execute (Run) a loop body,ɛksɪkjuːt (rʌn) ə luːp ˈbɒdi,반복문의 내용을 수행하다,Chạy lặp
+6,Code review 2,Excute a block of code for a certain number of times,excute ə blɒk ɒv kəʊd fɔːr ə ˈsɜːtᵊn ˈnʌmbər ɒv taɪmz,일정 횟수 동안 코드 블록을 실행하다.,Thực thi một khối mã trong một số lần nhất định
+7,Code review 2,Iterate over (through) an array,ɪtəreɪt ˈəʊvə (θruː) ən əˈreɪ,배열을 돌면서 반복하다,lặp lại một mảng
+8,Code review 2,The for loop iterates over the properties of an object.,ðə fɔː luːp ˈɪtəreɪts ˈəʊvə ðə ˈprɒpətiz ɒv ən ˈɒbʤɪkt.,For 반복문은 객체의 속성을 돌며 반복합니다.,Vòng lặp for lặp lại qua các thuộc tính của một đối tượng.
+9,Code review 2,The conditional Statement evaluates to true,"ðə kənˈdɪʃᵊnᵊl ˈsteɪtmənt ɪˈvæljueɪts tuː truː",조건문이 참으로 평가되다,câu điều kiện là đúng
+10,Code review 2,"If the condition expression evaluates to true, the code in the loop will be executed","If the condition expression evaluates to true, the code in the loop will be executed.","조건 표현이 참으로 평가되면, 반복문의 코드가 실행될 것입니다.","Nếu biểu thức điều kiện đánh giá thành true, mã trong vòng lặp sẽ được thực thi"
+1,Code review 3,Jump out of a loop,ʤʌmp aʊt ɒv ə luːp,반복문에서 빠져나오다,Ra khỏi vòng lặp
+2,Code review 3,You can jump out of a switch statement via the break keyword,juː kæn ʤʌmp aʊt ɒv ə swɪʧ ˈsteɪtmənt ˈvaɪə ðə breɪk ˈkiːˌwɜːd,break 키워드로 switch 문을 빠져 나올 수 있습니다,Bạn có thể nhảy ra khỏi câu lệnh chuyển đổi thông qua từ khóa Break.
+3,Code review 3,Jump over an iteration,ʤʌmp ˈəʊvər ən ˌɪtəˈreɪʃᵊn,반복을 한 번 건너 뛰다,Nhảy qua một lần lặp
+4,Code review 3,You can jump over one iteration with the continue statement,juː kæn ʤʌmp ˈəʊvə wʌn ˌɪtəˈreɪʃᵊn wɪð ðə kənˈtɪnjuː ˈsteɪtmənt,continue 문으로 반복을 한번 건너 뛰 수 있다,Bạn có thể nhảy qua một lần lặp với tuyên bố tiếp tục.
+5,Code review 3,Fetch data through the API,fɛʧ ˈdeɪtə θruː ði eɪ-piː-aɪ,API로 데이터를 가져오다,Nạp dữ liệu qua API
+6,Code review 3,Retrieve data from the REST API,rɪˈtriːv ˈdeɪtə frɒm ðə rɛst eɪ-piː-aɪ,REST API로 데이터를 검색하다,Lấy dữ liệu từ API REST.
+7,Code review 3,Send data to the API,sɛnd ˈdeɪtə tuː ði eɪ-piː-aɪ ˈsɜːvə,API에 데이터를 보냅니다,Gửi dữ liệu qua API server
+8,Code review 3,Send a request to an API endpoint,sɛnd ə rɪˈkwɛst tuː ən eɪ-piː-aɪ ˈɛndˌpɔɪnt,API endpoint로 요청을 보내다,Gửi yêu cầu đến điểm cuối API.
+9,Code review 3,Increment the variable by 2,ˈɪnkrɪmənt ðə ˈveərɪəbᵊl baɪ tuː,변수를 2로 증가시킵니다,Tăng biến lên 2
+10,Code review 3,Add 3 to the integer variable,æd 3 tuː ði ˈɪntɪʤə ˈveərɪəbᵊl,정수 변수에 3을 더하다,Thêm 3 vào biến số nguyên.
+1,Code review 4,Decrement the variable by 2,ˈdɛkrɪmənt ðə ˈveərɪəbᵊl baɪ tuː,변수를 2만큼 줄입니다.,Giảm biến xuống 2
+2,Code review 4,Subtract 3 from the variable,səbˈtrækt 3 frɒm ðə ˈveərɪəbᵊl,변수에서 3을 빼다,Trừ 3 từ biến.
+3,Code review 4,Submit a pull request,səbˈmɪt ə pʊl rɪˈkwɛst,pull request를 제출하다,Gửi một PR
+4,Code review 4,Merge a pull request,mɜːʤ ə pʊl rɪˈkwɛst,pull request를 제출하다,Gộp một pull request
+1,Abbreviation 1,LGTM(Looks Good To Me),ɛl-ʤiː-tiː-ɛm(lʊks ɡʊd tuː miː),문제없어보입니다,Có vể ổn
+2,Abbreviation 1,TL;DR (Too Long; Didn't Read),tiː-ɛl;diː-ɑː (tuː lɒŋ; dɪdnt riːd),너무 길어서 읽지 않는다,Quá dài
+3,Abbreviation 1,SSIA (Subject Says it All),ɛs-ɛs-aɪ-eɪ (ˈsʌbʤɪkt sɛz ɪt ɔːl),제목이 모든 것을 말한다,cái tên nói lên tất cả
+4,Abbreviation 1,TBD (To Be Derermined),tiː-biː-diː (tuː biː Derermined),"아직 결정되지 않은 내용에 있어 나중에 
+ 결정해야 함",sẽ được xác định
+5,Abbreviation 1,RFC (Request For Comments),RFC (Request For Comments),"무언가 제안할 때, 의견을 요청하기 
+ 위해 사용",RFC
+6,Abbreviation 1,IMHO (In My Honest Opinion),aɪ-ɛm-eɪʧ-əʊ (ɪn maɪ ˈɒnɪst əˈpɪnjən),제 소견으로는,Theo ý tôi
+7,Abbreviation 1,AFAIK (As Far As I Know),AFAIK (As Far As I Know),내가 아는 한,Theo như tôi biết
+8,Abbreviation 1,FYI (For Your Information),ɛf-waɪ-aɪ (fɔː jɔːr ˌɪnfəˈmeɪʃᵊn),참고로,Thông tin đến bạn
+1,Abbreviation 2,TIA (Thanks In Advance),tiː-aɪ-eɪ (θæŋks ɪn ədˈvɑːns),미리 감사합니다,Cảm ơn trước
+2,Abbreviation 2,IRL (In Real Life),aɪ-ɑːr-ɛl (ɪn rɪəl laɪf),현실에서 (가상세계와 다른 현실강조),Trong thực tế
+3,Abbreviation 2,AFK (Away From Keyboard),eɪ-ɛf-keɪ (əˈweɪ frɒm ˈkiːbɔːd),"키보드에서 떨어진 (휴가중, 자리 비울떄)",AFK
+4,Abbreviation 2,TBH (To Be Honest),tiː-biː-eɪʧ (tuː biː ˈɒnɪst),솔직히,Nói thật
+5,Abbreviation 2,BTW (By The Way),biː-tiː-ˈdʌbᵊljuː (baɪ ðə weɪ),"그런데, 그건 그렇고",Nhân tiện
+6,Abbreviation 2,WIP (Work In Progress),ˈdʌbᵊljuː-aɪ-piː (wɜːk ɪn ˈprəʊɡrɛs),"진행중, 진행 중인 작업",Đang trong quá trình hoàn thiện
+7,Abbreviation 2,ACK (Acknowledgement),ACK (Acknowledgement),변경을 허용 및 동의,xác nhận
+1,2023 Tech words 1,"firebase, mongodb, mysql, mariadb",,,
+2,2023 Tech words 1,Tailwind css,,,
+3,2023 Tech words 1,"javascript, typescript",,,
+4,2023 Tech words 1,"react.js, react-native",,,
+5,2023 Tech words 1,"npm, yarn",,,
+6,2023 Tech words 1,"vercel, cloudary",,,
+7,2023 Tech words 1,"figma, material ui, ",,,
+1,Terminology 1,User Interface (UI),ˈjuːzər ˈɪntəˌfeɪs (juː-aɪ),사용자 인터페이스 (UI),Giao diện người dùng (UI)
+2,Terminology 1,Front-End,frʌnt-ɛnd,프론트엔드,Front-End
+3,Terminology 1,Back-End,bæk -ɛnd,백엔드,Back -End
+4,Terminology 1,DevOps,de'vɒps,데브옵스,DevOps
+5,Terminology 1,Stack,stæk,기술스택,Stack
+6,Terminology 1,Full-Stack,fʊl-stæk,풀스택,Full-Stack
+7,Terminology 1,Headless,ˈhɛdləs,헤드리스,Không đầu
+8,Terminology 1,Variable,ˈveərɪəbᵊl,변수,Biến
+9,Terminology 1,Constant,ˈkɒnstᵊnt,상수,hằng số
+10,Terminology 1,Function,ˈfʌŋkʃᵊn,함수,chức năng
+1,Terminology 2,Class,klɑːs,클래스,lớp
+2,Terminology 2,Type,taɪp,"타입, 자료형",Loại
+3,Terminology 2,Array,əˈreɪ,배열,dãy
+4,Terminology 2,Debugging,diːˈbʌɡɪŋ,디버깅,gỡ lỗi
+5,Terminology 2,Legacy System,ˈlɛɡəsi ˈsɪstəm,레거시 시스템,hệ thống kế thừa
+6,Terminology 2,Backlog,ˈbæklɒɡ,백 로그,tồn đọng
+7,Terminology 2,Client-Server Architecture,ˈklaɪᵊnt-ˈsɜːvər ˈɑːkɪtɛkʧə,클라이언트 서버 아키텍처,Mô hình khách chủ
+8,Terminology 2,Agile Software Development,ˈæʤaɪl ˈsɒftweə dɪˈvɛləpmənt,애자일 소프트웨어 개발,Phát triển phần mềm Agile
+9,Terminology 2,Sprint,sprɪnt,스프린트,Sprint
+10,Terminology 2,Module,ˈmɒʤuːl,모듈,Module
+1,Terminology 3,Build,bɪld,빌드,Bản dựng
+2,Terminology 3,Sandbox,ˈsændbɒks,샌드박스,Hộp cát
+3,Terminology 3,Library,ˈlaɪbrᵊri,라이브러리,Thư viện
+4,Terminology 3,Open source,ˈəʊpᵊn sɔːs,오픈 소스,Mã nguồn mở
+5,Terminology 3,Runtime,ˈrʌntaɪm,런타임,Thời gian chạy
+6,Terminology 3,Git,ɡɪt,깃,hệ thống quản lý các phiên bản dưới dạng phân tán
+7,Terminology 3,Refactoring,ˌriːˈfæktərɪŋ,리펙터링,cải tiến mã nguồn
+1,Acronym 1,MVP (Minimum Viable Product),ɛm-viː-piː (ˈmɪnɪməm ˈvaɪəbᵊl ˈprɒdʌkt),MVP (Minimum Viable Product),MVP (sản phẩm khả thi tối thiểu)
+2,Acronym 1,PR (Pull Request),piː-ɑː (pʊl rɪˈkwɛst),PR (Pull Request),PR (Pull Request)
+3,Acronym 1,UX (User Experience),juː-ɛks (ˈjuːzər ɪkˈspɪəriəns),UX (User Experience),UX (Trải nghiệm người dùng)
+4,Acronym 1,HTTP (Hyper Text Transfer Protocol), ˌeɪtʃ tiː tiː ˈpiː ,HTTP (Hyper Text Transfer Protocol),HTTP
+5,Acronym 1,HTML (Hyper Text Markup Language), ˌeɪtʃ tiː em ˈel ,HTML (Hyper Text Markup Language),HTML
+6,Acronym 1,API (Application Programming Interface),eɪ-piː-aɪ (ˌæplɪˈkeɪʃᵊn ˈprəʊɡræmɪŋ ˈɪntəˌfeɪs),API (Application Programming Interface),Giao diện lập trình ứng dụng
+7,Acronym 1,Rest (REpresentational State Transfer),rɛst (ˌrɛprɪzɛnˈteɪʃᵊnᵊl steɪt ˈtrænsfɜː),Rest (REpresentational State Transfer),REST
+8,Acronym 1,CMS (Content Mangement System), ˌsiː em ˈes ,CMS (Content Mangement System),Hệ quản trị nội dung
+9,Acronym 1,SaaS (Software as a Service),SaaS (ˈsɒftweər æz ə ˈsɜːvɪs),SaaS (Software as a Service),SaaS (phần mềm như một dịch vụ)
+10,Acronym 1,DNS (Domain Name System),diː-ɛn-ɛs (dəʊˈmeɪn neɪm ˈsɪstəm),DNS (Domain Name System),Hệ thống phân giải tên miền
+1,Acronym 2,IDE (Integrated Development Environment),aɪ-diː-iː (ˈɪntɪɡreɪtɪd dɪˈvɛləpmənt ɪnˈvaɪərənmənt),IDE (Integrated Development Environment),Môi trường phát triển tích hợp
+2,Acronym 2,GUI (Graphic User Interface),ʤiː-juː-aɪ (ˈɡræfɪk ˈjuːzər ˈɪntəˌfeɪs),GUI (Graphic User Interface),GUI (Giao diện người dùng đồ họa)
+3,Acronym 2,JSON (Javascript Object Notation),ʤeɪ-ɛs-əʊ-ɛn (ˈʤɑːvəskrɪpt ˈɒbʤɪkt nəʊˈteɪʃᵊn),JSON (Javascript Object Notation),JSON
+4,Acronym 2,WYSIWYG (What You See IS What You Get),ˈdʌbᵊljuː-waɪ-ɛs-aɪ-ˈdʌbᵊljuː-waɪ-ʤiː (wɒt juː siː ɪz wɒt juː ɡɛt),WYSIWYG (What You See IS What You Get),Giao diện tương tác tức thời
+5,Acronym 2,CDN (Content Delivery Network),siː-diː-ɛn (ˈkɒntɛnt dɪˈlɪvəri ˈnɛtwɜːk),CDN (Content Delivery Network),Mạng phân phối nội dung
+6,Acronym 2,"CRUD (Create, Read, Update, Delete)","siː-ɑː-juː-diː (kriˈeɪt, riːd, ʌpˈdeɪt, dɪˈliːt)","CRUD (Create, Read, Update, Delete)",CRUD
+7,Acronym 2,TDD (Test-Driven Development),tiː-diː-diː (tɛst-ˈdrɪvᵊn dɪˈvɛləpmənt),TDD (Test-Driven Development),Phát triển theo hướng thử nghiệm
+8,Acronym 2,"MVC (Model, View, Controller)","ɛm-viː-siː (ˈmɒdᵊl, vjuː, kənˈtrəʊlə)","MVC (Model, View, Controller)",MVC
+9,Acronym 2,CI/CD (Continuous Integration/ Continuous Deployment),,CI/CD (Continuous Integration/ Continuous Deployment),CI/CD 
+10,Acronym 2,RegEx (Regular Expression),ˈrɛɡjələr ɪkˈsprɛʃᵊn,RegEx (Regular Expression),Biểu thức chính quy
+1,IT Special Characters 1,( ) Parentheses, IPA: /pəˈɹɛnθəsiːz/ ,괄호,Ngoặc đơn
+2,IT Special Characters 1,[ ] Square Brackets,skwer  ˈbrækɪt,대괄호,Ngoặc vuông
+3,IT Special Characters 1,{ } Curly Brackets,ˈkɜːrli   ˈbrækɪt,중괄호,Ngoặc cong
+4,IT Special Characters 1,< > Angle Brackets,ˈæŋɡl  ˈbrækɪt,꺾쇠괄호,Ngoặc nhọn
+5,IT Special Characters 1,"< Open Angle Bracket, Less Than Symbol",,"적음을 표현할 때, HTML 태그를 시작할 때","Ngoặc nhọn, nhỏ hơn"
+6,IT Special Characters 1,"> Close Angle Bracket, Greater Than Symbol",,"큼을 표현할 때, HTML 태그를 끝낼 때","Ngoặc nhọn, lớn hơn"
+7,IT Special Characters 1,"# Number Sign, Pound, Hash",ˈpaʊnd ,"넘버사인, 파운드, 해쉬",Dấu thăng
+8,IT Special Characters 1,"@ At Sign, Ampersat",/ˈæm.pə.sæt/,상업용 앳,@
+9,IT Special Characters 1,! Exclamation Mark,,느낌표,Chấm than
+10,IT Special Characters 1,% Percent Sign,,퍼센트 사인,Phần trăm
+1,IT Special Characters 2,"* Asterisk, Star",ˈæstərɪsk ,별표,Dấu sao
+2,IT Special Characters 2,"^ Caret, Circumflex", ˈkærət ,캐럿,Dấu mũ
+3,IT Special Characters 2,$ Dollar Sign, |dɑːlə(r)saɪn ,달러 기호,Đô la
+4,IT Special Characters 2,? Question Mark,,물음표,Chấm hỏi
+5,IT Special Characters 2,: Colon,|koʊlən,콜론,Hai chấm
+6,IT Special Characters 2,; Semicolon,|semikoʊlən ,세미콜론,Chấm phẩy
+7,IT Special Characters 2,"- Hyphen, Dash",ˈhaɪfn ,하이픈,Gạch nối
+8,IT Special Characters 2,_Underscore, |ʌndər|skɔː(r) ,언더바,Gạch dưới
+9,IT Special Characters 2,+ Plus Sign,plʌs sign,플러스사인,Cộng
+10,IT Special Characters 2,= Equal Sign,|equal sign,등호,Bằng
+1,IT Special Characters 3,\ Backslash,ˈbækslæʃ,백슬래쉬,Dấu chéo ngược
+2,IT Special Characters 3,/ Forward Slash,ˈfoɚwɚd ˈslæʃ,슬래쉬,Chéo lên
+3,IT Special Characters 3," ' Backtick, Grave Accent",/ˈbæk.tɪk/,백틱,Dấu huyền
+4,IT Special Characters 3,""" "" Double Quatation Marks",ˈdʌbl   kwoʊ|teɪʃn   mɑːrk ,큰 따옴표,Ngoặc kép
+5,IT Special Characters 3, ' Single Quoatation Marks,ˈsɪŋɡl   kwoʊ|teɪʃn   mɑːrk ,작은 따옴표,
+6,IT Special Characters 3,", Comma",ˈkɑːmə,쉼표,
+7,IT Special Characters 3,". Period, Dot",|pɪriəd,마침표,
+8,IT Special Characters 3,"｜ Vertical bar, Pipe", |vɜːrtɪkl   bɑː(r) ,수직 바,
+9,IT Special Characters 3,"& Ampersand, And Sign",|æmpərsænd ,앰퍼샌드,
+10,IT Special Characters 3,~ Tide, taɪd,물결,
+1,,,,,
+2,,,,,
+3,,,,,
+4,,,,,
+5,,,,,
+6,,,,,
+7,,,,,
+8,,,,,
+9,,,,,
+10,,,,,
