@@ -1,6 +1,6 @@
 import { injectable } from 'tsyringe'
-import { EClass } from '../const/common'
 import LectureModel from '../entities/Lecture'
+
 import VocabularyModel from '../entities/Vocabulary'
 import { ILectureDAO } from '../interfaces/dao/lecture.dao'
 
@@ -10,37 +10,37 @@ export default class ScriptService {
     const lectures: ILectureDAO[] = [
       {
         lecture_name: 'Terminology in IT english',
-        class: EClass.Developer,
+
         img_src: 'https://cdn-icons-png.flaticon.com/512/3285/3285819.png'
       },
       {
         lecture_name: 'Programming Language',
-        class: EClass.Developer,
+
         img_src: 'https://cdn-icons-png.flaticon.com/512/2721/2721614.png'
       },
       {
         lecture_name: 'Acronym in IT English',
-        class: EClass.Developer,
+
         img_src: 'https://cdn-icons-png.flaticon.com/512/10816/10816474.png'
       },
       {
         lecture_name: 'Git - advanced 1',
-        class: EClass.Developer,
+
         img_src: 'https://cdn-icons-png.flaticon.com/512/10816/10816474.png'
       },
       {
         lecture_name: 'Code review 1',
-        class: EClass.Developer,
+
         img_src: 'https://cdn-icons-png.flaticon.com/512/10816/10816474.png'
       },
       {
         lecture_name: 'Code review 2',
-        class: EClass.Developer,
+
         img_src: 'https://cdn-icons-png.flaticon.com/512/10816/10816474.png'
       },
       {
         lecture_name: 'Git - Basic 1',
-        class: EClass.Developer,
+
         img_src: 'https://cdn-icons-png.flaticon.com/512/10816/10816474.png'
       }
     ]

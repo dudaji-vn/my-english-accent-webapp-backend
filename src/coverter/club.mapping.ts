@@ -11,7 +11,6 @@ export const convertToGroupDTO = (club: IClubDAO): IClubDTO => {
     lectures: club.lectures.map((item) => {
       return {
         lectureName: item.lecture_name,
-        class: item.class,
         imgSrc: item.img_src
       }
     }),

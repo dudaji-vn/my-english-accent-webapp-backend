@@ -49,32 +49,11 @@ export default class AuthService extends BaseService {
       'nickName',
       'displayLanguage',
       'nativeLanguage'
-      // 'class'
     ]
 
     if (!this.checkFieldsExist(userDto, requiredFields)) {
       throw new BadRequestError('Please input all fields')
     }
-    // if (userDto.class) {
-    //   userDto.class.forEach((item) => {
-    //     if (
-    //       ![
-    //         EClass.Designer,
-    //         EClass.Developer,
-    //         EClass.General
-    //       ].includes(item)
-    //     ) {
-    //       throw new BadRequestError('class is not valid')
-    //     }
-    //   })
-    // }
-    // const isExistUser = await UserModel.exists({
-    //   $or: [{ email: email }, { googleId: googleId }]
-    // })
-
-    // if (isExistUser) {
-    //   throw new BadRequestError('email or googleId is existed')
-    // }
 
     const user = new UserModel(convertToUserDAO(userDto))
     await user.save()
