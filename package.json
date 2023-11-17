@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
-    "build": "tsc",
+    "build": "rimraf dist && tsc",
     "start-prod": "node dist/index.js"
   },
   "author": "Ho Quang Linh",
@@ -33,6 +33,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^20.5.7",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.1"
   }
 }
