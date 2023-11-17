@@ -1,21 +1,19 @@
 import mongoose from 'mongoose'
-import { CLASS } from '../const/common'
 const lectureSchema = new mongoose.Schema(
   {
     description: {
       type: String
     },
-    class: {
-      type: Number,
-      enum: [CLASS.Designer, CLASS.Developer, CLASS.Other]
-    },
+
     lecture_name: {
       type: String,
       required: true,
       unique: true
     },
     img_src: {
-      type: String
+      type: String,
+      default:
+        'https://res.cloudinary.com/hoquanglinh/image/upload/v1700118507/sudq1kkwlrlfj18afaic.png'
     }
   },
   {
