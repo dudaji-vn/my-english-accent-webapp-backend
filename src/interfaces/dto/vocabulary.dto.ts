@@ -47,3 +47,11 @@ export interface ITextTranslate {
   vn: string
   kr: string
 }
+
+export interface IVocabularyRow {
+  numberOrder: number
+  textTranslate: ITextTranslate
+  titleDisplayLanguage: string
+  lectureName: string
+  phonetic: string
+}

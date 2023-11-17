@@ -9,21 +9,10 @@ export const Category = {
   designer: 'designer'
 }
 
-export const CLASS = {
-  Developer: 0,
-  Designer: 1,
-  Other: 2
-}
-
 export const ENROLLMENT_STAGE = {
   IN_PROGRESS: 0,
   EXPLORE: 1,
   FINISHED: 2
-}
-export enum EClass {
-  Developer = 0,
-  Designer = 1,
-  General = 2
 }
 
 export enum StageExercise {

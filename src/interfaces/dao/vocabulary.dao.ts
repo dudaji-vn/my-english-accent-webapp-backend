@@ -10,6 +10,13 @@ export interface IVocabularyDAO {
   updated: string
   created: string
 }
+export interface ICreateVocabularyDAO {
+  title_display_language: string
+  phonetic_display_language: string
+  number_order?: number
+  text_translate: ITextTranslate
+  lecture: string
+}
 export interface INativeVocabularyDAO {
   native_language: string
   title_native_language: string
