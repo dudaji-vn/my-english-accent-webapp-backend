@@ -13,6 +13,10 @@ lectureRouter.get(
   '/all',
   catchAsync(lectureController.getAllLectures.bind(lectureController))
 )
+lectureRouter.get(
+  '/allForAdmin',
+  catchAsync(lectureController.getAllLecturesForAdmin.bind(lectureController))
+)
 lectureRouter.put(
   '/addOrUpdateLecture',
   catchAsync(lectureController.addOrUpdateLecture.bind(lectureController))

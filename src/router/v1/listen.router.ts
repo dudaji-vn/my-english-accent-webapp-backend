@@ -16,9 +16,14 @@ listenRouter.put(
 )
 
 listenRouter.get(
-  '/getPlaylistListen',
+  '/getPlaylistSummary',
   auth,
-  catchAsync(listenController.getPlaylistListen.bind(listenController))
+  catchAsync(listenController.getPlaylistSummary.bind(listenController))
+)
+listenRouter.get(
+  '/getPlaylistListenByLecture',
+  auth,
+  catchAsync(listenController.getPlaylistListenByLecture.bind(listenController))
 )
 listenRouter.get(
   '/getLecturesAvailable',

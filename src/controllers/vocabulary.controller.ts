@@ -1,8 +1,7 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import ScriptService from '../services/script.service'
+import { IVocabularyRequest, Language } from '../interfaces/dto/vocabulary.dto'
 import VocabularyService from '../services/vocabulary.service'
-import { IVocabularyRequest } from '../interfaces/dto/vocabulary.dto'
 
 @injectable()
 export default class VocabularyController {
@@ -20,7 +19,8 @@ export default class VocabularyController {
     const { lectureId } = req.query
     const data = await this.vocabularyService.getAllVocabulariesByLectures({
       lectureId: lectureId as any,
-      userId: req.user._id
+      userId: req.user._id,
+      nativeLanguage: req.user.native_language as Language
     })
     return res.success(data)
   }

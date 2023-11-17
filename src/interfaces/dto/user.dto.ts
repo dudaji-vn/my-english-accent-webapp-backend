@@ -1,6 +1,3 @@
-import { EClass } from '../../const/common'
-import { Language, Role } from '../../entities/User'
-
 export interface IUserLoginDTO {
   googleId: string
   email: string
@@ -21,14 +18,6 @@ export interface IUserDTO {
   password?: string
 }
 
-export interface IUserUpdateDTO {
-  avatar?: string
-  fullName?: string
-  displayName?: string
-  role?: Role
-  nativeLanguage?: Language
-  autoDownload?: boolean
-}
 export interface IUserEnrollRequest {
   lectureId?: string
   enrollmentId?: string
