@@ -18,7 +18,8 @@ app.use(
       'https://r5200nc8-3000.asse.devtunnels.ms',
       'https://my-english-accent-239fb.web.app',
       'https://techtalk-admin.vercel.app',
-      'https://ttalk.vercel.app'
+      'https://ttalk.vercel.app',
+      'https://ttalk.vercel.app/'
     ]
   })
 )
@@ -32,7 +33,7 @@ app.use(function (req: Request, res: Response, next: NextFunction) {
 })
 
 app.get('/', (req: Request, res: Response) => {
-  return (res as IResponse).success('Hello')
+  return (res as IResponse).success('Hello api')
 })
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
