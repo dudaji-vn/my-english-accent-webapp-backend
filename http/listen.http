@@ -1,4 +1,4 @@
-PUT https://r5200nc8-5000.asse.devtunnels.ms/api/listen/createOrUpdatePlaylist
+PUT https://wd4dz44x-5000.asse.devtunnels.ms/api/listen/createOrUpdatePlaylist
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTk5MzM5MTMsImV4cCI6MTcwMjUyNTkxM30.3tTebxRxWBrCMXH3M7fOX5QxNbwf7csAirZpwWfIgdA
 Content-Type: application/json
 
@@ -8,16 +8,18 @@ Content-Type: application/json
 }
 
 ###
-GET https://r5200nc8-5000.asse.devtunnels.ms/api/listen/getLecturesAvailable
+GET https://wd4dz44x-5000.asse.devtunnels.ms/api/listen/getLecturesAvailable
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTk5MzM5MTMsImV4cCI6MTcwMjUyNTkxM30.3tTebxRxWBrCMXH3M7fOX5QxNbwf7csAirZpwWfIgdA
 
 ###
-GET  https://r5200nc8-5000.asse.devtunnels.ms/api/listen/getUsersAvailable
+GET  https://wd4dz44x-5000.asse.devtunnels.ms/api/listen/getUsersAvailable
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTk5MzM5MTMsImV4cCI6MTcwMjUyNTkxM30.3tTebxRxWBrCMXH3M7fOX5QxNbwf7csAirZpwWfIgdA
 
 
+
+
 ###
-GET  https://r5200nc8-5000.asse.devtunnels.ms/api/listen/getPlaylistListenByLecture?lectureId=6540bd721860dada50828c4d
+GET  https://wd4dz44x-5000.asse.devtunnels.ms/api/listen/getPlaylistListenByLecture?lectureId=6540bd721860dada50828c4d
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTk5MzM5MTMsImV4cCI6MTcwMjUyNTkxM30.3tTebxRxWBrCMXH3M7fOX5QxNbwf7csAirZpwWfIgdA
 
 
