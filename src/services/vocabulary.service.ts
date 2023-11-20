@@ -171,10 +171,11 @@ export default class VocabularyService {
       })
     } else {
       const existName = await VocabularyModel.exists({
-        title_display_language: titleDisplay
+        title_display_language: titleDisplay,
+        lecture: new mongoose.Types.ObjectId(lectureId)
       })
       if (existName) {
-        throw new BadRequestError('vocabulary is exist')
+        throw new BadRequestError('vocabulary is exist in lecture')
       }
       await VocabularyModel.create({
         number_order: numberOrder,
