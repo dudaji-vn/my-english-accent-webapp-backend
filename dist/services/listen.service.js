@@ -39,12 +39,17 @@ class ListenService {
         const records = await Record_1.default.find({
             user: { $in: userIds },
             challenge: null
-        }).populate('user');
+        }).populate({
+            path: 'user',
+            options: { sort: { nick_name: -1 } }
+        });
         const participants = vocabulariesByLectureId.map((voca) => {
             const recordUser = records.filter((item) => item.vocabulary.toString() === voca._id.toString());
             return {
                 ...(0, vocabulary_mapping_1.convertToVocabularyDTO)(voca),
-                recordUser: recordUser.map((item) => (0, vocabulary_mapping_1.convertToRecordOfUser)(item))
+                recordUser: recordUser
+                    .map((item) => (0, vocabulary_mapping_1.convertToRecordOfUser)(item))
+                    .sort((a, b) => a.nickName.localeCompare(b.nickName))
             };
         });
         return {
@@ -93,8 +98,8 @@ class ListenService {
         ];
         const data = await Vocabulary_1.default.aggregate(aggQuery);
         const records = await Record_1.default.find({ challenge: null });
-        console.log(favorite_lecture_ids);
-        return data.map((item) => {
+        return data
+            .map((item) => {
             let totalPeople = 0;
             const listVocaIds = item.vocabularies.map((voca) => voca._id.toString());
             const recordsByLectures = records.filter((record) => listVocaIds.includes(record?.vocabulary?.toString()));
@@ -122,11 +127,13 @@ class ListenService {
                     .map((item) => item.toString())
                     .includes(item.lectureId.toString())
             };
-        });
+        })
+            .sort((a, b) => Number(b.isSelected) - Number(a.isSelected));
     }
     async getUsersAvailable(myFavoriteLectureIds, myFavoriteUserIds) {
         const users = await User_1.default.find().lean().sort({ nick_name: 1 });
-        return users.map((user) => {
+        return users
+            .map((user) => {
             let selectedLectures = [];
             if (user.completed_lecture_ids) {
                 selectedLectures = myFavoriteLectureIds.filter((item) => user.completed_lecture_ids
@@ -141,7 +148,8 @@ class ListenService {
                     .includes(user._id.toString()),
                 ...(0, user_mapping_1.convertToUserDTOWithoutAuth)(user)
             };
-        });
+        })
+            .sort((a, b) => Number(b.isSelected) - Number(a.isSelected));
     }
     async getPlaylistSummary(payload) {
         const { favoriteLectureIds, favoriteUserIds } = payload;

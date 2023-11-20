@@ -149,10 +149,11 @@ let VocabularyService = class VocabularyService {
         }
         else {
             const existName = await Vocabulary_1.default.exists({
-                title_display_language: titleDisplay
+                title_display_language: titleDisplay,
+                lecture: new mongoose_1.default.Types.ObjectId(lectureId)
             });
             if (existName) {
-                throw new error_1.BadRequestError('vocabulary is exist');
+                throw new error_1.BadRequestError('vocabulary is exist in lecture');
             }
             await Vocabulary_1.default.create({
                 number_order: numberOrder,

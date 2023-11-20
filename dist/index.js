@@ -42,7 +42,9 @@ app.use((0, cors_1.default)({
         'http://localhost:3001',
         'https://r5200nc8-3000.asse.devtunnels.ms',
         'https://my-english-accent-239fb.web.app',
-        'https://techtalk-admin.vercel.app'
+        'https://techtalk-admin.vercel.app',
+        'https://ttalk.vercel.app',
+        'https://ttalk.vercel.app/'
     ]
 }));
 const http = require('http').createServer(app);
@@ -52,7 +54,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.get('/', (req, res) => {
-    return res.success('Hello');
+    return res.success('Hello api');
 });
 app.use((err, req, res, next) => {
     res.status(500).json({ error: err.message });
