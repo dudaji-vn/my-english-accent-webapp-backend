@@ -199,11 +199,24 @@ export class ListenService {
     const lectures = await LectureModel.find({
       _id: { $in: favoriteLectureIds }
     })
+    const enrollmentByFavoriteLectures = await EnrollmentModel.find({
+      lecture: { $in: favoriteLectureIds }
+    })
+    const lectureIds = enrollmentByFavoriteLectures.map((item) =>
+      item.lecture.toString()
+    )
 
     return {
       totalLecture: favoriteLectureIds.length,
       totalPeople: favoriteUserIds.length,
-      lectures: lectures.map((item) => convertToLectureDTO(item))
+      lectures: lectures
+        .map((item) => convertToLectureDTO(item))
+        .sort((a, b) => {
+          return (
+            Number(lectureIds.includes(b.lectureId?.toString())) -
+            Number(lectureIds.includes(a.lectureId?.toString()))
+          )
+        })
     }
   }
 }
