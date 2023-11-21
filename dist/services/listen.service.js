@@ -159,10 +159,19 @@ class ListenService {
         const lectures = await Lecture_1.default.find({
             _id: { $in: favoriteLectureIds }
         });
+        const enrollmentByFavoriteLectures = await Enrollment_1.default.find({
+            lecture: { $in: favoriteLectureIds }
+        });
+        const lectureIds = enrollmentByFavoriteLectures.map((item) => item.lecture.toString());
         return {
             totalLecture: favoriteLectureIds.length,
             totalPeople: favoriteUserIds.length,
-            lectures: lectures.map((item) => (0, lecture_mapping_1.convertToLectureDTO)(item))
+            lectures: lectures
+                .map((item) => (0, lecture_mapping_1.convertToLectureDTO)(item))
+                .sort((a, b) => {
+                return (Number(lectureIds.includes(b.lectureId?.toString())) -
+                    Number(lectureIds.includes(a.lectureId?.toString())));
+            })
         };
     }
 }
