@@ -55,7 +55,7 @@ class ListenService {
         return {
             lecture: (0, lecture_mapping_1.convertToLectureDTO)(lecture),
             vocabularies: vocabulariesByLectureId.map((item) => (0, vocabulary_mapping_1.convertToVocabularyDTO)(item)),
-            participants: participants
+            participants: participants.filter((item) => item.recordUser && item.recordUser.length > 0)
         };
     }
     async getLecturesAvailable(favorite_lecture_ids) {

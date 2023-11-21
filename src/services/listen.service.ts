@@ -75,7 +75,9 @@ export class ListenService {
       vocabularies: vocabulariesByLectureId.map((item) =>
         convertToVocabularyDTO(item)
       ),
-      participants: participants
+      participants: participants.filter(
+        (item) => item.recordUser && item.recordUser.length > 0
+      )
     }
   }
   async getLecturesAvailable(favorite_lecture_ids: string[]) {
