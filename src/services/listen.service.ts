@@ -155,7 +155,12 @@ export class ListenService {
             .includes(item.lectureId.toString())
         }
       })
-      .sort((a, b) => Number(b.isSelected) - Number(a.isSelected))
+      .sort(
+        (a, b) =>
+          Number(b.isSelected) - Number(a.isSelected) ||
+          b.totalPeople * b.totalVocabularies -
+            a.totalPeople * a.totalVocabularies
+      )
   }
 
   async getUsersAvailable(
@@ -183,7 +188,11 @@ export class ListenService {
           ...convertToUserDTOWithoutAuth(user)
         }
       })
-      .sort((a, b) => Number(b.isSelected) - Number(a.isSelected))
+      .sort(
+        (a, b) =>
+          Number(b.isSelected) - Number(a.isSelected) ||
+          b.numberCompletedLectures - a.numberCompletedLectures
+      )
   }
   async getPlaylistSummary(payload: IPlaylistSummary) {
     const { favoriteLectureIds, favoriteUserIds } = payload
