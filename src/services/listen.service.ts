@@ -1,4 +1,5 @@
 // @ts-nocheck
+import mongoose, { Mongoose } from 'mongoose'
 import { StageExercise } from '../const/common'
 import { convertToLectureDTO } from '../coverter/lecture.mapping'
 import { convertToUserDTOWithoutAuth } from '../coverter/user.mapping'
@@ -47,7 +48,9 @@ export class ListenService {
 
     const userFinishedLecture = await EnrollmentModel.find({
       user: { $in: favoriteUserIds },
-      stage: StageExercise.Close
+      stage: StageExercise.Close,
+      lecture:new mongoose.Types.ObjectId(lectureId)
+      
     }).lean()
     const userIds = userFinishedLecture.map((item) => item.user.toString())
     const records = await RecordModel.find({
