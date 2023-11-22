@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListenService = void 0;
 // @ts-nocheck
+const mongoose_1 = __importDefault(require("mongoose"));
 const common_1 = require("../const/common");
 const lecture_mapping_1 = require("../coverter/lecture.mapping");
 const user_mapping_1 = require("../coverter/user.mapping");
@@ -33,7 +34,8 @@ class ListenService {
         }).sort({ number_order: 1 });
         const userFinishedLecture = await Enrollment_1.default.find({
             user: { $in: favoriteUserIds },
-            stage: common_1.StageExercise.Close
+            stage: common_1.StageExercise.Close,
+            lecture: new mongoose_1.default.Types.ObjectId(lectureId)
         }).lean();
         const userIds = userFinishedLecture.map((item) => item.user.toString());
         const records = await Record_1.default.find({
