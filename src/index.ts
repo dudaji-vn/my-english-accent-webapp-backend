@@ -19,7 +19,8 @@ app.use(
       'https://my-english-accent-239fb.web.app',
       'https://techtalk-admin.vercel.app',
       'https://ttalk.vercel.app',
-      'https://rhggqk0h-3000.asse.devtunnels.ms'
+      'https://rhggqk0h-3000.asse.devtunnels.ms',
+      'https://wd4dz44x-3000.asse.devtunnels.ms'
     ]
   })
 )

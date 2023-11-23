@@ -19,7 +19,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTU2Z
 
 
 ###
-GET  https://wd4dz44x-5000.asse.devtunnels.ms/api/listen/getPlaylistListenByLecture?lectureId=6540bd721860dada50828c4d
+GET  http://localhost:5000/api/listen/getPlaylistListenByLecture?lectureId=6556e3d0058d631dab216bf5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTU2ZWQxZDU1NjFjOWY4YjFlMmY4YmYiLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDA1NDc0ODcsImV4cCI6MTcwMzEzOTQ4N30.zoCVeMScBjaohDsgkz9Y-iXWiJXxAz9gbfU-bUjZRSM
 
 

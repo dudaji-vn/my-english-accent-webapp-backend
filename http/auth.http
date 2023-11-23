@@ -39,7 +39,7 @@ Content-Type:  application/json
 
 
 ###
-POST  http://10.0.100.81:5000/api/auth/adminRegister
+POST  http://localhost:5000/api/auth/adminRegister
 Content-Type:  application/json
 
 {
