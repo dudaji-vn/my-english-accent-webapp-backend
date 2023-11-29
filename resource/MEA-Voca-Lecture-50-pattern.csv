@@ -1,0 +1,51 @@
+#,Lecture name,Word/ Expression,Phonetic,Korean,Vietnamese
+1,50 pattern #1,"Once you see working software, you should feel better","wʌns juː siː ˈwɜːkɪŋ ˈsɒftweə, juː ʃʊd fiːl ˈbɛtə","일단 동작하는 소프트웨어를 보면, 기분이 나아질꺼야","Khi bạn thấy phần mềm làm việc, bạn sẽ cảm thấy tốt hơn"
+2,50 pattern #1,I need to fix my issue as soon as possible,aɪ niːd tuː fɪks maɪ ˈɪʃuː æz suːn æz ˈpɒsəbᵊl,나는 이 이슈를 최대한 빨리 고쳤으면 해,Tôi cần khắc phục vấn đề của mình càng sớm càng tốt
+3,50 pattern #1,I hope it rains all day long tomorrow,aɪ həʊp ɪt reɪnz ɔːl deɪ lɒŋ təˈmɒrəʊ,내일 하루종일 비가 왔으면 좋겠어,Tôi hy vọng trời mưa cả ngày vào ngày mai
+4,50 pattern #1,Can I get you anything?,kæn aɪ ɡɛt juː ˈɛniθɪŋ?,뭐 좀 가져다 드릴까요?,Tôi có thể lấy gì cho bạn?
+5,50 pattern #1,How many features did you code today?,haʊ ˈmɛni ˈfiːʧəz dɪd juː kəʊd təˈdeɪ?,얼마나 많은 기능을 오늘 만들었어요?,Bạn đã viết mã bao nhiêu tính năng hôm nay?
+6,50 pattern #1,"If it is possible, I'd like to have a diet coke","ɪf ɪt ɪz ˈpɒsəbᵊl, aɪd laɪk tuː hæv ə ˈdaɪət kəʊk","가능하다면, 다이어트 콜라를 먹고 싶어요.","Nếu có thể, tôi muốn có một than cốc ăn kiêng"
+7,50 pattern #1,Whose cellular phone is this anyway?,huːz ˈsɛljələ fəʊn ɪz ðɪs ˈɛniweɪ?,이 폰 누구꺼에요?,Dù sao đây là điện thoại di động của ai?
+8,50 pattern #1,"Hey, what are you doing up there?","heɪ, wɒt ɑː juː ˈduːɪŋ ʌp ðeə?","저기요, 그 위에서 모하세요?","Này, bạn đang làm gì ở đó?"
+9,50 pattern #1,"Who is that? To tell the truth, I like him.","huː ɪz ðæt? tuː tɛl ðə truːθ, aɪ laɪk hɪm.",저 사람 누구지? 사실대로 말해서 나는 저사람이 좋네,"Đó là ai? Nói thật, tôi thích anh ấy."
+10,50 pattern #1,"One should keep one's promise, otherwise no one will trust him or her","wʌn ʃʊd kiːp wʌnz ˈprɒmɪs, ˈʌðəwaɪz nəʊ wʌn wɪl trʌst hɪm ɔː hɜː",사람은 약속을 지켜야해. 안그러면 아무도 믿지 않을거야,"Người ta nên giữ lời hứa của một người, nếu không sẽ không ai tin tưởng anh ta hoặc cô ta"
+1,50 pattern #2,"Speaking of the frontend programming, this is my last one","ˈspiːkɪŋ ɒv ðə frontend ˈprəʊɡræmɪŋ, ðɪs ɪz maɪ lɑːst wʌn","프론트앤드 프로그래밍에 대해서 말하자면, 이것이 마지막이야","Nói về lập trình frontend, đây là lần cuối cùng của tôi"
+2,50 pattern #2,Do you know how to code this?,duː juː nəʊ haʊ tuː kəʊd ðɪs?, 이거 어떻게 코딩해야 할지 알아요?,Bạn có biết cách viết mã này không?
+3,50 pattern #2,I feel sick to my stomach,aɪ fiːl sɪk tuː maɪ ˈstʌmək,배가 아파요,tôi cảm thấy đau bụng
+4,50 pattern #2,"Feel free to call me, whenever you have any issue.","fiːl friː tuː kɔːl miː, wɛˈnɛvə juː hæv ˈɛni ˈɪʃuː.",이슈가 있으면 언제든지 연락하세요.,"Hãy gọi cho tôi, bất cứ khi nào bạn có bất kỳ vấn đề."
+5,50 pattern #2,"I have two coworkers, and both of them are sick. To make matters worse, our project deadline is this week.","aɪ hæv tuː ˌkəʊˈwɜːkəz, ænd bəʊθ ɒv ðɛm ɑː sɪk. tuː meɪk ˈmætəz wɜːs, ˈaʊə ˈprɒʤɛkt ˈdɛdlaɪn ɪz ðɪs wiːk.",동료가 두 명 있는데요. 둘다 아파요. 설상가상으로 프로젝트 데드라인이 이번주에요,"Tôi có hai đồng nghiệp, và cả hai đều bị bệnh. Để làm cho vấn đề tồi tệ hơn, thời hạn dự án của chúng tôi là trong tuần này."
+6,50 pattern #2,How come you are not wearing team uniform today?,haʊ kʌm juː ɑː nɒt ˈweərɪŋ tiːm ˈjuːnɪfɔːm təˈdeɪ?,오늘 유니폼 안 입고 오면 어떻하니?,Tại sao hôm nay bạn không mặc đồng phục đội?
+7,50 pattern #2,I have to make decision by 10:30,aɪ hæv tuː meɪk dɪˈsɪʒᵊn baɪ 10:30,나는 10:30까지 의사결정 해야해,Tôi phải đưa ra quyết định trước 10:30
+8,50 pattern #2,How often do you play tennis?,haʊ ˈɒfᵊn duː juː pleɪ ˈtɛnɪs?,얼마나 자주 테니스를 치니?,Bạn có thường xuyên chơi quần vợt không?
+9,50 pattern #2,Do you mind if I give you some advice on that? It is a very important tip on how to use this code.,duː juː maɪnd ɪf aɪ ɡɪv juː sʌm ədˈvaɪs ɒn ðæt? ɪt ɪz ə ˈvɛri ɪmˈpɔːtᵊnt tɪp ɒn haʊ tuː juːz ðɪs kəʊd.,조언을 해도 되니? 이 코드를 활용하는데 중요한 팁이야.,Bạn có phiền nếu tôi cho bạn một số lời khuyên về điều đó? Đó là một mẹo rất quan trọng về cách sử dụng mã này.
+10,50 pattern #2,You are much better than me.,juː ɑː mʌʧ ˈbɛtə ðæn miː.,니가 나보다 낫다,Bạn tốt hơn tôi nhiều.
+1,50 pattern #3,I can't believe this is the last conference that I am attending with you guys.,aɪ kɑːnt bɪˈliːv ðɪs ɪz ðə lɑːst ˈkɒnfᵊrᵊns ðæt aɪ æm əˈtɛndɪŋ wɪð juː ɡaɪz.,너희랑 참석하는 마지막 컨퍼런스라니 믿을수가 없다.,Tôi không thể tin rằng đây là hội nghị cuối cùng mà tôi đang tham dự với các bạn.
+2,50 pattern #3,"There is some food on the table. Help yourself, but please don't feed the dog. We are trying to cut down the food cost.","ðeər ɪz sʌm fuːd ɒn ðə ˈteɪbᵊl. hɛlp jɔːˈsɛlf, bʌt pliːz dəʊnt fiːd ðə dɒɡ. wiː ɑː ˈtraɪɪŋ tuː kʌt daʊn ðə fuːd kɒst.",테이블에 음식이 있으니 드세요. 근데 개한테 주지는 마세요. 식비를 아끼려고 하고 있어요,"Có một số thực phẩm trên bàn. Hãy tự giúp mình, nhưng xin đừng cho chó ăn. Chúng tôi đang cố gắng cắt giảm chi phí thực phẩm."
+3,50 pattern #3,Is there a drug store around here?,ɪz ðeər ə drʌɡ stɔːr əˈraʊnd hɪə?,약국이 근처에 있나요?,Có một cửa hàng thuốc quanh đây không?
+4,50 pattern #3,Don't tell me you can't go there.,dəʊnt tɛl miː juː kɑːnt ɡəʊ ðeə.,거기에 갈 수 없다는 말은 말아줘.,Đừng nói với tôi rằng bạn không thể đến đó.
+5,50 pattern #3,You should call the doctor right away.,juː ʃʊd kɔːl ðə ˈdɒktə raɪt əˈweɪ.,당장 의사를 부르는 게 좋겠어.,Bạn nên gọi bác sĩ ngay lập tức.
+6,50 pattern #3,Would you bring more batteries for me?,wʊd juː brɪŋ mɔː ˈbætᵊriz fɔː miː?,배터리 좀 더 가져다 줄래요?,Bạn sẽ mang nhiều pin hơn cho tôi?
+7,50 pattern #3,May I ask you where did you buy that keyboard? I looked around everywhere but I couldn't find such a nice keyboard.,meɪ aɪ ɑːsk juː weə dɪd juː baɪ ðæt ˈkiːbɔːd? aɪ lʊkt əˈraʊnd ˈɛvriweə bʌt aɪ ˈkʊdnt faɪnd sʌʧ ə naɪs ˈkiːbɔːd.,키보드 어디서 샀어요? 주변을 다 찾아봤는데 그렇게 좋은 키보드를 찾지 못하겠어요.,Tôi có thể hỏi bạn đã mua bàn phím đó ở đâu không? Tôi nhìn quanh mọi nơi nhưng tôi không thể tìm thấy một bàn phím đẹp như vậy.
+8,50 pattern #3,What is going on in your office?,wɒt ɪz ˈɡəʊɪŋ ɒn ɪn jɔːr ˈɒfɪs?,니네 사무실에서 무슨일이니?,Điều gì đang xảy ra trong văn phòng của bạn?
+9,50 pattern #3,I had a hard time controlling that device.,aɪ hæd ə hɑːd taɪm kənˈtrəʊlɪŋ ðæt dɪˈvaɪs.,그 장치를 컨트롤하는데 힘들었어,Tôi đã có một thời gian khó khăn để kiểm soát thiết bị đó.
+10,50 pattern #3,Please forgive me this time. I will make sure it won't happen again.,pliːz fəˈɡɪv miː ðɪs taɪm. aɪ wɪl meɪk ʃɔːr ɪt wəʊnt ˈhæpᵊn əˈɡɛn.,한번만 용서해줘. 다시는 그런일 없도록 할께,Xin hãy tha thứ cho tôi lần này. Tôi sẽ đảm bảo rằng nó sẽ không xảy ra nữa.
+1,50 pattern #4,"On a day like this, I would do anything for a cold drink.","ɒn ə deɪ laɪk ðɪs, aɪ wʊd duː ˈɛniθɪŋ fɔːr ə kəʊld drɪŋk.",오늘 같은 날에는 찬 음료수를 위해서라면 무엇이라도 하겠어,"Vào một ngày như thế này, tôi sẽ làm bất cứ điều gì cho một thức uống lạnh."
+2,50 pattern #4,What are you looking at?,wɒt ɑː juː ˈlʊkɪŋ æt?,뭘 보고 있니?,Bạn đang nhìn gì đó?
+3,50 pattern #4,I heard you are moving to Hanoi. Is that right?,aɪ hɜːd juː ɑː ˈmuːvɪŋ tuː hæˈnɔɪ. ɪz ðæt raɪt?,하노이로 이사한다고 들었어. 사실이니?,Tôi nghe nói bạn đang chuyển đến Hà Nội. Có đúng không?
+4,50 pattern #4,Is this the mouse you were looking for?,ɪz ðɪs ðə maʊs juː wɜː ˈlʊkɪŋ fɔː?,이게 니가 찾던 마우스니?,Đây có phải là con chuột bạn đang tìm kiếm?
+5,50 pattern #4,How much do you pay for that?,haʊ mʌʧ duː juː peɪ fɔː ðæt?,얼마주고 샀어?,Bạn phải trả bao nhiêu cho điều đó?
+6,50 pattern #4,How do you connect server?,haʊ duː juː kəˈnɛkt ˈsɜːvə?,서버에 어떻게 접속해?,Làm thế nào để bạn kết nối máy chủ?
+7,50 pattern #4,I hate this. This kind of thing makes me really angry.,aɪ heɪt ðɪs. ðɪs kaɪnd ɒv θɪŋ meɪks miː ˈrɪəli ˈæŋɡri.,난 이런거 싫어. 이런 일은 정말 나를 화나게 한다고,Tôi ghét điều này. Loại điều này khiến tôi thực sự tức giận.
+8,50 pattern #4,I am very sorry for all the trouble we've caused you. I'll refund you.,aɪ æm ˈvɛri ˈsɒri fɔːr ɔːl ðə ˈtrʌbᵊl wiːv kɔːzd juː. aɪl ˈriːfʌnd juː.,문제 일으켜서 미안해. 환불해줄께,Tôi rất xin lỗi vì tất cả những rắc rối mà chúng tôi đã gây ra cho bạn. Tôi sẽ hoàn lại tiền cho bạn.
+9,50 pattern #4,Excuse me. How long will it take to fix it?,ɪkˈskjuːz miː. haʊ lɒŋ wɪl ɪt teɪk tuː fɪks ɪt?,저기요. 고치는데 얼마나 걸릴까요?,Xin lỗi. Mất bao lâu để sửa nó?
+10,50 pattern #4,Oh my gosh! What a mess! What happened here?,əʊ maɪ ɡɒʃ! wɒt ə mɛs! wɒt ˈhæpᵊnd hɪə?,"이런, 엉망이군. 무슨일이 일어난거야?",Ôi trời ơi! Thật là một mớ hỗn độn! Chuyện gì đã xảy ra ở đây?
+1,50 pattern #5,He promised to visit HoChiMin office before he leaves for Seoul.,hiː ˈprɒmɪst tuː ˈvɪzɪt HoChiMin ˈɒfɪs bɪˈfɔː hiː liːvz fɔː səʊl.,그는 서울로 떠나기 전에 호치민 사무실에 들릴다고 약속했어,Anh hứa sẽ đến thăm văn phòng Hochimin trước khi anh rời Seoul.
+2,50 pattern #5,Let me know when she comes in,lɛt miː nəʊ wɛn ʃiː kʌmz ɪn,그녀가 오면 내게 알려줘,Hãy cho tôi biết khi cô ấy vào
+3,50 pattern #5,Why don't you give her a call and remind her that I'll stop by around 9.,waɪ dəʊnt juː ɡɪv hɜːr ə kɔːl ænd rɪˈmaɪnd hɜː ðæt aɪl stɒp baɪ əˈraʊnd 9.,그녀에게 전화해서 내가 9시쯤 들릴거라고 말해줘,Tại sao bạn không gọi cho cô ấy và nhắc nhở cô ấy rằng tôi sẽ dừng lại khoảng 9 tuổi.
+4,50 pattern #5,I wonder if this laptop will make him happy.,aɪ ˈwʌndər ɪf ðɪs ˈlæpˌtɒp wɪl meɪk hɪm ˈhæpi.,이 노트북이 그를 기쁘게 할까 궁금하네,Tôi tự hỏi nếu máy tính xách tay này sẽ làm cho anh ấy hạnh phúc.
+5,50 pattern #5,Are you surprised at the news?,ɑː juː səˈpraɪzd æt ðə njuːz?,그 뉴스에 놀랐나요?,Bạn có ngạc nhiên về tin tức không?
+6,50 pattern #5,Do you want me to verify that for you?,duː juː wɒnt miː tuː ˈvɛrɪfaɪ ðæt fɔː juː?,내가 그것을 확인해줄까?,Bạn có muốn tôi xác minh điều đó cho bạn?
+7,50 pattern #5,"It was here on the table in the morning, but it's gone now.","ɪt wɒz hɪər ɒn ðə ˈteɪbᵊl ɪn ðə ˈmɔːnɪŋ, bʌt ɪts ɡɒn naʊ.",아침에는 책상위에 있었는데. 지금은 없네.,"Nó đã ở đây trên bàn vào buổi sáng, nhưng bây giờ nó đã biến mất."
+8,50 pattern #5,It's obvious he failed the exam twice before he became a programmer.,ɪts ˈɒbviəs hiː feɪld ði ɪɡˈzæm twaɪs bɪˈfɔː hiː bɪˈkeɪm ə ˈprəʊɡræmə.,프로그래머가 되기 전에 시험에 두번 떨어진게 분명해,Rõ ràng anh ấy đã thất bại trong kỳ thi hai lần trước khi trở thành lập trình viên.
+9,50 pattern #5,The reason why he failed the exam was he simply didn't study hard enough.,ðə ˈriːzᵊn waɪ hiː feɪld ði ɪɡˈzæm wɒz hiː ˈsɪmpli dɪdnt ˈstʌdi hɑːd ɪˈnʌf.,그가 시험에 떨어진 이유는 단지 열심히 공부하지 않았기 때문이야,Lý do tại sao anh ấy thất bại trong kỳ thi là anh ấy chỉ đơn giản là không học tập chăm chỉ.
+10,50 pattern #5,"If he studies hard, he will pass the exam. That's for sure.","ɪf hiː ˈstʌdiz hɑːd, hiː wɪl pɑːs ði ɪɡˈzæm. ðæts fɔː ʃɔː.","열심히 공부하면, 그는 그 시험에 합격할꺼야. 확실해","Nếu anh ấy học tập chăm chỉ, anh ấy sẽ vượt qua kỳ thi. Chắc chắn rồi."
