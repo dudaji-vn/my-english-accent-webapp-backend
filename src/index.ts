@@ -12,16 +12,7 @@ const app = express()
 app.use(express.json())
 app.use(
   cors({
-    origin: [
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'https://r5200nc8-3000.asse.devtunnels.ms',
-      'https://my-english-accent-239fb.web.app',
-      'https://techtalk-admin.vercel.app',
-      'https://ttalk.vercel.app',
-      'https://rhggqk0h-3000.asse.devtunnels.ms',
-      'https://wd4dz44x-3000.asse.devtunnels.ms'
-    ]
+    origin: '*'
   })
 )
 
