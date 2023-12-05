@@ -117,7 +117,8 @@ export default class UserService extends BaseService {
               }
             }
           }
-        }
+        },
+        { $sort: { created: sort, lecture_name: sort } }
       ]
       try {
         const lectures = await LectureModel.aggregate(
@@ -130,7 +131,8 @@ export default class UserService extends BaseService {
           lectureId: item._id,
           lectureName: item.lecture_name,
           stage: StageExercise.Open,
-          totalStep: item.totalStep
+          totalStep: item.totalStep,
+          created: item.created
         }))
       } catch (error) {
         console.error('Error in getLecturesOpen:', error)

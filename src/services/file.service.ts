@@ -62,7 +62,7 @@ export default class FileService {
 
   async importDataFromExcel() {
     const result = await this.handleStoreFile(
-      './resource/MEA-Voca-Lecture-23-11.csv'
+      './resource/MEA-Voca-Lecture-50-pattern.csv'
     )
 
     return result

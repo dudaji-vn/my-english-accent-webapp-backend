@@ -15,6 +15,10 @@ export const ENROLLMENT_STAGE = {
   FINISHED: 2
 }
 
+export const STATUS_STAGE = {
+  DRAFT: 0,
+  PUBLIC: 1
+}
 export enum StageExercise {
   Open = 0,
   Inprogress = 1,
