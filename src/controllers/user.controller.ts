@@ -24,7 +24,7 @@ export default class UserController {
     const result = await this.userService.getMyPractice(
       req.user._id,
       stage as any,
-      parseInt((sort ?? 1) as any)
+      parseInt((sort ?? -1) as any)
     )
     return res.success(result)
   }
