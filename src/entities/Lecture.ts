@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { STATUS_STAGE as STATUS_LECTURE } from '../const/common'
+import { STATUS_LECTURE as STATUS_LECTURE } from '../const/common'
 const lectureSchema = new mongoose.Schema(
   {
     description: {
@@ -18,9 +18,10 @@ const lectureSchema = new mongoose.Schema(
     status: {
       type: Number,
       enum: [STATUS_LECTURE.DRAFT, STATUS_LECTURE.PUBLIC],
+      default: STATUS_LECTURE.DRAFT,
       required: true
     },
-    publishedAt: {
+    published_at: {
       type: Date,
       default: null
     }
