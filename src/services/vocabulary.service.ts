@@ -110,14 +110,8 @@ export default class VocabularyService {
 
   async getVocabularyByLectureId(lectureId: string) {
     let listVoca: any = []
-    if (!lectureId) {
-      listVoca = await VocabularyModel.find()
-        .lean()
-        .sort({
-          lecture: 1,
-          number_order: 1
-        })
-        .populate('lecture')
+    if (!mongoose.Types.ObjectId.isValid(lectureId)) {
+      return []
     } else {
       listVoca = await VocabularyModel.find({
         lecture: lectureId
