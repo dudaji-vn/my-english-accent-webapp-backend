@@ -15,7 +15,7 @@ export const ENROLLMENT_STAGE = {
   FINISHED: 2
 }
 
-export const STATUS_STAGE = {
+export const STATUS_LECTURE = {
   DRAFT: 0,
   PUBLIC: 1
 }
