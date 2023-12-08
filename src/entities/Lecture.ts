@@ -21,7 +21,7 @@ const lectureSchema = new mongoose.Schema(
       default: STATUS_LECTURE.DRAFT,
       required: true
     },
-    published_at: {
+    published: {
       type: Date,
       default: null
     }

@@ -18,7 +18,11 @@ lectureRouter.get(
   catchAsync(lectureController.getAllLecturesForAdmin.bind(lectureController))
 )
 lectureRouter.put(
-  '/addOrUpdateLecture',
-  catchAsync(lectureController.addOrUpdateLecture.bind(lectureController))
+  '/addLectureAndVocabulary',
+  catchAsync(lectureController.addLectureAndVocabulary.bind(lectureController))
+)
+lectureRouter.put(
+  '/changeStatusLecture',
+  catchAsync(lectureController.changeStatusLecture.bind(lectureController))
 )
 export default lectureRouter
