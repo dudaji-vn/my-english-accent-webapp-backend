@@ -15,6 +15,7 @@
     "node": ">=14.20.1"
   },
   "dependencies": {
+    "@google-cloud/text-to-speech": "^5.0.1",
     "@types/express": "^4.17.17",
     "@types/mongoose": "^5.11.97",
     "bcrypt": "^5.1.1",
@@ -23,6 +24,7 @@
     "fast-csv": "^4.3.6",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.5",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^3.0.1",
     "reflect-metadata": "^0.1.13",
     "socket.io": "^4.7.2",
@@ -32,6 +34,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.2",
+    "@types/multer": "^1.4.11",
     "@types/node": "^20.5.7",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.1"

@@ -5,9 +5,37 @@ import LectureModel from '../entities/Lecture'
 import VocabularyModel from '../entities/Vocabulary'
 import { ICreateVocabularyDAO } from '../interfaces/dao/vocabulary.dao'
 import { IVocabularyRow } from '../interfaces/dto/vocabulary.dto'
+import { CsvParserStream, ParserRow } from 'fast-csv'
+import { STATUS_LECTURE } from '../const/common'
+import { BadRequestError } from '../middleware/error'
+import { ClientSession, startSession } from 'mongoose'
+import UserAdminModel from '../entities/UserAdmin'
 
 @injectable()
 export default class FileService {
+  async importDataFromScript() {
+    const source = './resource/MEA-Voca-Workplace-Sentences.csv'
+    const stream = fs.createReadStream(source)
+    const parser = fastCsv.parseStream(stream)
+
+    // const result = await this.handleStoreFile(parser)
+    // return result
+  }
+  async uploadLectureAndVocabularyFromCsv(file: Express.Multer.File) {
+    const csvData = file.buffer.toString('utf8')
+    const parser = fastCsv.parseString(csvData)
+    const session = await startSession()
+    session.startTransaction()
+
+    try {
+      const result = await this.handleStoreFile(parser, session)
+      return result
+    } catch (err) {
+      await session.abortTransaction()
+      session.endSession()
+      throw err
+    }
+  }
   private async parseCsvRow(
     row: string[]
   ): Promise<IVocabularyRow | undefined> {
@@ -41,9 +69,9 @@ export default class FileService {
     }
   }
 
-  private async processCsvFile(source: string): Promise<IVocabularyRow[]> {
-    const stream = fs.createReadStream(source)
-    const parser = fastCsv.parseStream(stream)
+  private async processCsvFile(
+    parser: CsvParserStream<ParserRow<any>, ParserRow<any>>
+  ): Promise<IVocabularyRow[]> {
     const listItems: IVocabularyRow[] = []
 
     parser.on('data', async (row: string[]) => {
@@ -60,45 +88,51 @@ export default class FileService {
     return listItems
   }
 
-  async importDataFromExcel() {
-    const result = await this.handleStoreFile(
-      './resource/MEA-Voca-Lecture-50-pattern.csv'
-    )
+  private async handleStoreFile(
+    parser: CsvParserStream<ParserRow<any>, ParserRow<any>>,
+    session: ClientSession
+  ) {
+    const opts = { session }
+    const vocabulariesData = await this.processCsvFile(parser)
+    let listLectureName = [
+      ...new Set(vocabulariesData.map((item) => item.lectureName))
+    ]
+    const existedLectures = await LectureModel.find({
+      lecture_name: { $in: listLectureName }
+    }).select('lecture_name')
 
-    return result
-  }
+    if (existedLectures.length > 0) {
+      throw new BadRequestError(
+        `Exist some lecture have created, you should update lecture from page ;${JSON.stringify(
+          existedLectures.map((item) => item.lecture_name)
+        )}`
+      )
+    }
 
-  private async handleStoreFile(source: string) {
-    const vocabulariesData = await this.processCsvFile(source)
-    let listLectureName = vocabulariesData.map((item) => item.lectureName)
-    const existedLectures = (await LectureModel.find().lean()).map(
-      (item) => item.lecture_name
-    )
-    const needSaveLectures = [...new Set(listLectureName)]
-      .filter((lecture) => !existedLectures.includes(lecture))
-      .map((item) => {
-        return {
-          lecture_name: item
-        }
-      })
+    const needSaveLectures = listLectureName.map((item) => {
+      return {
+        lecture_name: item
+      }
+    })
 
     if (needSaveLectures && needSaveLectures.length > 0) {
-      await LectureModel.insertMany(needSaveLectures)
+      await LectureModel.insertMany(needSaveLectures, opts)
     }
-    const lectures = await LectureModel.find().lean()
+    const lectures = await LectureModel.find().session(session).lean()
 
     const existedVocabularies = await VocabularyModel.find().lean()
 
     const vocabulariesNeedSave: (ICreateVocabularyDAO | undefined)[] =
       vocabulariesData
         .map((voca) => {
-          const lectureId = lectures
-            .find((lecture) => lecture.lecture_name === voca.lectureName)
-            ?._id.toString()
+          const lecture = lectures.find(
+            (lecture) => lecture.lecture_name === voca.lectureName
+          )
 
-          if (lectureId) {
+          if (lecture) {
             return {
-              lecture: lectureId,
+              lecture: lecture._id.toString(),
+              lectureName: lecture.lecture_name,
               phonetic_display_language: voca.phonetic,
               text_translate: voca.textTranslate,
               title_display_language: voca.titleDisplayLanguage,
@@ -122,7 +156,31 @@ export default class FileService {
                 voca?.lecture?.toString() === item.lecture
             )
         )
-    const vocaImports = await VocabularyModel.insertMany(vocabulariesNeedSave)
+
+    const uniqueKeySet = new Set()
+    const listWrongOrder: string[] = []
+
+    vocabulariesNeedSave.forEach((item) => {
+      const key = `${item?.number_order}_${item?.lecture}`
+      if (uniqueKeySet.has(key)) {
+        item?.lectureName && listWrongOrder.push(item.lectureName)
+      } else {
+        uniqueKeySet.add(key)
+      }
+    })
+
+    if (listWrongOrder.length > 0) {
+      throw new BadRequestError(
+        `Duplicate number order on lectures: ;${JSON.stringify(listWrongOrder)}`
+      )
+    }
+
+    const vocaImports = await VocabularyModel.insertMany(
+      vocabulariesNeedSave,
+      opts
+    )
+    await session.commitTransaction()
+    session.endSession()
     return vocaImports
   }
 }

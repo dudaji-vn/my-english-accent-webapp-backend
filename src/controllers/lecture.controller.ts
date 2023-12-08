@@ -1,7 +1,11 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
 import LectureService from '../services/lecture.service'
-import { ILectureDTO } from '../interfaces/dto/lecture.dto'
+import {
+  IChangeStatusLectureRequest,
+  IFormLectureAndVocabularyRequest,
+  ILectureDTO
+} from '../interfaces/dto/lecture.dto'
 
 @injectable()
 export default class LectureController {
@@ -14,9 +18,14 @@ export default class LectureController {
     const data = await this.lectureService.getAllLecturesForAdmin()
     return res.success(data)
   }
-  async addOrUpdateLecture(req: IRequest, res: IResponse) {
-    const payload = req.body as ILectureDTO
-    const data = await this.lectureService.addOrUpdateLecture(payload)
+  async addLectureAndVocabulary(req: IRequest, res: IResponse) {
+    const payload = req.body as IFormLectureAndVocabularyRequest
+    const data = await this.lectureService.addLectureAndVocabulary(payload)
+    return res.success(data)
+  }
+  async changeStatusLecture(req: IRequest, res: IResponse) {
+    const payload = req.body as IChangeStatusLectureRequest
+    const data = await this.lectureService.changeStatusLecture(payload)
     return res.success(data)
   }
 }
