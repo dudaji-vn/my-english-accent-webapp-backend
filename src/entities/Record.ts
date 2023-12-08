@@ -17,6 +17,10 @@ const recordSchema = new mongoose.Schema(
     voice_src: {
       type: String,
       required: true
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false
     }
   },
   {

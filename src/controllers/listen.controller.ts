@@ -20,7 +20,6 @@ export default class ListenController {
     return res.success(result)
   }
   async createOrUpdatePlaylist(req: IRequest, res: IResponse) {
-    console.log(req.body)
     const payload = req.body as IPlaylistRequest
     payload.userId = req.user._id
     const result = await this.listenService.createOrUpdatePlaylist(payload)
