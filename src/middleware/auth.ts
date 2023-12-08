@@ -2,11 +2,9 @@ import { NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 import UserModel from '../entities/User'
 import { IRequest, IResponse } from '../interfaces/common'
-const auth = async (
-  req: IRequest,
-  res: IResponse,
-  next: NextFunction
-) => {
+import UserAdminModel from '../entities/UserAdmin'
+import { UnAuthorizeError } from './error'
+const auth = async (req: IRequest, res: IResponse, next: NextFunction) => {
   try {
     let token = req.header('Authorization')
 
@@ -22,11 +20,17 @@ const auth = async (
     const decoded = jwt.verify(token, tokenSecret) as any
 
     if (!decoded) {
-      return res
-        .status(400)
-        .json({ message: 'Invalid Authentication.' })
+      return res.status(400).json({ message: 'Invalid Authentication.' })
     }
-
+    if (decoded.username === 'admin') {
+      const user = await UserAdminModel.findById(decoded.userId)
+      if (!user) {
+        throw new UnAuthorizeError('user is not admin')
+      }
+      req.user = user
+      next()
+      return
+    }
     const user = await UserModel.findOne({ _id: decoded.userId })
     if (!user) {
       throw new Error('user not found in system')

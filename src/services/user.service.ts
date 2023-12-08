@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { injectable } from 'tsyringe'
-import { StageExercise } from '../const/common'
+import { STATUS_LECTURE, StageExercise } from '../const/common'
 import { convertToEnrollmentDTO } from '../coverter/enrollment.mapping'
 import {
   convertToUserDTO,
@@ -94,6 +94,7 @@ export default class UserService extends BaseService {
         },
         {
           $match: {
+            // 'status':STATUS_LECTURE.PUBLIC,
             'enrollments.user': { $ne: new mongoose.Types.ObjectId(me) }
           }
         },

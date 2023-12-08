@@ -16,6 +16,7 @@ export interface ICreateVocabularyDAO {
   number_order?: number
   text_translate: ITextTranslate
   lecture: string
+  lectureName?: string
 }
 export interface INativeVocabularyDAO {
   native_language: string
