@@ -10,6 +10,7 @@ import challengeRouter from './challenge.router'
 import recordRouter from './record.router'
 import vocabularyRouter from './vocabulary.router'
 import listenRouter from './listen.router'
+import dashboardRouter from './dashboard.router'
 
 const apiRouterV1 = express.Router()
 
@@ -53,6 +54,10 @@ const listApi = [
   {
     path: PATH.listen,
     router: listenRouter
+  },
+  {
+    path: PATH.dashboard,
+    router: dashboardRouter
   }
 ]
 listApi.forEach((item) => {

@@ -14,12 +14,22 @@ import UserAdminModel from '../entities/UserAdmin'
 @injectable()
 export default class FileService {
   async importDataFromScript() {
+    //const source = './resource/MEA-Voca-Lecture-23-11.csv'
+    //const source = './resource/MEA-Voca-Lecture-50-pattern.csv'
     const source = './resource/MEA-Voca-Workplace-Sentences.csv'
+
     const stream = fs.createReadStream(source)
     const parser = fastCsv.parseStream(stream)
-
-    // const result = await this.handleStoreFile(parser)
-    // return result
+    const session = await startSession()
+    session.startTransaction()
+    try {
+      const result = await this.handleStoreFile(parser, session)
+      return result
+    } catch (err) {
+      await session.abortTransaction()
+      session.endSession()
+      throw err
+    }
   }
   async uploadLectureAndVocabularyFromCsv(file: Express.Multer.File) {
     const csvData = file.buffer.toString('utf8')

@@ -72,9 +72,7 @@ export default class LectureService {
           status === 'Published' ? STATUS_LECTURE.PUBLIC : STATUS_LECTURE.DRAFT,
         published: status === 'Published' ? new Date() : null
       })
-      await VocabularyModel.deleteMany({
-        lecture: lecture._id
-      })
+
       for (const voca of listVocabulary) {
         await VocabularyModel.findOneAndUpdate(
           {
