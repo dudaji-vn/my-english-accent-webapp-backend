@@ -25,7 +25,14 @@ app.use(function (req: Request, res: Response, next: NextFunction) {
 })
 
 app.get('/', (req: Request, res: Response) => {
-  return (res as IResponse).success('Hello api')
+  const url = process.env.MONGODB_URL
+  let type = ''
+  if (url && url.includes('production')) {
+    type = 'production'
+  } else if (url && url.includes('qa')) {
+    type = 'qa'
+  }
+  return (res as IResponse).success(`Hello api production ${type}`)
 })
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

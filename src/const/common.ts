@@ -19,6 +19,7 @@ export const STATUS_LECTURE = {
   DRAFT: 0,
   PUBLIC: 1
 }
+
 export enum StageExercise {
   Open = 0,
   Inprogress = 1,

@@ -24,4 +24,5 @@ authRouter.get(
   auth,
   catchAsync(authController.getProfile.bind(authController))
 )
+
 export default authRouter
