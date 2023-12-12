@@ -94,7 +94,7 @@ export default class UserService extends BaseService {
         },
         {
           $match: {
-            // 'status':STATUS_LECTURE.PUBLIC,
+            status: STATUS_LECTURE.PUBLIC,
             'enrollments.user': { $ne: new mongoose.Types.ObjectId(me) }
           }
         },
