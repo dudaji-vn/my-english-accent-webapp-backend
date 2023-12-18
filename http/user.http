@@ -27,3 +27,7 @@ Content-Type: application/json
    "enrollmentId":"654c86551860dada50ac77ad",
    "lectureId": "6540bd721860dada50828c4d"
 }
+
+###
+GET  http://localhost:5000/api/dashboard/getTopUserCompleteLecture?country=vn
+

@@ -16,7 +16,17 @@ dashboardRouter.get(
   auth,
   catchAsync(dashboardController.getAnalyst.bind(dashboardController))
 )
+dashboardRouter.get(
+  '/getTopUserCompleteLecture',
 
+  catchAsync(
+    dashboardController.getTopUserCompleteLecture.bind(dashboardController)
+  )
+)
+dashboardRouter.get(
+  '/getTop5Lectures',
+  catchAsync(dashboardController.getTop5Lectures.bind(dashboardController))
+)
 dashboardRouter.get(
   '/syncData',
   catchAsync(dashboardController.syncData.bind(dashboardController))
