@@ -12,7 +12,17 @@ const app = express()
 app.use(express.json())
 app.use(
   cors({
-    origin: '*'
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'https://ttalk.vercel.app',
+      'https://wd4dz44x-3000.asse.devtunnels.ms',
+      'https://wd4dz44x-3001.asse.devtunnels.ms',
+      'https://test-ttalk.onrender.com',
+      'https://ttalk.onrender.com/record',
+      'https://test-admin-ttalk.onrender.com',
+      'https://admin-ttalk.onrender.com'
+    ]
   })
 )
 
