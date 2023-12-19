@@ -9,5 +9,6 @@ export const PATH = {
   record: '/record',
   vocabulary: '/vocabulary',
   listen: '/listen',
-  dashboard: '/dashboard'
+  dashboard: '/dashboard',
+  google: '/google'
 }
