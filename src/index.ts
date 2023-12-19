@@ -19,7 +19,7 @@ app.use(
       'https://wd4dz44x-3000.asse.devtunnels.ms',
       'https://wd4dz44x-3001.asse.devtunnels.ms',
       'https://test-ttalk.onrender.com',
-      'https://ttalk.onrender.com/record',
+      'https://ttalk.onrender.com',
       'https://test-admin-ttalk.onrender.com',
       'https://admin-ttalk.onrender.com'
     ]
@@ -36,13 +36,13 @@ app.use(function (req: Request, res: Response, next: NextFunction) {
 
 app.get('/', (req: Request, res: Response) => {
   const url = process.env.MONGODB_URL
-  let type = ''
+  let type = 'dev'
   if (url && url.includes('production')) {
     type = 'production'
   } else if (url && url.includes('qa')) {
     type = 'qa'
   }
-  return (res as IResponse).success(`Hello api production ${type}`)
+  return (res as IResponse).success(`Hello api from ${type}`)
 })
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
