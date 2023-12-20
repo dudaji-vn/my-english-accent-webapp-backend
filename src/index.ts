@@ -6,7 +6,12 @@ import mongoose, { ConnectOptions } from 'mongoose'
 import { IResponse } from './interfaces/common'
 import customResponse from './middleware/customResponse'
 import apiRouterV1 from './router/v1/api.router'
-dotenv.config()
+if (process.env.NODE_ENV) {
+  dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
+} else {
+  dotenv.config()
+}
+
 const app = express()
 
 app.use(express.json())
@@ -20,8 +25,8 @@ app.use(
       'https://wd4dz44x-3001.asse.devtunnels.ms',
       'https://test-ttalk.onrender.com',
       'https://ttalk.onrender.com',
-      'https://test-admin-ttalk.onrender.com',
-      'https://admin-ttalk.onrender.com'
+      'https://admin-ttalk.onrender.com',
+      'https://test-adminttalk.onrender.com'
     ]
   })
 )
@@ -57,7 +62,7 @@ if (mongoUrl) {
       useUnifiedTopology: true
     } as ConnectOptions)
     .then(() => {
-      console.log('Connected to mongo')
+      console.log(`Connected to mongo ${process.env.NODE_ENV}`)
     })
     .catch((err) => {
       console.log(err)

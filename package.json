@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec ts-node src/index.ts",
-    "build": "rimraf dist && tsc",
-    "start-prod": "node dist/index.js"
+    "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "start-test": "NODE_ENV=test nodemon --exec ts-node src/index.ts",
+    "start-prod": "nodemon --exec ts-node src/index.ts",
+    "build": "rimraf dist && tsc"
   },
   "author": "Ho Quang Linh",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "node": ">=14.20.1"
   },
   "dependencies": {
+    "@google-cloud/speech": "^6.1.0",
     "@google-cloud/text-to-speech": "^5.0.1",
     "@types/express": "^4.17.17",
     "@types/mongoose": "^5.11.97",
