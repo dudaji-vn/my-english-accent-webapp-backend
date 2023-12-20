@@ -18,6 +18,7 @@ const uploadFile = (fieldName: string) => {
       })
     } catch (err) {
       if (err instanceof Error) {
+        console.log(err)
         return res.error(500, err.message, err.stack)
       }
       return res.error(500, 'Uncaught Error ', '')
