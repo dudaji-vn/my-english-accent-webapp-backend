@@ -2,6 +2,7 @@ import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
 import GoogleService from '../services/google.service'
 import { ITextToSpeakDTO } from '../interfaces/dto/google.dto'
+import { BadRequestError } from '../middleware/error'
 
 @injectable()
 export default class GoogleController {
@@ -12,7 +13,10 @@ export default class GoogleController {
     return res.success(data)
   }
   async speakToText(req: IRequest, res: IResponse) {
-    const data = await this.googleService.speakToText()
+    if (!req.file) {
+      throw new BadRequestError('You missing file')
+    }
+    const data = await this.googleService.speakToText(req.file)
     return res.success(data)
   }
 }
