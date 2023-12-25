@@ -1,6 +1,6 @@
 // @ts-nocheck
 import mongoose, { Mongoose } from 'mongoose'
-import { StageExercise } from '../const/common'
+import { STATUS_LECTURE, StageExercise } from '../const/common'
 import { convertToLectureDTO } from '../coverter/lecture.mapping'
 import { convertToUserDTOWithoutAuth } from '../coverter/user.mapping'
 import {
@@ -49,8 +49,7 @@ export class ListenService {
     const userFinishedLecture = await EnrollmentModel.find({
       user: { $in: favoriteUserIds },
       stage: StageExercise.Close,
-      lecture:new mongoose.Types.ObjectId(lectureId)
-      
+      lecture: new mongoose.Types.ObjectId(lectureId)
     }).lean()
     const userIds = userFinishedLecture.map((item) => item.user.toString())
     const records = await RecordModel.find({
@@ -95,6 +94,9 @@ export class ListenService {
       },
       {
         $unwind: '$lectureInfo'
+      },
+      {
+        $match: { 'lectureInfo.status': STATUS_LECTURE.PUBLIC }
       },
       {
         $group: {
@@ -202,7 +204,8 @@ export class ListenService {
   async getPlaylistSummary(payload: IPlaylistSummary) {
     const { favoriteLectureIds, favoriteUserIds } = payload
     const lectures = await LectureModel.find({
-      _id: { $in: favoriteLectureIds }
+      _id: { $in: favoriteLectureIds },
+      status: STATUS_LECTURE.PUBLIC
     })
     const enrollmentByFavoriteLectures = await EnrollmentModel.find({
       lecture: { $in: favoriteLectureIds }
