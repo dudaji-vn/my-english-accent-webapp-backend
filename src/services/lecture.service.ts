@@ -20,7 +20,8 @@ export default class LectureService {
     )
     const distinctLectureIds = [...new Set(listLectureIds)]
     const lectures = await LectureModel.find({
-      _id: { $in: distinctLectureIds }
+      _id: { $in: distinctLectureIds },
+      status: STATUS_LECTURE.PUBLIC
     }).sort({ created: -1 })
 
     return lectures.map((item: any) => convertToLectureDTO(item))

@@ -1,6 +1,6 @@
 import { injectable } from 'tsyringe'
 import VocabularyModel from '../entities/Vocabulary'
-import { StageExercise } from '../const/common'
+import { STATUS_LECTURE, StageExercise } from '../const/common'
 import {
   IVocaByLectureRequest,
   IRecordRequest,
@@ -21,7 +21,8 @@ export default class RecordService {
     const aggregateQuery = [
       {
         $match: {
-          _id: new mongoose.Types.ObjectId(lectureId)
+          _id: new mongoose.Types.ObjectId(lectureId),
+          status: STATUS_LECTURE.PUBLIC
         }
       },
       {

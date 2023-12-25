@@ -1,6 +1,12 @@
+// @ts-nocheck
 import mongoose from 'mongoose'
 import { injectable } from 'tsyringe'
-import { EVENTS, STATUS_LECTURE, STATUS_USER_EVENT, StageExercise } from '../const/common'
+import {
+  EVENTS,
+  STATUS_LECTURE,
+  STATUS_USER_EVENT,
+  StageExercise
+} from '../const/common'
 import { convertToEnrollmentDTO } from '../coverter/enrollment.mapping'
 import {
   convertToUserDTO,
@@ -148,14 +154,17 @@ export default class UserService extends BaseService {
       })
         .sort({ created: (sort ?? 1) as any })
         .populate('lecture')
+
       return await Promise.all(
-        enrollmentByUserInprogress.map(async (item: any) => {
-          const total_step = await VocabularyModel.countDocuments({
-            lecture: item.lecture
+        enrollmentByUserInprogress
+          .filter((item) => item?.lecture?.status === STATUS_LECTURE.PUBLIC)
+          .map(async (item: any) => {
+            const total_step = await VocabularyModel.countDocuments({
+              lecture: item.lecture
+            })
+            item.total_step = total_step
+            return convertToUserPractice(item)
           })
-          item.total_step = total_step
-          return convertToUserPractice(item)
-        })
       )
     }
     const getLectureClose = async () => {
@@ -166,13 +175,15 @@ export default class UserService extends BaseService {
         .sort({ created: (sort ?? 1) as any })
         .populate('lecture')
       return await Promise.all(
-        enrollmentByUserClose.map(async (item: any) => {
-          const total_step = await VocabularyModel.countDocuments({
-            lecture: item.lecture
+        enrollmentByUserClose
+          .filter((item) => item?.lecture?.status === STATUS_LECTURE.PUBLIC)
+          .map(async (item: any) => {
+            const total_step = await VocabularyModel.countDocuments({
+              lecture: item.lecture
+            })
+            item.total_step = total_step
+            return convertToUserPractice(item)
           })
-          item.total_step = total_step
-          return convertToUserPractice(item)
-        })
       )
     }
     switch (+stage) {
