@@ -4,7 +4,6 @@ import { container } from 'tsyringe'
 import auth from '../../middleware/auth'
 import { catchAsync } from '../../middleware/catchAsync'
 import UserController from '../../controllers/user.controller'
-import { catchAsync } from '../../middleware/catchAsync'
 const userController = container.resolve<UserController>(UserController)
 
 const userRouter = express.Router()
@@ -22,6 +21,11 @@ userRouter.put(
   '/addOrUpdateEnrollment',
   auth,
   catchAsync(userController.addOrUpdateEnrollment.bind(userController))
+)
+userRouter.get(
+  '/checkUserCompleteEvent',
+  auth,
+  catchAsync(userController.checkUserCompleteEvent.bind(userController))
 )
 
 export default userRouter

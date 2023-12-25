@@ -2,7 +2,7 @@ import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
 import UserService from '../services/user.service'
 import { IUserEnrollRequest } from '../interfaces/dto/user.dto'
-import { StageExercise } from '../const/common'
+import { EVENTS, StageExercise } from '../const/common'
 
 @injectable()
 export default class UserController {
@@ -27,5 +27,13 @@ export default class UserController {
       parseInt((sort ?? -1) as any)
     )
     return res.success(result)
+  }
+  async checkUserCompleteEvent(req: IRequest, res: IResponse) {
+    const { _id, native_language } = req.user
+    const result = await this.userService.checkUserWinEvent({
+      user_id: _id,
+      language: native_language,
+    })
+    return res.success(result);
   }
 }

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { injectable } from 'tsyringe'
-import { STATUS_LECTURE, StageExercise } from '../const/common'
+import { EVENTS, STATUS_LECTURE, STATUS_USER_EVENT, StageExercise } from '../const/common'
 import { convertToEnrollmentDTO } from '../coverter/enrollment.mapping'
 import {
   convertToUserDTO,
@@ -13,6 +13,7 @@ import VocabularyModel from '../entities/Vocabulary'
 import { IUserEnrollRequest } from '../interfaces/dto/user.dto'
 import { BadRequestError } from '../middleware/error'
 import { BaseService } from './base.service'
+import UserWinEventModel from '../entities/UserWinEvent'
 
 @injectable()
 export default class UserService extends BaseService {
@@ -184,5 +185,41 @@ export default class UserService extends BaseService {
       default:
         return (await getLecturesOpen()).filter((item) => item.totalStep > 0)
     }
+  }
+  async checkUserWinEvent({ user_id, language}: { user_id: string, language: string }) {
+    const MAX_WINNER = 50;
+    const NUM_LECTURE_ARCHIVE = 10;
+    const EVENT = language == 'vn' ? EVENTS.GRAB_GIFT_VN : EVENTS.GRAB_GIFT_KR;
+
+    const isUserWin = await UserWinEventModel.findOne({ event: EVENT, user: user_id });
+    if(isUserWin) {
+      return {
+        status: STATUS_USER_EVENT.ALREADLY_WIN,
+        message: 'You have already won this event'
+      };
+    }
+
+    const numUserWin = await UserWinEventModel.countDocuments({ event: EVENT, user: user_id });
+    if(numUserWin >= MAX_WINNER) {
+      return {
+        status: STATUS_USER_EVENT.MAX_WINNER,
+        message: 'This event has reached the maximum number of winners'
+      };
+    }
+
+    const numLectureUserComplete = await EnrollmentModel.countDocuments({ user: user_id, stage: StageExercise.Close });
+    if(numLectureUserComplete == NUM_LECTURE_ARCHIVE) {
+      await UserWinEventModel.create({ event: EVENT, user: user_id });
+      return {
+        status: STATUS_USER_EVENT.WIN,
+        message: 'You have won this event'
+      };
+    }
+
+    return {
+      status: STATUS_USER_EVENT.NOT_COMPLETE,
+      message: 'You have not completed all the lectures'
+    };
+
   }
 }
