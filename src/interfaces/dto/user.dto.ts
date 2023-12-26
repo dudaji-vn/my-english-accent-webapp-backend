@@ -8,7 +8,6 @@ export interface IUserAdminDTO {
 }
 export interface IUserDTO {
   userId: string
-  googleId: string
   email: string
   avatarUrl: string
   displayLanguage: string

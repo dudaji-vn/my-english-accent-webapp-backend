@@ -7,13 +7,12 @@ export function convertToUserDAO(user: IUserDTO): IUserDAO {
     avatar_url: user.avatarUrl,
     display_language: user.displayLanguage,
     email: user.email,
-    google_id: user.googleId,
     native_language: user.nativeLanguage,
     nick_name: user.nickName
   }
 }
 
-export function convertToUserDTO(user: IUserDAO): Omit<IUserDTO, 'googleId'> {
+export function convertToUserDTO(user: IUserDAO): IUserDTO {
   return {
     userId: user._id ?? '',
     avatarUrl: user.avatar_url,
@@ -25,7 +24,7 @@ export function convertToUserDTO(user: IUserDAO): Omit<IUserDTO, 'googleId'> {
 }
 export function convertToUserDTOWithoutAuth(
   user: IUserDAO
-): Omit<IUserDTO, 'googleId' | 'email'> {
+): Omit<IUserDTO, 'email'> {
   return {
     userId: user._id ?? '',
     avatarUrl: user.avatar_url,

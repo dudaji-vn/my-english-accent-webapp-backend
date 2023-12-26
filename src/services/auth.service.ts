@@ -48,7 +48,7 @@ export default class AuthService extends BaseService {
     }
   }
   async register(userDto: IUserDTO): Promise<any> {
-    const { email, googleId } = userDto
+    const { email } = userDto
     const requiredFields = [
       'email',
       'nickName',

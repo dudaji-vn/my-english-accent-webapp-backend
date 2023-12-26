@@ -34,7 +34,7 @@ export interface IRecordByLectureDTO extends ILectureDTO {
 }
 
 export interface IRecordOfUser extends IVocabularyDTO {
-  recordUser: Omit<IUserDTO & IRecordDTO, 'googleId' | 'email'>[]
+  recordUser: Omit<IUserDTO & IRecordDTO, 'email'>[]
 }
 
 export interface IRecordToListen {

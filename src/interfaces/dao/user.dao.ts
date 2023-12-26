@@ -1,6 +1,5 @@
 export interface IUserDAO {
   _id?: string
-  google_id: string
   email: string
   avatar_url: string
   display_language: string
