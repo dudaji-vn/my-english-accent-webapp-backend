@@ -27,5 +27,11 @@ userRouter.get(
   auth,
   catchAsync(userController.checkUserCompleteEvent.bind(userController))
 )
+userRouter.put(
+  '/addOrUpdateGoogleTranscript',
+  auth,
+  catchAsync(userController.addOrUpdateGoogleTranscript.bind(userController))
+)
+
 
 export default userRouter

@@ -42,3 +42,12 @@ export interface IEnrollmentResponse {
   lectureId: string
   enrollmentId: string
 }
+
+export interface IAddOrUpdateGoogleTranscriptRequest {
+  recordId: string
+  transcripts: {
+    transcript: string
+    confidence: number
+  }[]
+  finalTranscript: string
+}
