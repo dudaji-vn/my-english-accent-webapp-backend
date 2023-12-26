@@ -75,7 +75,7 @@ export function convertToDetailVocabularyByLecture(item: any) {
 
 export function convertToRecordOfUser(
   item: any
-): Omit<IUserDTO & IRecordDTO, 'googleId' | 'email'> {
+): Omit<IUserDTO & IRecordDTO, 'email'> {
   return {
     avatarUrl: item.user.avatar_url,
     challengeId: item.challenge,

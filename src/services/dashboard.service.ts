@@ -1,15 +1,10 @@
 import { injectable } from 'tsyringe'
 import UserModel from '../entities/User'
 import LectureModel from '../entities/Lecture'
-import RecordModel from '../entities/Record'
 
-import mongoose from 'mongoose'
 import EnrollmentModel from '../entities/Enrollment'
-import { ENROLLMENT_STAGE, StageExercise } from '../const/common'
-import {
-  convertToUserDTO,
-  convertToUserDTOWithoutAuth
-} from '../coverter/user.mapping'
+import { ENROLLMENT_STAGE } from '../const/common'
+import { convertToUserDTO } from '../coverter/user.mapping'
 import { IUserDAO } from '../interfaces/dao/user.dao'
 
 @injectable()

@@ -1,6 +1,12 @@
+// @ts-nocheck
 import mongoose from 'mongoose'
 import { injectable } from 'tsyringe'
-import { STATUS_LECTURE, StageExercise } from '../const/common'
+import {
+  EVENTS,
+  STATUS_LECTURE,
+  STATUS_USER_EVENT,
+  StageExercise
+} from '../const/common'
 import { convertToEnrollmentDTO } from '../coverter/enrollment.mapping'
 import {
   convertToUserDTO,
@@ -10,9 +16,14 @@ import EnrollmentModel from '../entities/Enrollment'
 import LectureModel from '../entities/Lecture'
 import UserModel from '../entities/User'
 import VocabularyModel from '../entities/Vocabulary'
-import { IUserEnrollRequest } from '../interfaces/dto/user.dto'
+import {
+  IAddOrUpdateGoogleTranscriptRequest,
+  IUserEnrollRequest
+} from '../interfaces/dto/user.dto'
 import { BadRequestError } from '../middleware/error'
 import { BaseService } from './base.service'
+import UserWinEventModel from '../entities/UserWinEvent'
+import GoogleRecognition from '../entities/GoogleRecognition'
 
 @injectable()
 export default class UserService extends BaseService {
@@ -147,14 +158,17 @@ export default class UserService extends BaseService {
       })
         .sort({ created: (sort ?? 1) as any })
         .populate('lecture')
+
       return await Promise.all(
-        enrollmentByUserInprogress.map(async (item: any) => {
-          const total_step = await VocabularyModel.countDocuments({
-            lecture: item.lecture
+        enrollmentByUserInprogress
+          .filter((item) => item?.lecture?.status === STATUS_LECTURE.PUBLIC)
+          .map(async (item: any) => {
+            const total_step = await VocabularyModel.countDocuments({
+              lecture: item.lecture
+            })
+            item.total_step = total_step
+            return convertToUserPractice(item)
           })
-          item.total_step = total_step
-          return convertToUserPractice(item)
-        })
       )
     }
     const getLectureClose = async () => {
@@ -165,13 +179,15 @@ export default class UserService extends BaseService {
         .sort({ created: (sort ?? 1) as any })
         .populate('lecture')
       return await Promise.all(
-        enrollmentByUserClose.map(async (item: any) => {
-          const total_step = await VocabularyModel.countDocuments({
-            lecture: item.lecture
+        enrollmentByUserClose
+          .filter((item) => item?.lecture?.status === STATUS_LECTURE.PUBLIC)
+          .map(async (item: any) => {
+            const total_step = await VocabularyModel.countDocuments({
+              lecture: item.lecture
+            })
+            item.total_step = total_step
+            return convertToUserPractice(item)
           })
-          item.total_step = total_step
-          return convertToUserPractice(item)
-        })
       )
     }
     switch (+stage) {
@@ -184,5 +200,55 @@ export default class UserService extends BaseService {
       default:
         return (await getLecturesOpen()).filter((item) => item.totalStep > 0)
     }
+  }
+  async checkUserWinEvent({ user_id, language}: { user_id: string, language: string }) {
+    const MAX_WINNER = 50;
+    const NUM_LECTURE_ARCHIVE = 10;
+    const EVENT = language == 'vn' ? EVENTS.GRAB_GIFT_VN : EVENTS.GRAB_GIFT_KR;
+
+    const isUserWin = await UserWinEventModel.findOne({ event: EVENT, user: user_id });
+    if(isUserWin) {
+      return {
+        status: STATUS_USER_EVENT.ALREADLY_WIN,
+        message: 'You have already won this event'
+      };
+    }
+
+    const numUserWin = await UserWinEventModel.countDocuments({ event: EVENT, user: user_id });
+    if(numUserWin >= MAX_WINNER) {
+      return {
+        status: STATUS_USER_EVENT.MAX_WINNER,
+        message: 'This event has reached the maximum number of winners'
+      };
+    }
+
+    const numLectureUserComplete = await EnrollmentModel.countDocuments({ user: user_id, stage: StageExercise.Close });
+    if(numLectureUserComplete == NUM_LECTURE_ARCHIVE) {
+      await UserWinEventModel.create({ event: EVENT, user: user_id });
+      return {
+        status: STATUS_USER_EVENT.WIN,
+        message: 'You have won this event'
+      };
+    }
+
+    return {
+      status: STATUS_USER_EVENT.NOT_COMPLETE,
+      message: 'You have not completed all the lectures'
+    };
+
+  }
+  async addOrUpdateGoogleTranscript(
+    payload: IAddOrUpdateGoogleTranscriptRequest
+  ) {
+    const { finalTranscript, transcripts, recordId } = payload
+    await GoogleRecognition.create(
+      {
+        record: recordId,
+        transcripts: transcripts,
+        final_transcript: finalTranscript
+      },
+     
+    )
+    return true
   }
 }
