@@ -1,5 +1,5 @@
 export interface IUserLoginDTO {
-  googleId: string
+  googleToken: string
   email: string
 }
 export interface IUserAdminDTO {
@@ -8,7 +8,6 @@ export interface IUserAdminDTO {
 }
 export interface IUserDTO {
   userId: string
-  googleId: string
   email: string
   avatarUrl: string
   displayLanguage: string
