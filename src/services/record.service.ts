@@ -92,25 +92,25 @@ export default class RecordService {
     if (!vocabularyId || !voiceSrc) {
       throw new BadRequestError('Fields required: vocabularyId, voiceSrc')
     }
-
+    let record
     if (!challengeId) {
-      await RecordModel.findOneAndUpdate(
+      record = await RecordModel.findOneAndUpdate(
         {
           user: userId,
           vocabulary: vocabularyId,
           challenge: null
         },
         { voice_src: voiceSrc },
-        { upsert: true }
+        { upsert: true, new: true }
       )
     } else {
-      await RecordModel.findOneAndUpdate(
+      record = await RecordModel.findOneAndUpdate(
         { user: userId, vocabulary: vocabularyId, challenge: challengeId },
         { voice_src: voiceSrc },
         { upsert: true }
       )
     }
 
-    return true
+    return record?._id
   }
 }

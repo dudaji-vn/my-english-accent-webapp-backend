@@ -16,10 +16,14 @@ import EnrollmentModel from '../entities/Enrollment'
 import LectureModel from '../entities/Lecture'
 import UserModel from '../entities/User'
 import VocabularyModel from '../entities/Vocabulary'
-import { IUserEnrollRequest } from '../interfaces/dto/user.dto'
+import {
+  IAddOrUpdateGoogleTranscriptRequest,
+  IUserEnrollRequest
+} from '../interfaces/dto/user.dto'
 import { BadRequestError } from '../middleware/error'
 import { BaseService } from './base.service'
 import UserWinEventModel from '../entities/UserWinEvent'
+import GoogleRecognition from '../entities/GoogleRecognition'
 
 @injectable()
 export default class UserService extends BaseService {
@@ -232,5 +236,19 @@ export default class UserService extends BaseService {
       message: 'You have not completed all the lectures'
     };
 
+  }
+  async addOrUpdateGoogleTranscript(
+    payload: IAddOrUpdateGoogleTranscriptRequest
+  ) {
+    const { finalTranscript, transcripts, recordId } = payload
+    await GoogleRecognition.create(
+      {
+        record: recordId,
+        transcripts: transcripts,
+        final_transcript: finalTranscript
+      },
+     
+    )
+    return true
   }
 }
