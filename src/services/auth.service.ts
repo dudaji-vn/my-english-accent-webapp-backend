@@ -54,7 +54,10 @@ export default class AuthService extends BaseService {
     if (!this.checkFieldsExist(userDto, requiredFields)) {
       throw new BadRequestError('Please input all fields')
     }
-
+   const isExistUser = await UserModel.findOne({email:email})
+   if(isExistUser) {
+    throw new BadRequestError('Email is exist')
+   }
     const user = new UserModel(convertToUserDAO(userDto))
     await user.save()
     const payload = { userId: user._id, email: email }
