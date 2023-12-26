@@ -1,5 +1,5 @@
 export interface IUserLoginDTO {
-  googleId: string
+  googleToken: string
   email: string
 }
 export interface IUserAdminDTO {

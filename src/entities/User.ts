@@ -8,8 +8,7 @@ const userSchema = new mongoose.Schema(
       required: true
     },
     google_id: {
-      type: String,
-      required: true
+      type: String
     },
     avatar_url: {
       type: String

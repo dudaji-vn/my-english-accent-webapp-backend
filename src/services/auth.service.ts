@@ -11,23 +11,29 @@ import { BadRequestError, UnAuthorizeError } from '../middleware/error'
 import { BaseService } from './base.service'
 import JwtService from './jwt.service'
 import UserAdminModel from '../entities/UserAdmin'
+import AuthenticatorService from './authenticator.service'
 
 @injectable()
 export default class AuthService extends BaseService {
-  constructor(private jwtService: JwtService) {
+  constructor(
+    private jwtService: JwtService,
+    private authenticator: AuthenticatorService
+  ) {
     super()
   }
 
   async login(userDto: IUserLoginDTO) {
-    const { googleId, email } = userDto
+    const { googleToken, email } = userDto
 
-    if (!googleId || !email) {
+    if (!email) {
       throw new UnAuthorizeError('user is not register')
     }
-
+    const isVerify = await this.authenticator.googleVerify(googleToken)
+    if (!isVerify) {
+      throw new UnAuthorizeError('user is not register')
+    }
     const user = await UserModel.findOne({
-      email: email,
-      google_id: googleId
+      email: email
     })
 
     if (!user) {
@@ -44,7 +50,6 @@ export default class AuthService extends BaseService {
   async register(userDto: IUserDTO): Promise<any> {
     const { email, googleId } = userDto
     const requiredFields = [
-      'googleId',
       'email',
       'nickName',
       'displayLanguage',
@@ -54,10 +59,10 @@ export default class AuthService extends BaseService {
     if (!this.checkFieldsExist(userDto, requiredFields)) {
       throw new BadRequestError('Please input all fields')
     }
-   const isExistUser = await UserModel.findOne({email:email})
-   if(isExistUser) {
-    throw new BadRequestError('Email is exist')
-   }
+    const isExistUser = await UserModel.findOne({ email: email })
+    if (isExistUser) {
+      throw new BadRequestError('Email is exist')
+    }
     const user = new UserModel(convertToUserDAO(userDto))
     await user.save()
     const payload = { userId: user._id, email: email }
