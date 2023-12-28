@@ -12,7 +12,6 @@ export default class DashboardController {
   }
   async getTopUserCompleteLecture(req: IRequest, res: IResponse) {
     const { country, numberLecture } = req.query as any
-    console.log(country)
     const data = await this.dashboardService.getTopUserCompleteLecture(
       country as string,
       parseInt(numberLecture)

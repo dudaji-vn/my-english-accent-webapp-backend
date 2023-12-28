@@ -94,6 +94,8 @@ export default class RecordService {
     }
     let record
     if (!challengeId) {
+      //if not found //case add=>add enrollment
+
       record = await RecordModel.findOneAndUpdate(
         {
           user: userId,
