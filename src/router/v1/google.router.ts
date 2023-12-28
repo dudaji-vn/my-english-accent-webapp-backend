@@ -1,7 +1,6 @@
 // @ts-nocheck
 import express from 'express'
 import { container } from 'tsyringe'
-
 import GoogleController from '../../controllers/google.controller'
 import auth from '../../middleware/auth'
 import { catchAsync } from '../../middleware/catchAsync'

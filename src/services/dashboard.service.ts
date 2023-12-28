@@ -1,7 +1,6 @@
 import { injectable } from 'tsyringe'
 import UserModel from '../entities/User'
 import LectureModel from '../entities/Lecture'
-
 import EnrollmentModel from '../entities/Enrollment'
 import { ENROLLMENT_STAGE } from '../const/common'
 import { convertToUserDTO } from '../coverter/user.mapping'

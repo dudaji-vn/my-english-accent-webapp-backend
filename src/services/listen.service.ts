@@ -1,5 +1,5 @@
 // @ts-nocheck
-import mongoose, { Mongoose } from 'mongoose'
+import mongoose from 'mongoose'
 import { STATUS_LECTURE, StageExercise } from '../const/common'
 import { convertToLectureDTO } from '../coverter/lecture.mapping'
 import { convertToUserDTOWithoutAuth } from '../coverter/user.mapping'

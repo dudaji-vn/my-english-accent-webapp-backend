@@ -1,18 +1,14 @@
-import { injectable } from 'tsyringe'
-import VocabularyModel from '../entities/Vocabulary'
-import { STATUS_LECTURE, StageExercise } from '../const/common'
-import {
-  IVocaByLectureRequest,
-  IRecordRequest,
-  IRecordByLectureRequest
-} from '../interfaces/dto/record.dto'
-import EnrollmentModel from '../entities/Enrollment'
-import { convertToVocabularyDTO } from '../coverter/vocabulary.mapping'
-import { BadRequestError } from '../middleware/error'
-import RecordModel from '../entities/Record'
 import mongoose from 'mongoose'
-import LectureModel from '../entities/Lecture'
+import { injectable } from 'tsyringe'
+import { STATUS_LECTURE } from '../const/common'
 import { convertToRecordsByLectureDTO } from '../coverter/record.mapping'
+import LectureModel from '../entities/Lecture'
+import RecordModel from '../entities/Record'
+import {
+  IRecordByLectureRequest,
+  IRecordRequest
+} from '../interfaces/dto/record.dto'
+import { BadRequestError } from '../middleware/error'
 
 @injectable()
 export default class RecordService {
@@ -94,8 +90,6 @@ export default class RecordService {
     }
     let record
     if (!challengeId) {
-      //if not found //case add=>add enrollment
-
       record = await RecordModel.findOneAndUpdate(
         {
           user: userId,

@@ -1,21 +1,17 @@
 import * as fastCsv from 'fast-csv'
+import { CsvParserStream, ParserRow } from 'fast-csv'
 import fs from 'fs'
+import { ClientSession, startSession } from 'mongoose'
 import { injectable } from 'tsyringe'
 import LectureModel from '../entities/Lecture'
 import VocabularyModel from '../entities/Vocabulary'
 import { ICreateVocabularyDAO } from '../interfaces/dao/vocabulary.dao'
 import { IVocabularyRow } from '../interfaces/dto/vocabulary.dto'
-import { CsvParserStream, ParserRow } from 'fast-csv'
-import { STATUS_LECTURE } from '../const/common'
 import { BadRequestError } from '../middleware/error'
-import { ClientSession, startSession } from 'mongoose'
-import UserAdminModel from '../entities/UserAdmin'
 
 @injectable()
 export default class FileService {
   async importDataFromScript() {
-    //const source = './resource/MEA-Voca-Lecture-23-11.csv'
-    //const source = './resource/MEA-Voca-Lecture-50-pattern.csv'
     const source = './resource/MEA-Voca-Workplace-Sentences.csv'
 
     const stream = fs.createReadStream(source)

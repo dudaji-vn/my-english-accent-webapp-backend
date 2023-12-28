@@ -1,30 +1,21 @@
 // @ts-nocheck
-import { injectable } from 'tsyringe'
-import LectureModel from '../entities/Lecture'
-import { convertToLectureDTO } from '../coverter/lecture.mapping'
 import mongoose from 'mongoose'
-import ChallengeModel from '../entities/Challenge'
+import { injectable } from 'tsyringe'
 import {
   convertToChallengeDisplayDTO,
-  convertToChallengeSummary,
   convertToDetailChallengeDTO
 } from '../coverter/challenge.mapping'
-import {
-  IRecordOfUser,
-  IRecordRequest,
-  IRecordToListen
-} from '../interfaces/dto/record.dto'
-import RecordModel from '../entities/Record'
-import { BadRequestError } from '../middleware/error'
-import ClubVocabularyModel from '../entities/ClubVocabulary'
+import { convertToUserDTO } from '../coverter/user.mapping'
 import {
   convertToRecordOfUser,
   convertToVocabularyDTO,
   convertToVocabularyWithRecordedDTO
 } from '../coverter/vocabulary.mapping'
-import { convertToUserDTO } from '../coverter/user.mapping'
+import ChallengeModel from '../entities/Challenge'
 import ClubModel from '../entities/Club'
-import { it } from 'node:test'
+import ClubVocabularyModel from '../entities/ClubVocabulary'
+import RecordModel from '../entities/Record'
+import { IRecordOfUser, IRecordToListen } from '../interfaces/dto/record.dto'
 
 @injectable()
 export default class ChallengeService {
