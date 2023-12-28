@@ -1,8 +1,7 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import FileService from '../services/file.service'
-import multer from 'multer'
 import { BadRequestError } from '../middleware/error'
+import FileService from '../services/file.service'
 
 @injectable()
 export default class FileController {

@@ -1,5 +1,4 @@
 import { injectable } from 'tsyringe'
-//const jwt = require('jsonwebtoken')
 import jwt from 'jsonwebtoken'
 @injectable()
 export default class JwtService {

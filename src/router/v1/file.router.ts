@@ -1,7 +1,6 @@
 // @ts-nocheck
 import express from 'express'
 import { container } from 'tsyringe'
-
 import { catchAsync } from '../../middleware/catchAsync'
 import FileController from '../../controllers/file.controller'
 const fileController = container.resolve<FileController>(FileController)

@@ -1,7 +1,6 @@
 import { injectable } from 'tsyringe'
 import UserModel from '../entities/User'
 import LectureModel from '../entities/Lecture'
-
 import EnrollmentModel from '../entities/Enrollment'
 import { ENROLLMENT_STAGE } from '../const/common'
 import { convertToUserDTO } from '../coverter/user.mapping'
@@ -46,6 +45,7 @@ export default class DashboardService {
         $limit: numberUser
       }
     ])
+
     const listUserIds = users.map((item) => item._id)
     const enrollments = await EnrollmentModel.find({
       user: { $in: listUserIds },
@@ -58,7 +58,6 @@ export default class DashboardService {
     return users
       .map((user: IUserDAO) => {
         const enrollment = enrollments.find((item) => {
-          console.log(user.completed_lecture_ids?.slice(0, numberLecture))
           return (
             item.user?.toString() === user._id?.toString() &&
             item.lecture?.toString() ===

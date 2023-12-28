@@ -11,18 +11,22 @@ const lectureRouter = express.Router()
 
 lectureRouter.get(
   '/all',
+  auth,
   catchAsync(lectureController.getAllLectures.bind(lectureController))
 )
 lectureRouter.get(
   '/allForAdmin',
+  auth,
   catchAsync(lectureController.getAllLecturesForAdmin.bind(lectureController))
 )
 lectureRouter.put(
   '/addLectureAndVocabulary',
+  auth,
   catchAsync(lectureController.addLectureAndVocabulary.bind(lectureController))
 )
 lectureRouter.put(
   '/changeStatusLecture',
+  auth,
   catchAsync(lectureController.changeStatusLecture.bind(lectureController))
 )
 export default lectureRouter

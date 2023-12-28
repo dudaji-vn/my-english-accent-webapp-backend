@@ -1,11 +1,10 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import LectureService from '../services/lecture.service'
 import {
   IChangeStatusLectureRequest,
-  IFormLectureAndVocabularyRequest,
-  ILectureDTO
+  IFormLectureAndVocabularyRequest
 } from '../interfaces/dto/lecture.dto'
+import LectureService from '../services/lecture.service'
 
 @injectable()
 export default class LectureController {

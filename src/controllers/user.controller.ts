@@ -1,11 +1,10 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import UserService from '../services/user.service'
 import {
   IAddOrUpdateGoogleTranscriptRequest,
   IUserEnrollRequest
 } from '../interfaces/dto/user.dto'
-import { EVENTS, StageExercise } from '../const/common'
+import UserService from '../services/user.service'
 
 @injectable()
 export default class UserController {

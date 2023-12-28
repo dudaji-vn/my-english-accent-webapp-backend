@@ -1,6 +1,5 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import ScriptService from '../services/script.service'
 import ClubService from '../services/club.service'
 import { IClubRequest } from '../interfaces/dto/club.dto'
 
