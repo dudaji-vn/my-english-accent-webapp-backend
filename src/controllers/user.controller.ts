@@ -22,11 +22,11 @@ export default class UserController {
     return res.success(result)
   }
   async getMyPractice(req: IRequest, res: IResponse) {
-    const { stage, sort } = req.query
+    const { stage } = req.query
     const result = await this.userService.getMyPractice(
       req.user._id,
       stage as any,
-      parseInt((sort ?? -1) as any)
+      1
     )
     return res.success(result)
   }
