@@ -130,7 +130,7 @@ export default class UserService extends BaseService {
             }
           }
         },
-        { $sort: { created: sort, lecture_name: sort } }
+        { $sort: { lecture_name: sort } }
       ]
       try {
         const lectures = await LectureModel.aggregate(
@@ -156,8 +156,7 @@ export default class UserService extends BaseService {
         user: me,
         stage: StageExercise.Inprogress
       })
-        .sort({ created: (sort ?? 1) as any })
-        .populate('lecture')
+      .populate('lecture')
 
       return await Promise.all(
         enrollmentByUserInprogress
@@ -175,9 +174,7 @@ export default class UserService extends BaseService {
       const enrollmentByUserClose = await EnrollmentModel.find({
         user: me,
         stage: StageExercise.Close
-      })
-        .sort({ created: (sort ?? 1) as any })
-        .populate('lecture')
+      }).populate('lecture')
       return await Promise.all(
         enrollmentByUserClose
           .filter((item) => item?.lecture?.status === STATUS_LECTURE.PUBLIC)
@@ -192,11 +189,13 @@ export default class UserService extends BaseService {
     }
     switch (+stage) {
       case StageExercise.Inprogress:
-        return (await getLecturesInProgress()).filter(
-          (item) => item.totalStep > 0
-        )
+        return (await getLecturesInProgress())
+          .filter((item) => item.totalStep > 0)
+          .sort((a, b) => a.lectureName.localeCompare(b.lectureName))
       case StageExercise.Close:
-        return (await getLectureClose()).filter((item) => item.totalStep > 0)
+        return (await getLectureClose())
+          .filter((item) => item.totalStep > 0)
+          .sort((a, b) => a.lectureName.localeCompare(b.lectureName))
       default:
         return (await getLecturesOpen()).filter((item) => item.totalStep > 0)
     }
@@ -243,10 +242,10 @@ export default class UserService extends BaseService {
     const { finalTranscript, transcripts, recordId } = payload
     await GoogleRecognition.create(
       {
-        record: recordId,
-        transcripts: transcripts,
-        final_transcript: finalTranscript
-      },
+      record: recordId,
+      transcripts: transcripts,
+      final_transcript: finalTranscript
+    },
      
     )
     return true
