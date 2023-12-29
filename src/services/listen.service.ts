@@ -162,12 +162,7 @@ export class ListenService {
             .includes(item.lectureId.toString())
         }
       })
-      .sort(
-        (a, b) =>
-          Number(b.isSelected) - Number(a.isSelected) ||
-          b.totalPeople * b.totalVocabularies -
-            a.totalPeople * a.totalVocabularies
-      )
+      .sort((a, b) => a.lectureName.localeCompare(b.lectureName))
   }
 
   async getUsersAvailable(
@@ -195,11 +190,7 @@ export class ListenService {
           ...convertToUserDTOWithoutAuth(user)
         }
       })
-      .sort(
-        (a, b) =>
-          Number(b.isSelected) - Number(a.isSelected) ||
-          b.numberCompletedLectures - a.numberCompletedLectures
-      )
+      .sort((a, b) => a.nickName.localeCompare(b.nickName))
   }
   async getPlaylistSummary(payload: IPlaylistSummary) {
     const { favoriteLectureIds, favoriteUserIds } = payload
