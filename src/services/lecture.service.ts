@@ -1,15 +1,13 @@
 import { injectable } from 'tsyringe'
-import LectureModel from '../entities/Lecture'
+import { STATUS_LECTURE } from '../const/common'
 import { convertToLectureDTO } from '../coverter/lecture.mapping'
-import { ILectureDAO } from '../interfaces/dao/lecture.dao'
+import LectureModel from '../entities/Lecture'
+import VocabularyModel from '../entities/Vocabulary'
 import {
   IChangeStatusLectureRequest,
-  IFormLectureAndVocabularyRequest,
-  ILectureDTO
+  IFormLectureAndVocabularyRequest
 } from '../interfaces/dto/lecture.dto'
 import { BadRequestError } from '../middleware/error'
-import VocabularyModel from '../entities/Vocabulary'
-import { STATUS_LECTURE } from '../const/common'
 
 @injectable()
 export default class LectureService {

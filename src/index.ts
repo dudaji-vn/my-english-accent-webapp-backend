@@ -7,7 +7,6 @@ import { IResponse } from './interfaces/common'
 import customResponse from './middleware/customResponse'
 import apiRouterV1 from './router/v1/api.router'
 if (process.env.NODE_ENV) {
-  console.log(process.env.NODE_ENV)
   dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
 } else {
   dotenv.config()

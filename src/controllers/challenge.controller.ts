@@ -1,10 +1,6 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import LectureService from '../services/lecture.service'
 import ChallengeService from '../services/challenge.service'
-import { IRecordRequest } from '../interfaces/dto/record.dto'
-import { BaseService } from '../services/base.service'
-import RecordModel from '../entities/Record'
 
 @injectable()
 export default class ChallengeController {
@@ -47,6 +43,4 @@ export default class ChallengeController {
     )
     return res.success(data)
   }
-
-  
 }
