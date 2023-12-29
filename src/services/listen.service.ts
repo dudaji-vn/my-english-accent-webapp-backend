@@ -198,24 +198,13 @@ export class ListenService {
       _id: { $in: favoriteLectureIds },
       status: STATUS_LECTURE.PUBLIC
     })
-    const enrollmentByFavoriteLectures = await EnrollmentModel.find({
-      lecture: { $in: favoriteLectureIds }
-    })
-    const lectureIds = enrollmentByFavoriteLectures.map((item) =>
-      item.lecture.toString()
-    )
 
     return {
       totalLecture: favoriteLectureIds.length,
       totalPeople: favoriteUserIds.length,
       lectures: lectures
         .map((item) => convertToLectureDTO(item))
-        .sort((a, b) => {
-          return (
-            Number(lectureIds.includes(b.lectureId?.toString())) -
-            Number(lectureIds.includes(a.lectureId?.toString()))
-          )
-        })
+        .sort((a, b) => a.lectureName.localeCompare(b.lectureName))
     }
   }
 }
