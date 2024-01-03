@@ -23,7 +23,7 @@ import {
 import { BadRequestError } from '../middleware/error'
 import { BaseService } from './base.service'
 import UserWinEventModel from '../entities/UserWinEvent'
-import GoogleRecognition from '../entities/GoogleRecognition'
+import GoogleRecognitionModel from '../entities/GoogleRecognition'
 
 @injectable()
 export default class UserService extends BaseService {
@@ -155,8 +155,7 @@ export default class UserService extends BaseService {
       const enrollmentByUserInprogress = await EnrollmentModel.find({
         user: me,
         stage: StageExercise.Inprogress
-      })
-      .populate('lecture')
+      }).populate('lecture')
 
       return await Promise.all(
         enrollmentByUserInprogress
@@ -200,54 +199,65 @@ export default class UserService extends BaseService {
         return (await getLecturesOpen()).filter((item) => item.totalStep > 0)
     }
   }
-  async checkUserWinEvent({ user_id, language}: { user_id: string, language: string }) {
-    const MAX_WINNER = 50;
-    const NUM_LECTURE_ARCHIVE = 10;
-    const EVENT = language == 'vn' ? EVENTS.GRAB_GIFT_VN : EVENTS.GRAB_GIFT_KR;
+  async checkUserWinEvent({
+    user_id,
+    language
+  }: {
+    user_id: string
+    language: string
+  }) {
+    const MAX_WINNER = 50
+    const NUM_LECTURE_ARCHIVE = 10
+    const EVENT = language == 'vn' ? EVENTS.GRAB_GIFT_VN : EVENTS.GRAB_GIFT_KR
 
-    const isUserWin = await UserWinEventModel.findOne({ event: EVENT, user: user_id });
-    if(isUserWin) {
+    const isUserWin = await UserWinEventModel.findOne({
+      event: EVENT,
+      user: user_id
+    })
+    if (isUserWin) {
       return {
         status: STATUS_USER_EVENT.ALREADLY_WIN,
         message: 'You have already won this event'
-      };
+      }
     }
 
-    const numUserWin = await UserWinEventModel.countDocuments({ event: EVENT, user: user_id });
-    if(numUserWin >= MAX_WINNER) {
+    const numUserWin = await UserWinEventModel.countDocuments({
+      event: EVENT,
+      user: user_id
+    })
+    if (numUserWin >= MAX_WINNER) {
       return {
         status: STATUS_USER_EVENT.MAX_WINNER,
         message: 'This event has reached the maximum number of winners'
-      };
+      }
     }
 
-    const numLectureUserComplete = await EnrollmentModel.countDocuments({ user: user_id, stage: StageExercise.Close });
-    if(numLectureUserComplete == NUM_LECTURE_ARCHIVE) {
-      await UserWinEventModel.create({ event: EVENT, user: user_id });
+    const numLectureUserComplete = await EnrollmentModel.countDocuments({
+      user: user_id,
+      stage: StageExercise.Close
+    })
+    if (numLectureUserComplete == NUM_LECTURE_ARCHIVE) {
+      await UserWinEventModel.create({ event: EVENT, user: user_id })
       return {
         status: STATUS_USER_EVENT.WIN,
         message: 'You have won this event'
-      };
+      }
     }
 
     return {
       status: STATUS_USER_EVENT.NOT_COMPLETE,
       message: 'You have not completed all the lectures'
-    };
-
+    }
   }
   async addOrUpdateGoogleTranscript(
     payload: IAddOrUpdateGoogleTranscriptRequest
   ) {
     const { finalTranscript, transcripts, recordId } = payload
-    await GoogleRecognition.create(
-      {
+    await GoogleRecognitionModel.create({
       record: recordId,
       transcripts: transcripts,
       final_transcript: finalTranscript
-    },
-     
-    )
+    })
     return true
   }
 }

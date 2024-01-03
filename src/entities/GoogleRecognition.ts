@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 
-const googleRecognition = new mongoose.Schema(
+const googleRecognitionSchema = new mongoose.Schema(
   {
-  
     record: { type: mongoose.Types.ObjectId, ref: 'record' },
     transcripts: [
       {
@@ -20,8 +19,8 @@ const googleRecognition = new mongoose.Schema(
   }
 )
 
-const GoogleRecognition = mongoose.model(
+const GoogleRecognitionModel = mongoose.model(
   'google_recognition',
-  googleRecognition
+  googleRecognitionSchema
 )
-export default GoogleRecognition
+export default GoogleRecognitionModel

@@ -18,18 +18,25 @@ dashboardRouter.get(
 )
 dashboardRouter.get(
   '/getTopUserCompleteLecture',
-
+  auth,
   catchAsync(
     dashboardController.getTopUserCompleteLecture.bind(dashboardController)
   )
 )
 dashboardRouter.get(
   '/getTop5Lectures',
+  auth,
   catchAsync(dashboardController.getTop5Lectures.bind(dashboardController))
 )
 dashboardRouter.get(
   '/syncData',
+  auth,
   catchAsync(dashboardController.syncData.bind(dashboardController))
+)
+dashboardRouter.get(
+  '/getStatisticsScore',
+  auth,
+  catchAsync(dashboardController.getStatisticsScore.bind(dashboardController))
 )
 
 export default dashboardRouter
