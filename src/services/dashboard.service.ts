@@ -5,6 +5,11 @@ import EnrollmentModel from '../entities/Enrollment'
 import { ENROLLMENT_STAGE } from '../const/common'
 import { convertToUserDTO } from '../coverter/user.mapping'
 import { IUserDAO } from '../interfaces/dao/user.dao'
+import GoogleRecognitionModel from '../entities/GoogleRecognition'
+import VocabularyModel from '../entities/Vocabulary'
+import RecordModel from '../entities/Record'
+import { removeSpecialCharacters } from '../common/string'
+import { idText } from 'typescript'
 
 @injectable()
 export default class DashboardService {
@@ -126,5 +131,89 @@ export default class DashboardService {
         total: item.total
       }
     })
+  }
+  async getStatisticsScore() {
+    const statistics = await RecordModel.aggregate([
+      {
+        $lookup: {
+          from: 'google_recognitions',
+          localField: '_id',
+          foreignField: 'record',
+          as: 'google'
+        }
+      },
+      {
+        $unwind: {
+          path: '$google'
+        }
+      },
+      {
+        $group: {
+          _id: '$vocabulary',
+          google_recognition_list: {
+            $push: {
+              record: '$google.record',
+              final_transcript: '$google.final_transcript',
+              created: '$google.created'
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: 'vocabularies',
+          localField: '_id',
+          foreignField: '_id',
+          as: 'vocabulary_info'
+        }
+      },
+      {
+        $unwind: '$vocabulary_info'
+      },
+      {
+        $lookup: {
+          from: 'lectures',
+          localField: 'vocabulary_info.lecture',
+          foreignField: '_id',
+          as: 'lectures'
+        }
+      },
+      {
+        $unwind: '$lectures'
+      },
+      {
+        $project: {
+          _id: 0,
+          title_display_language: '$vocabulary_info.title_display_language',
+          lecture_name: '$lectures.lecture_name',
+          google_recognition_list: 1
+        }
+      }
+    ])
+    const result = statistics.map((item) => {
+      const googleRecognitionList = item.google_recognition_list
+      const tryPeopleCount = new Set(
+        googleRecognitionList.map((item: any) => item.record.toString())
+      ).size
+
+      const passPeopleCount = new Set(
+        googleRecognitionList
+          .filter(
+            (googleRecognition: any) =>
+              removeSpecialCharacters(googleRecognition.final_transcript) ===
+              removeSpecialCharacters(item.title_display_language)
+          )
+          .map((item: any) => item.record.toString())
+      ).size
+      console.log(passPeopleCount)
+      return {
+        tryPeopleCount,
+        passPeopleCount,
+        sentence: item.title_display_language,
+        lecture: item.lecture_name,
+        passRatio: (passPeopleCount / tryPeopleCount).toFixed(2)
+      }
+    })
+    return result.sort((a, b) => a.lecture.localeCompare(b.lecture))
   }
 }

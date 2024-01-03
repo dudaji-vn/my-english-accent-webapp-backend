@@ -7,7 +7,6 @@ export default class DashboardController {
   constructor(private readonly dashboardService: DashboardService) {}
   async getAnalyst(req: IRequest, res: IResponse) {
     const data = await this.dashboardService.getAnalyst()
-
     return res.success(data)
   }
   async getTopUserCompleteLecture(req: IRequest, res: IResponse) {
@@ -21,7 +20,10 @@ export default class DashboardController {
   }
   async getTop5Lectures(req: IRequest, res: IResponse) {
     const data = await this.dashboardService.getTop5Lectures()
-
+    return res.success(data)
+  }
+  async getStatisticsScore(req: IRequest, res: IResponse) {
+    const data = await this.dashboardService.getStatisticsScore()
     return res.success(data)
   }
 
