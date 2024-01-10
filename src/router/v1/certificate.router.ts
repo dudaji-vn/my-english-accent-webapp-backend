@@ -9,10 +9,19 @@ const certificateController = container.resolve<CertificateController>(
 )
 
 const certificateRouter = express.Router()
+certificateRouter.get(
+  '/progress',
+  auth,
+  catchAsync(certificateController.getProgress.bind(certificateController))
+)
 
 certificateRouter.put(
   '/addContent',
+
   catchAsync(certificateController.addContent.bind(certificateController))
 )
-
+certificateRouter.post(
+  '/addCertificate',
+  catchAsync(certificateController.addCertificate.bind(certificateController))
+)
 export default certificateRouter

@@ -1,9 +1,25 @@
-PUT http://localhost:5000/api/certificate/addContent
+POST  http://localhost:5000/api/certificate/addCertificate
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 Content-Type: application/json
 
 {
-   "type":"vocabulary",
-   "clubId": "6542121c3544f08498aa946a",  
-   "members": ["65421becd899b95c139a1df1","65421e76871f8e6d54a0f8df"]
+  "strategyType": "vocabulary",
+  "name": "Level2",
+  "imgUrl": "",
+  "archivedImgUrl":"",
+  "totalScore": 10,
+  "contents": [
+   {
+       "order": 1,
+       "vocabularyId": "6556ef448fde48108be8ce95"
+   },
+   {
+      "order": 2,
+       "vocabularyId": "6556ef448fde48108be8ce8b" 
+   }
+  ]
 }
+
+###
+GET http://localhost:5000/api/certificate/progress
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E

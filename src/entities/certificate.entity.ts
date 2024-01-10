@@ -4,7 +4,9 @@ import { CERTIFICATE_TYPE } from '../const/common'
 const certificateSchema = new mongoose.Schema(
   {
     name: {
-      type: String
+      type: String,
+      required: true,
+      unique: true
     },
     type: {
       type: Number,
@@ -12,7 +14,12 @@ const certificateSchema = new mongoose.Schema(
       default: CERTIFICATE_TYPE.VOCABULARY
     },
     img_url: {
-      type: String
+      type: String,
+      default: null
+    },
+    archived_img_url: {
+      type: String,
+      default: null
     },
     total_score: {
       type: Number,
@@ -20,7 +27,7 @@ const certificateSchema = new mongoose.Schema(
     },
     contents: [
       {
-        order: { type: Number },
+        order: { type: Number, required: true },
         vocabulary_id: {
           type: mongoose.Types.ObjectId,
           ref: 'vocabulary',

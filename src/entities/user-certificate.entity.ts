@@ -7,6 +7,10 @@ const userCertificateContentSchema = new mongoose.Schema(
       ref: 'certificate',
       required: true
     },
+    slug: {
+      type: String,
+      required: true
+    },
     user_id: { type: mongoose.Types.ObjectId, ref: 'user', required: true },
     records: [
       {
