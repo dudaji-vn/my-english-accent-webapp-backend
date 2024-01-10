@@ -1,5 +1,8 @@
+import { IAddCertificateDTO } from '../../../interfaces/dto/certificate.dto'
+
 export interface ICertificateStrategy {
   addContent(args: any[]): any
+  addCertificate(certificate: IAddCertificateDTO): any
   getContent(): any
 }
 export type TNameCertificateStrategy = 'vocabulary' | 'test'
@@ -13,5 +16,14 @@ export class CertificateStrategy {
       throw new Error('Certificate name has not been set')
     }
     return this.strategies[name].addContent.apply(null, args)
+  }
+  addCertificate(
+    name: TNameCertificateStrategy,
+    certificate: IAddCertificateDTO
+  ) {
+    if (!this.strategies[name]) {
+      throw new Error('Certificate name has not been set')
+    }
+    return this.strategies[name].addCertificate.apply(null, [certificate])
   }
 }
