@@ -12,6 +12,7 @@ import vocabularyRouter from './vocabulary.router'
 import listenRouter from './listen.router'
 import dashboardRouter from './dashboard.router'
 import googleRouter from './google.router'
+import certificateRouter from './certificate.router'
 
 const apiRouterV1 = express.Router()
 
@@ -63,6 +64,10 @@ const listApi = [
   {
     path: PATH.google,
     router: googleRouter
+  },
+  {
+    path: PATH.certificate,
+    router: certificateRouter
   }
 ]
 listApi.forEach((item) => {

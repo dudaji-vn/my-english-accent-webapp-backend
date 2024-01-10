@@ -1,10 +1,10 @@
 ###
-GET https://r5200nc8-5000.asse.devtunnels.ms/api/challenge/getChallengesInClub/6542121c3544f08498aa946a
+GET http://localhost:5000/api/challenge/getChallengesInClub/6542121c3544f08498aa946a
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 
 ###
 
-GET https://r5200nc8-5000.asse.devtunnels.ms/api/challenge/getChallengeDetailInClub/6542121d3544f08498aa946c
+GET http://localhost:5000/api/challenge/getChallengeDetailInClub/6542121d3544f08498aa946c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 
 
@@ -16,9 +16,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyM
 
 
 ###
-GET https://r5200nc8-5000.asse.devtunnels.ms/api/challenge/getRecordToListenByChallenge/6542121d3544f08498aa946c
+GET http://localhost:5000/api/challenge/getRecordToListenByChallenge/6542121d3544f08498aa946c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 
 ###
-GET  https://r5200nc8-5000.asse.devtunnels.ms/api/challenge/getAllRecordByChallenge/6544b92a85e6a70b283c4dd9
+GET  http://localhost:5000/api/challenge/getAllRecordByChallenge/6544b92a85e6a70b283c4dd9
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE2OTk5MzM5MTMsImV4cCI6MTcwMjUyNTkxM30.3tTebxRxWBrCMXH3M7fOX5QxNbwf7csAirZpwWfIgdA

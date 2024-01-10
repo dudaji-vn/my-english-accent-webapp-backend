@@ -34,7 +34,7 @@ export const Language = {
 
 export const EVENTS = {
   GRAB_GIFT_VN: 'GRAB_GIFT_VN',
-  GRAB_GIFT_KR: 'GRAB_GIFT_KR',
+  GRAB_GIFT_KR: 'GRAB_GIFT_KR'
 }
 
 export const STATUS_USER_EVENT = {
@@ -43,4 +43,8 @@ export const STATUS_USER_EVENT = {
   CLOSE: 'CLOSE',
   ALREADLY_WIN: 'ALREADLY_WIN',
   NOT_COMPLETE: 'NOT_COMPLETE'
+}
+
+export enum CERTIFICATE_TYPE {
+  VOCABULARY = 0
 }

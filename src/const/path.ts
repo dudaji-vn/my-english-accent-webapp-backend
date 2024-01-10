@@ -10,5 +10,6 @@ export const PATH = {
   vocabulary: '/vocabulary',
   listen: '/listen',
   dashboard: '/dashboard',
-  google: '/google'
+  google: '/google',
+  certificate: '/certificate'
 }
