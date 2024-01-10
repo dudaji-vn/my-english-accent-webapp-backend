@@ -1,5 +1,5 @@
 ###
-POST https://r5200nc8-5000.asse.devtunnels.ms/api/club/addOrUpdateClub
+POST http://localhost:5000/api/club/addOrUpdateClub
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 Content-Type: application/json
 
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ###
-POST https://r5200nc8-5000.asse.devtunnels.ms/api/club/addOrUpdateClub
+POST http://localhost:5000/api/club/addOrUpdateClub
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 Content-Type: application/json
 
@@ -20,9 +20,9 @@ Content-Type: application/json
 
 
 ###
-GET https://r5200nc8-5000.asse.devtunnels.ms/api/club/getClubsOwner
+GET http://localhost:5000/api/club/getClubsOwner
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
 
 ###
-GET https://r5200nc8-5000.asse.devtunnels.ms/api/club/getDetailClub/6542121c3544f08498aa946a
+GET http://localhost:5000/api/club/getDetailClub/6542121c3544f08498aa946a
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
