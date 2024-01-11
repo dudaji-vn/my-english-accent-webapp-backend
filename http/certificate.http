@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "strategyType": "vocabulary",
-  "name": "Level2",
+  "name": "Level 2",
   "imgUrl": "",
   "archivedImgUrl":"",
   "totalScore": 10,
@@ -22,4 +22,8 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/api/certificate/progress
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E
+
+###
+GET http://localhost:5000/api/certificate/getContentById?id=659e490ba80f4a659fd44edb&strategyType=vocabulary
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E

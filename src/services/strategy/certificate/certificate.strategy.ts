@@ -1,9 +1,12 @@
-import { IAddCertificateDTO } from '../../../interfaces/dto/certificate.dto'
+import {
+  IAddCertificateDTO,
+  IGetContentDTO
+} from '../../../interfaces/dto/certificate.dto'
 
 export interface ICertificateStrategy {
   addContent(args: any[]): any
   addCertificate(certificate: IAddCertificateDTO): any
-  getContent(): any
+  getContentById(params: IGetContentDTO): any
 }
 export type TNameCertificateStrategy = 'vocabulary' | 'test'
 export class CertificateStrategy {
@@ -25,5 +28,11 @@ export class CertificateStrategy {
       throw new Error('Certificate name has not been set')
     }
     return this.strategies[name].addCertificate.apply(null, [certificate])
+  }
+  getContentById(name: TNameCertificateStrategy, params: IGetContentDTO) {
+    if (!this.strategies[name]) {
+      throw new Error('Certificate name has not been set')
+    }
+    return this.strategies[name].getContentById.apply(null, [params])
   }
 }
