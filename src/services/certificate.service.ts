@@ -5,7 +5,10 @@ import {
   TNameCertificateStrategy
 } from './strategy/certificate/certificate.strategy'
 import { VocabularyCertificateStrategy } from './strategy/certificate/vocabulary-certificate.strategy'
-import { IAddCertificateDTO } from '../interfaces/dto/certificate.dto'
+import {
+  IAddCertificateDTO,
+  IGetContentDTO
+} from '../interfaces/dto/certificate.dto'
 import UserCertificateModel from '../entities/user-certificate.entity'
 @injectable()
 export default class CertificateService {
@@ -31,10 +34,20 @@ export default class CertificateService {
         id: item._id,
         name: item.name,
         type: item.type,
-        start: 0,
+        star: 0,
         totalScore: item.total_score
       }
     })
+  }
+
+  async isArchived(userId: string, certificateId: string) {
+    return await UserCertificateModel.exists({
+      user_id: userId,
+      certificate_id: certificateId
+    })
+  }
+  async getContentById(name: TNameCertificateStrategy, params: IGetContentDTO) {
+    return this.certificateStrategy.getContentById(name, params)
   }
   addContent<T>(name: TNameCertificateStrategy, data: T) {
     return this.certificateStrategy.addContent(name, data)

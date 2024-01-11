@@ -28,7 +28,7 @@ const certificateSchema = new mongoose.Schema(
     contents: [
       {
         order: { type: Number, required: true },
-        vocabulary_id: {
+        vocabulary: {
           type: mongoose.Types.ObjectId,
           ref: 'vocabulary',
           default: null

@@ -2,6 +2,7 @@ import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
 import CertificateService from '../services/certificate.service'
 import { IAddCertificateDTO } from '../interfaces/dto/certificate.dto'
+import { TNameCertificateStrategy } from '../services/strategy/certificate/certificate.strategy'
 
 @injectable()
 export default class CertificateController {
@@ -24,6 +25,25 @@ export default class CertificateController {
     const data = await this.certificateService.addContent(
       strategyType,
       req.body
+    )
+    return res.success(data)
+  }
+  async getContentById(req: IRequest, res: IResponse) {
+    const { strategyType, id } = req.query
+    const data = await this.certificateService.getContentById(
+      strategyType as TNameCertificateStrategy,
+      {
+        certificateId: id as string,
+        nativeLanguage: req.user.native_language
+      }
+    )
+    return res.success(data)
+  }
+  async isArchived(req: IRequest, res: IResponse) {
+    const { id } = req.query
+    const data = await this.certificateService.isArchived(
+      req.user._id,
+      id as string
     )
     return res.success(data)
   }

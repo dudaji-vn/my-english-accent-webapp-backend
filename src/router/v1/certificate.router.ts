@@ -10,11 +10,20 @@ const certificateController = container.resolve<CertificateController>(
 
 const certificateRouter = express.Router()
 certificateRouter.get(
+  '/isArchived',
+  auth,
+  catchAsync(certificateController.isArchived.bind(certificateController))
+)
+certificateRouter.get(
   '/progress',
   auth,
   catchAsync(certificateController.getProgress.bind(certificateController))
 )
-
+certificateRouter.get(
+  '/getContentById',
+  auth,
+  catchAsync(certificateController.getContentById.bind(certificateController))
+)
 certificateRouter.put(
   '/addContent',
 
