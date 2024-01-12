@@ -1,10 +1,11 @@
 import {
   IAddCertificateDTO,
-  IGetContentDTO
+  IGetContentDTO,
+  IUserCertificateDTO
 } from '../../../interfaces/dto/certificate.dto'
 
 export interface ICertificateStrategy {
-  addContent(args: any[]): any
+  addOrUpdateUserContentCertificate(data: IUserCertificateDTO): any
   addCertificate(certificate: IAddCertificateDTO): any
   getContentById(params: IGetContentDTO): any
 }
@@ -14,11 +15,17 @@ export class CertificateStrategy {
   use(name: TNameCertificateStrategy, strategy: ICertificateStrategy) {
     this.strategies[name] = strategy
   }
-  addContent(name: TNameCertificateStrategy, ...args: any) {
+  addOrUpdateUserContentCertificate(
+    name: TNameCertificateStrategy,
+    ...args: any
+  ) {
     if (!this.strategies[name]) {
       throw new Error('Certificate name has not been set')
     }
-    return this.strategies[name].addContent.apply(null, args)
+    return this.strategies[name].addOrUpdateUserContentCertificate.apply(
+      null,
+      args
+    )
   }
   addCertificate(
     name: TNameCertificateStrategy,

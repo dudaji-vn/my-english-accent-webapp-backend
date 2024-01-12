@@ -2,16 +2,12 @@ import mongoose from 'mongoose'
 
 const userCertificateContentSchema = new mongoose.Schema(
   {
-    certificate_id: {
+    certificate: {
       type: mongoose.Types.ObjectId,
       ref: 'certificate',
       required: true
     },
-    slug: {
-      type: String,
-      required: true
-    },
-    user_id: { type: mongoose.Types.ObjectId, ref: 'user', required: true },
+    user: { type: mongoose.Types.ObjectId, ref: 'user', required: true },
     records: [
       {
         vocabulary_id: {
@@ -30,7 +26,8 @@ const userCertificateContentSchema = new mongoose.Schema(
       }
     ],
     score: { type: Number, required: true },
-    star: { type: Number, required: true }
+    star: { type: Number, required: true },
+    correct_sentences: { type: Number, default: 0 }
   },
   {
     timestamps: {

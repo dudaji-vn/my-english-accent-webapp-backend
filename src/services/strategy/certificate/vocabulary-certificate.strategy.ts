@@ -1,10 +1,11 @@
 import { CERTIFICATE_TYPE } from '../../../const/common'
 import { convertToCertificateVocabularyContent } from '../../../coverter/certificate.mapping'
 import CertificateModel from '../../../entities/certificate.entity'
-import { ICertificateDAO } from '../../../interfaces/dao/certificate.dao'
+import UserCertificateModel from '../../../entities/user-certificate.entity'
 import {
   IAddCertificateDTO,
-  IGetContentDTO
+  IGetContentDTO,
+  IUserCertificateDTO
 } from '../../../interfaces/dto/certificate.dto'
 import { BadRequestError } from '../../../middleware/error'
 import { ICertificateStrategy } from './certificate.strategy'
@@ -49,7 +50,79 @@ export class VocabularyCertificateStrategy implements ICertificateStrategy {
 
     return newCertificate
   }
-  addContent(args: any[]) {
-    throw new Error('Method not implemented.')
+  async addOrUpdateUserContentCertificate(data: IUserCertificateDTO) {
+    const {
+      certificateId,
+      records,
+      score,
+      star,
+      userId,
+      nickName,
+      correctSentences
+    } = data
+    if (
+      !certificateId ||
+      !records ||
+      score < 1 ||
+      star < 1 ||
+      !userId ||
+      !nickName
+    ) {
+      throw new BadRequestError('Please input valid data')
+    }
+    records.forEach((record) => {
+      if (!record.result || !record.vocabularyId || !record.voiceSrc) {
+        throw new BadRequestError('Please input valid record data')
+      }
+    })
+    const certificate = await CertificateModel.findById(certificateId).lean()
+    if (
+      !certificate ||
+      !certificate.contents ||
+      certificate.contents.length === 0
+    ) {
+      throw new BadRequestError('Certificate has not exist')
+    }
+    const vocabularyIds = certificate.contents.map((item) =>
+      item.vocabulary.toString()
+    )
+    const recordVocabularyIds = records.map((item) => item.vocabularyId)
+
+    if (
+      records.length !== vocabularyIds.length ||
+      new Set(vocabularyIds).size !== new Set(recordVocabularyIds).size
+    ) {
+      throw new BadRequestError('Records is different')
+    }
+    records.map((record) => {
+      if (!vocabularyIds.includes(record.vocabularyId)) {
+        throw new BadRequestError('some vocabulary is not correct')
+      }
+    })
+    await UserCertificateModel.findOneAndUpdate(
+      {
+        certificate: certificateId,
+        user: userId
+      },
+      {
+        score: score,
+        star: star,
+        correct_sentences: correctSentences,
+        records: records.map((item) => ({
+          vocabulary_id: item.vocabularyId,
+          voice_src: item.voiceSrc,
+          result: item.result
+        }))
+      },
+      {
+        upsert: true,
+        new: true
+      }
+    )
+    return {
+      nickName: nickName,
+      score: score,
+      star: star
+    }
   }
 }

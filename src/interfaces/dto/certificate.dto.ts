@@ -30,3 +30,20 @@ export interface IGetContentDTO {
   nativeLanguage: string
   certificateId: string
 }
+
+export interface IUserCertificateDTO {
+  nickName: string
+  strategyType: TNameCertificateStrategy
+  certificateId: string
+  userId: string
+  records: [
+    {
+      vocabularyId: string
+      voiceSrc: string
+      result: string
+    }
+  ]
+  score: number
+  star: number
+  correctSentences: number
+}

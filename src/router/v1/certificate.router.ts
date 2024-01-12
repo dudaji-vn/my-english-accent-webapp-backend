@@ -25,12 +25,24 @@ certificateRouter.get(
   catchAsync(certificateController.getContentById.bind(certificateController))
 )
 certificateRouter.put(
-  '/addContent',
-
-  catchAsync(certificateController.addContent.bind(certificateController))
+  '/addOrUpdateUserContentCertificate',
+  auth,
+  catchAsync(
+    certificateController.addOrUpdateUserContentCertificate.bind(
+      certificateController
+    )
+  )
 )
 certificateRouter.post(
   '/addCertificate',
+  auth,
   catchAsync(certificateController.addCertificate.bind(certificateController))
+)
+certificateRouter.get(
+  '/getUserCertificate',
+  auth,
+  catchAsync(
+    certificateController.getUserCertificate.bind(certificateController)
+  )
 )
 export default certificateRouter
