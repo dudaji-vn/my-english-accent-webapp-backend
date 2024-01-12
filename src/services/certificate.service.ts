@@ -7,7 +7,8 @@ import {
 import { VocabularyCertificateStrategy } from './strategy/certificate/vocabulary-certificate.strategy'
 import {
   IAddCertificateDTO,
-  IGetContentDTO
+  IGetContentDTO,
+  IUserCertificateDTO
 } from '../interfaces/dto/certificate.dto'
 import UserCertificateModel from '../entities/user-certificate.entity'
 @injectable()
@@ -21,15 +22,28 @@ export default class CertificateService {
     )
   }
   async getProgress(userId: string) {
-    const archivedCertificate = await UserCertificateModel.find({
-      user_id: userId
+    const archivedCertificateData = await UserCertificateModel.find({
+      user: userId
     })
-      .populate('certificate_id')
+      .populate('certificate')
       .lean()
-    const exploreCertificate = await CertificateModel.find({
-      _id: { $nin: archivedCertificate.map((item) => item._id.toString()) }
+
+    const exploreCertificateData = await CertificateModel.find({
+      _id: {
+        $nin: archivedCertificateData.map((item) => item.certificate)
+      }
     })
-    return exploreCertificate.map((item) => {
+    let archivedCertificate = archivedCertificateData.map((item: any) => {
+      return {
+        id: item.certificate._id,
+        name: item.certificate.name,
+        type: item.certificate.type,
+        star: item.star,
+        totalScore: item.certificate.total_score
+      }
+    })
+
+    const exploreCertificate = exploreCertificateData.map((item) => {
       return {
         id: item._id,
         name: item.name,
@@ -38,6 +52,7 @@ export default class CertificateService {
         totalScore: item.total_score
       }
     })
+    return [...archivedCertificate, ...exploreCertificate]
   }
 
   async isArchived(userId: string, certificateId: string) {
@@ -46,11 +61,42 @@ export default class CertificateService {
       certificate_id: certificateId
     })
   }
+
+  async getUserCertificate(
+    nickName: string,
+    userId: string,
+    certificateId: string
+  ) {
+    const certificateInfo = (await UserCertificateModel.findOne({
+      user: userId,
+      certificate: certificateId
+    })
+      .populate('certificate')
+      .lean()) as any
+    if (!certificateInfo) {
+      return null
+    }
+    return {
+      nickName: nickName,
+      score: certificateInfo?.score,
+      totalScore: certificateInfo?.certificate?.total_score,
+      certificateName: certificateInfo.certificate.name,
+      archivedDate: certificateInfo.updated,
+      star: certificateInfo.star
+    }
+  }
+
   async getContentById(name: TNameCertificateStrategy, params: IGetContentDTO) {
     return this.certificateStrategy.getContentById(name, params)
   }
-  addContent<T>(name: TNameCertificateStrategy, data: T) {
-    return this.certificateStrategy.addContent(name, data)
+  addOrUpdateUserContentCertificate<T>(
+    name: TNameCertificateStrategy,
+    data: IUserCertificateDTO
+  ) {
+    return this.certificateStrategy.addOrUpdateUserContentCertificate(
+      name,
+      data
+    )
   }
   addCertificate(name: TNameCertificateStrategy, data: IAddCertificateDTO) {
     return this.certificateStrategy.addCertificate(name, data)
