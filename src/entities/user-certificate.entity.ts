@@ -10,7 +10,7 @@ const userCertificateContentSchema = new mongoose.Schema(
     user: { type: mongoose.Types.ObjectId, ref: 'user', required: true },
     records: [
       {
-        vocabulary_id: {
+        vocabulary: {
           type: mongoose.Types.ObjectId,
           ref: 'vocabulary',
           required: true

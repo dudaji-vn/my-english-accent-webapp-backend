@@ -109,7 +109,7 @@ export class VocabularyCertificateStrategy implements ICertificateStrategy {
         star: star,
         correct_sentences: correctSentences,
         records: records.map((item) => ({
-          vocabulary_id: item.vocabularyId,
+          vocabulary: item.vocabularyId,
           voice_src: item.voiceSrc,
           result: item.result
         }))

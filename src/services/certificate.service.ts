@@ -11,6 +11,9 @@ import {
   IUserCertificateDTO
 } from '../interfaces/dto/certificate.dto'
 import UserCertificateModel from '../entities/user-certificate.entity'
+import VocabularyModel from '../entities/Vocabulary'
+import UserModel from '../entities/User'
+import { BadRequestError } from '../middleware/error'
 @injectable()
 export default class CertificateService {
   private certificateStrategy
@@ -77,12 +80,48 @@ export default class CertificateService {
       return null
     }
     return {
+      userId: certificateInfo.user,
       nickName: nickName,
+      score: certificateInfo?.score,
+      totalScore: certificateInfo?.certificate?.total_score,
+      certificateId: certificateInfo.certificate?._id,
+      certificateName: certificateInfo.certificate.name,
+      archivedDate: certificateInfo.updated,
+      star: certificateInfo.star
+    }
+  }
+
+  async getUserRecordsCertificate(userId: string, certificateId: string) {
+    const user = await UserModel.findById(userId)
+    console.log({ userId, certificateId })
+    if (!user) {
+      throw new BadRequestError('user not found')
+    }
+    const certificateInfo = (await UserCertificateModel.findOne({
+      user: userId,
+      certificate: certificateId
+    })
+      .populate(['certificate', 'records.vocabulary'])
+      .lean()) as any
+    if (!certificateInfo) {
+      return null
+    }
+    return {
+      nickName: user.nick_name,
       score: certificateInfo?.score,
       totalScore: certificateInfo?.certificate?.total_score,
       certificateName: certificateInfo.certificate.name,
       archivedDate: certificateInfo.updated,
-      star: certificateInfo.star
+      star: certificateInfo.star,
+      records: certificateInfo.records.map((item: any) => {
+        return {
+          recordId: item._id,
+          voiceSrc: item.voice_src,
+          result: item.result,
+          title: item.vocabulary?.title_display_language,
+          phonetic: item.vocabulary?.phonetic_display_language
+        }
+      })
     }
   }
 
@@ -100,5 +139,19 @@ export default class CertificateService {
   }
   addCertificate(name: TNameCertificateStrategy, data: IAddCertificateDTO) {
     return this.certificateStrategy.addCertificate(name, data)
+  }
+  async getListVocabularyId(vocabularies: string[]) {
+    const data = vocabularies.map(async (item: string, index: number) => {
+      const voca = (await VocabularyModel.findOne({
+        title_display_language: item
+      }).lean()) as any
+
+      return {
+        order: index + 1,
+        vocabularyId: voca?._id
+      }
+    })
+
+    return await Promise.all(data)
   }
 }
