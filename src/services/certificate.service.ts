@@ -42,6 +42,7 @@ export default class CertificateService {
         name: item.certificate.name,
         type: item.certificate.type,
         star: item.star,
+        score: item.score,
         totalScore: item.certificate.total_score
       }
     })
@@ -52,6 +53,7 @@ export default class CertificateService {
         name: item.name,
         type: item.type,
         star: 0,
+        score: 0,
         totalScore: item.total_score
       }
     })
