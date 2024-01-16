@@ -48,7 +48,6 @@ certificateRouter.get(
 
 certificateRouter.get(
   '/getUserRecordsCertificate',
-  auth,
   catchAsync(
     certificateController.getUserRecordsCertificate.bind(certificateController)
   )
