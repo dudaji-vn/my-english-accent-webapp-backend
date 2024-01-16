@@ -35,7 +35,7 @@ certificateRouter.put(
 )
 certificateRouter.post(
   '/addCertificate',
-  auth,
+
   catchAsync(certificateController.addCertificate.bind(certificateController))
 )
 certificateRouter.get(
@@ -43,6 +43,21 @@ certificateRouter.get(
   auth,
   catchAsync(
     certificateController.getUserCertificate.bind(certificateController)
+  )
+)
+
+certificateRouter.get(
+  '/getUserRecordsCertificate',
+  auth,
+  catchAsync(
+    certificateController.getUserRecordsCertificate.bind(certificateController)
+  )
+)
+
+certificateRouter.post(
+  '/getListVocabularyId',
+  catchAsync(
+    certificateController.getListVocabularyId.bind(certificateController)
   )
 )
 export default certificateRouter
