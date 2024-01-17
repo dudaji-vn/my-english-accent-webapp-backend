@@ -59,4 +59,11 @@ certificateRouter.post(
     certificateController.getListVocabularyId.bind(certificateController)
   )
 )
+certificateRouter.get(
+  '/getUsersCertificate',
+
+  catchAsync(
+    certificateController.getUsersCertificate.bind(certificateController)
+  )
+)
 export default certificateRouter

@@ -76,4 +76,8 @@ export default class CertificateController {
     const data = await this.certificateService.getListVocabularyId(vocabularies)
     return res.success(await Promise.all(data))
   }
+  async getUsersCertificate(req: IRequest, res: IResponse) {
+    const data = await this.certificateService.getUsersCertificate()
+    return res.success(data)
+  }
 }

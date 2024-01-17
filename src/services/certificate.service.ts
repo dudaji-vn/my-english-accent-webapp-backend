@@ -156,4 +156,32 @@ export default class CertificateService {
 
     return await Promise.all(data)
   }
+  async getUsersCertificate() {
+    const certificates = await UserCertificateModel.find()
+      .populate([
+        {
+          path: 'certificate',
+          select: 'name total_score'
+        },
+        {
+          path: 'user',
+          select: 'nick_name email avatar'
+        }
+      ])
+      .select('-records')
+      .lean()
+      .sort('-score updated')
+    return certificates.map((item: any) => {
+      return {
+        nickName: item.user.nick_name,
+        avatar: item.user.avatar,
+        email: item.user.email,
+        certificateName: item.certificate.name,
+        slug: `${item.user._id}?id=${item.certificate._id}`,
+        percent: (item.score * 100) / item.certificate.total_score,
+        score: item.score,
+        completedAt: item.updated
+      }
+    })
+  }
 }
