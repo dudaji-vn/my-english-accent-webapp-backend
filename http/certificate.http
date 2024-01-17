@@ -141,4 +141,7 @@ Content-Type: application/json
 }
 
 
-//getUserRecordCertificate
+//getUsersCertificate
+
+###
+GET http://localhost:5000/api/certificate/getUsersCertificate
