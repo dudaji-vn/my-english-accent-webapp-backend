@@ -24,5 +24,10 @@ authRouter.get(
   auth,
   catchAsync(authController.getProfile.bind(authController))
 )
+authRouter.get(
+  '/isLogin',
+  auth,
+  catchAsync(authController.isLogin.bind(authController))
+)
 
 export default authRouter
