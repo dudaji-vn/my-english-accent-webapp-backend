@@ -171,8 +171,9 @@ export default class CertificateService {
       .select('-records')
       .lean()
       .sort('-score updated')
-    return certificates.map((item: any) => {
+    return certificates.map((item: any, index: number) => {
       return {
+        ranking: index + 1,
         nickName: item.user.nick_name,
         avatar: item.user.avatar,
         email: item.user.email,
