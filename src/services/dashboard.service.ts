@@ -84,6 +84,27 @@ export default class DashboardService {
       )
   }
   async syncData() {
+    const googleResult = await GoogleRecognitionModel.find()
+    const records = await RecordModel.find()
+    for (const item of records) {
+      let finalTranscript
+      const googleTranscript = googleResult
+        .filter((x: any) => x.record.toString() === item._id.toString())
+        .sort(
+          (a: any, b: any) =>
+            new Date(b.created).getTime() - new Date(a.created).getTime()
+        )
+      if (googleTranscript && googleTranscript.length > 0) {
+        console.log(googleTranscript)
+        finalTranscript = googleTranscript[0].final_transcript
+        item.final_transcript = finalTranscript
+      } else {
+        item.final_transcript = ''
+      }
+
+      await item.save()
+    }
+
     return 'Sync data'
   }
 

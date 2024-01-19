@@ -18,6 +18,9 @@ const recordSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    final_transcript: {
+      type: String
+    },
     isDeleted: {
       type: Boolean,
       default: false
