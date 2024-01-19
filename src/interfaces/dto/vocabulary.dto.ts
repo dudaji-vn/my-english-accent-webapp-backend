@@ -3,6 +3,7 @@ export type Language = 'vn' | 'en' | 'kr'
 export interface IRecorded {
   voiceSrc: string
   recordId: string
+  finalTranscript: string
 }
 export interface IClubVocabularyTypeResponse {
   challengeId: string

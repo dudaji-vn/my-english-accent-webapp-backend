@@ -14,7 +14,6 @@ export default class GoogleService {
     this.speakToTextClient = new SpeechClient({ keyFile: 'googleKey.json' })
   }
   async textToSpeak(payload: ITextToSpeakDTO) {
-    debugger
     const { query, languageCode = 'en-US' } = payload
     if (!query) {
       throw new BadRequestError('Please pass query')

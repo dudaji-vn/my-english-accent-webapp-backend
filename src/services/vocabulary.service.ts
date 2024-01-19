@@ -16,6 +16,7 @@ import {
   Language
 } from '../interfaces/dto/vocabulary.dto'
 import { BadRequestError } from '../middleware/error'
+import GoogleRecognitionModel from '../entities/GoogleRecognition'
 
 @injectable()
 export default class VocabularyService {
@@ -81,14 +82,16 @@ export default class VocabularyService {
           'vocabulary.phonetic_display_language': '$phonetic_display_language',
           'vocabulary.lecture': '$lecture',
           'vocabulary.voice_src': '$record.voice_src',
-          'vocabulary.record_id': '$record._id'
-        }
-      },
-      {
-        $sort: {
-          'vocabulary.voice_src': -1
+          'vocabulary.final_transcript': '$record.final_transcript',
+          'vocabulary.record_id': '$record._id',
+          'vocabulary.number_order': '$number_order'
         }
       }
+      // {
+      //   $sort: {
+      //     'vocabulary.number_order': 1
+      //   }
+      // }
     ]
 
     const currentEnrollMent = await EnrollmentModel.findOne({
