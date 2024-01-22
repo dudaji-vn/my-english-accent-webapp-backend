@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import uniqueSlug from 'unique-slug'
 
 const userCertificateContentSchema = new mongoose.Schema(
   {
@@ -8,6 +9,10 @@ const userCertificateContentSchema = new mongoose.Schema(
       required: true
     },
     user: { type: mongoose.Types.ObjectId, ref: 'user', required: true },
+    slug: {
+      type: String,
+      default: uniqueSlug()
+    },
     records: [
       {
         vocabulary: {

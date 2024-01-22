@@ -64,10 +64,9 @@ export default class CertificateController {
     return res.success(data)
   }
   async getUserRecordsCertificate(req: IRequest, res: IResponse) {
-    const { certificateId, userId } = req.query
+    const { slug } = req.query
     const data = await this.certificateService.getUserRecordsCertificate(
-      userId as string,
-      certificateId as string
+      slug as string
     )
     return res.success(data)
   }

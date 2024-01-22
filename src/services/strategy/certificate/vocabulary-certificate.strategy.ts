@@ -1,3 +1,4 @@
+import uniqueSlug from 'unique-slug'
 import { CERTIFICATE_TYPE } from '../../../const/common'
 import { convertToCertificateVocabularyContent } from '../../../coverter/certificate.mapping'
 import CertificateModel from '../../../entities/certificate.entity'
@@ -107,6 +108,7 @@ export class VocabularyCertificateStrategy implements ICertificateStrategy {
       {
         score: score,
         star: star,
+        slug: uniqueSlug(`${certificateId}-${userId}`),
         correct_sentences: correctSentences,
         records: records.map((item) => ({
           vocabulary: item.vocabularyId,

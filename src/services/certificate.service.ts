@@ -84,6 +84,7 @@ export default class CertificateService {
     return {
       userId: certificateInfo.user,
       nickName: nickName,
+      slug: certificateInfo.slug,
       score: certificateInfo?.score,
       totalScore: certificateInfo?.certificate?.total_score,
       certificateId: certificateInfo.certificate?._id,
@@ -93,23 +94,17 @@ export default class CertificateService {
     }
   }
 
-  async getUserRecordsCertificate(userId: string, certificateId: string) {
-    const user = await UserModel.findById(userId)
-    console.log({ userId, certificateId })
-    if (!user) {
-      throw new BadRequestError('user not found')
-    }
+  async getUserRecordsCertificate(slug: string) {
     const certificateInfo = (await UserCertificateModel.findOne({
-      user: userId,
-      certificate: certificateId
+      slug: slug
     })
-      .populate(['certificate', 'records.vocabulary'])
+      .populate(['certificate', 'records.vocabulary', 'user'])
       .lean()) as any
     if (!certificateInfo) {
       return null
     }
     return {
-      nickName: user.nick_name,
+      nickName: certificateInfo?.user.nick_name,
       score: certificateInfo?.score,
       totalScore: certificateInfo?.certificate?.total_score,
       certificateName: certificateInfo.certificate.name,
