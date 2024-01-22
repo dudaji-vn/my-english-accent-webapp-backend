@@ -173,7 +173,7 @@ export default class CertificateService {
         avatar: item.user.avatar,
         email: item.user.email,
         certificateName: item.certificate.name,
-        slug: `${item.user._id}?id=${item.certificate._id}`,
+        slug: item.slug,
         percent: (item.score * 100) / item.certificate.total_score,
         score: item.score,
         completedAt: item.updated
