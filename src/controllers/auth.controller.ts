@@ -12,9 +12,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
   async login(req: IRequest, res: IResponse) {
     const userRequestDto = req.body as IUserLoginDTO
-
     const login = await this.authService.login(userRequestDto)
-
     return res.success(login)
   }
   async register(req: IRequest, res: IResponse) {
@@ -35,6 +33,10 @@ export class AuthController {
   async adminRegister(req: IRequest, res: IResponse) {
     const userRequestDto = req.body as IUserAdminDTO
     const dataRes = await this.authService.adminRegister(userRequestDto)
+    return res.success(dataRes)
+  }
+  async isLogin(req: IRequest, res: IResponse) {
+    const dataRes = await this.authService.isLogin()
     return res.success(dataRes)
   }
 }

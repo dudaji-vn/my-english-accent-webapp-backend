@@ -8,6 +8,7 @@ export interface IRecordRequest {
   vocabularyId: string
   challengeId: string | null
   recordId?: string
+  finalTranscript: string
 }
 export interface IRecordDTO {
   recordId: string

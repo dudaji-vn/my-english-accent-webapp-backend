@@ -32,13 +32,15 @@
     "reflect-metadata": "^0.1.13",
     "socket.io": "^4.7.2",
     "tsyringe": "^4.8.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "unique-slug": "^4.0.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/multer": "^1.4.11",
     "@types/node": "^20.5.7",
+    "@types/unique-slug": "^4.0.0",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.1"
   }

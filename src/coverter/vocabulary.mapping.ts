@@ -57,7 +57,9 @@ export function convertToVocabularyWithRecordedDTO(
         ? item?.vocabulary?.text_translate?.kr
         : item?.vocabulary?.text_translate?.vn,
     voiceSrc: item?.vocabulary.voice_src ?? '',
-    recordId: item?.vocabulary.record_id ?? ''
+    recordId: item?.vocabulary.record_id ?? '',
+    finalTranscript: item?.vocabulary?.final_transcript ?? '',
+    numberOrder: item?.vocabulary?.number_order
   }
 }
 

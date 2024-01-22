@@ -116,4 +116,7 @@ export default class AuthService extends BaseService {
     const token = this.jwtService.generateAccessToken(payload)
     return token
   }
+  async isLogin() {
+    return true
+  }
 }

@@ -1,0 +1,147 @@
+POST  http://localhost:5000/api/certificate/addCertificate
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQyMWQzNGQ4OTliOTVjMTM5YTFkZjQiLCJlbWFpbCI6Imhhb0BnbWFpbC5jb20iLCJpYXQiOjE2OTg5ODEzMjUsImV4cCI6MTcwMTU3MzMyNX0.ww-nRZNTj1l797QeCEEld4i3YPCeNcypNr4ZymuWebE
+Content-Type: application/json
+
+{
+  "strategyType": "vocabulary",
+  "name": "Sentence Speaking Lv.2",
+  "imgUrl": "",
+  "archivedImgUrl":"",
+  "totalScore": 10,
+  "contents": [
+    {
+      "order": 1,
+      "vocabularyId": "6577fd0d5494db3b99300b63"
+    },
+    {
+      "order": 2,
+      "vocabularyId": "6577fd0d5494db3b99300b67"
+    },
+    {
+      "order": 3,
+      "vocabularyId": "6577fd0d5494db3b99300b14"
+    },
+    {
+      "order": 4,
+      "vocabularyId": "658928f3bdab2712e97d5ec5"
+    },
+    {
+      "order": 5,
+      "vocabularyId": "6577fd3e764618f53337444e"
+    },
+    {
+      "order": 6,
+      "vocabularyId": "6577fd3e764618f53337445d"
+    },
+    {
+      "order": 7,
+      "vocabularyId": "6577fd0d5494db3b99300b2b"
+    },
+    {
+      "order": 8,
+      "vocabularyId": "658a78d4993c1ed16a580c0d"
+    },
+    {
+      "order": 9,
+      "vocabularyId": "658a7911993c1ed16a580c56"
+    },
+    {
+      "order": 10,
+      "vocabularyId": "6577fd0d5494db3b99300b1a"
+    }
+  ]
+}
+
+###
+GET http://localhost:5000/api/certificate/progress
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E
+
+###
+GET http://localhost:5000/api/certificate/getContentById?id=659e490ba80f4a659fd44edb&strategyType=vocabulary
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E
+
+
+
+
+###
+PUT  http://localhost:5000/api/certificate/addOrUpdateUserContentCertificate
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E
+Content-Type: application/json
+
+{
+  "certificateId": "659f69e10fff63d6b452faef",
+  "strategyType":"vocabulary",
+  "records": [
+    {
+      "vocabularyId": "6556ef448fde48108be8ce95",
+      "voiceSrc" : "string",
+      "result": "Hello"
+    },
+    {
+      "vocabularyId": "6556ef448fde48108be8ce8b",
+      "voiceSrc" : "string",
+      "result": "Hello"
+    }
+  
+  ],
+  "score": 10,
+  "star":30
+}
+
+
+###
+
+GET http://localhost:5000/api/certificate/getUserCertificate?certificateId=659f69e10fff63d6b452faef
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E
+
+
+###
+GET http://localhost:5000/api/certificate/getUserRecordsCertificate?certificateId=659f69e10fff63d6b452faef
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E
+
+POST   http://localhost:5000/api/certificate/getListVocabularyId
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E
+Content-Type: application/json
+
+{
+ 
+  "vocabularies": [
+    "I need to fix my issue as soon as possible",
+    "This application runs on Windows only",
+    "How do you connect server?",
+    "I wonder if this laptop will make him happy.",
+    "Name a class",
+    "Okay,let's go back to what you were saying before.",
+    "Assign a value to a variable",
+    "Name a variable",
+    "Can you give us an example?",
+    "Once you see working software, you should feel better"
+  
+  ]
+}
+###
+POST   http://localhost:5000/api/certificate/getListVocabularyId
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4NzQ1OTUsImV4cCI6MTcwNzQ2NjU5NX0.YYPnK5gTf49g3V8bbpucF9afZff3pRF1v3If1luUV8E
+Content-Type: application/json
+
+{
+ 
+  "vocabularies": [
+    "API (Application Programming Interface)",
+    "DNS (Domain Name System)",
+    "Assign a value to a variable",
+    "Care to elaborate on that?",
+    "Feel free to call me, whenever you have any issue.",
+    "I had a hard time controlling that device.",
+    "Retrieve data from the REST API",
+    "There are a number of requests from a suspicious origin",
+    "This is the easiest way to install python on your \r\ncomputer",
+    "Return the result of execution"
+  ]
+}
+
+
+//getUsersCertificate
+
+###
+GET http://localhost:5000/api/certificate/getUsersCertificate

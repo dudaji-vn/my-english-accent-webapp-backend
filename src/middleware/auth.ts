@@ -9,7 +9,7 @@ const auth = async (req: IRequest, res: IResponse, next: NextFunction) => {
     let token = req.header('Authorization')
 
     if (!token) {
-      return res.status(400).json({ msg: 'Invalid Authentication.' })
+      return res.status(401).json({ msg: 'Invalid Authentication.' })
     }
     token = token.split(' ')[1]
     const tokenSecret = process.env.ACCESS_TOKEN_SECRET
@@ -20,7 +20,7 @@ const auth = async (req: IRequest, res: IResponse, next: NextFunction) => {
     const decoded = jwt.verify(token, tokenSecret) as any
 
     if (!decoded) {
-      return res.status(400).json({ message: 'Invalid Authentication.' })
+      return res.status(401).json({ message: 'Invalid Authentication.' })
     }
     if (decoded.username === 'admin') {
       const user = await UserAdminModel.findById(decoded.userId)
