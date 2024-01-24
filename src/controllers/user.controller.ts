@@ -2,6 +2,7 @@ import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
 import {
   IAddOrUpdateGoogleTranscriptRequest,
+  IUpdateProfile,
   IUserEnrollRequest
 } from '../interfaces/dto/user.dto'
 import UserService from '../services/user.service'
@@ -42,6 +43,12 @@ export default class UserController {
     const payload = req.body as IAddOrUpdateGoogleTranscriptRequest
 
     const result = await this.userService.addOrUpdateGoogleTranscript(payload)
+    return res.success(result)
+  }
+  async updateProfile(req: IRequest, res: IResponse) {
+    const payload = req.body as IUpdateProfile
+    payload.userId = req.user._id
+    const result = await this.userService.updateProfile(payload)
     return res.success(result)
   }
 }

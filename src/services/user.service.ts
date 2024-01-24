@@ -18,12 +18,14 @@ import UserModel from '../entities/User'
 import VocabularyModel from '../entities/Vocabulary'
 import {
   IAddOrUpdateGoogleTranscriptRequest,
+  IUpdateProfile,
   IUserEnrollRequest
 } from '../interfaces/dto/user.dto'
 import { BadRequestError } from '../middleware/error'
 import { BaseService } from './base.service'
 import UserWinEventModel from '../entities/UserWinEvent'
 import GoogleRecognitionModel from '../entities/GoogleRecognition'
+import { IUserDAO } from '../interfaces/dao/user.dao'
 
 @injectable()
 export default class UserService extends BaseService {
@@ -259,5 +261,33 @@ export default class UserService extends BaseService {
       final_transcript: finalTranscript
     })
     return true
+  }
+  async updateProfile(payload: IUpdateProfile) {
+    const { avatarUrl, nativeLanguage, nickName, userId } = payload
+    if (!userId) {
+      throw new BadRequestError('not found userId')
+    }
+    const updateData: IUserDAO = {}
+
+    if (avatarUrl) {
+      updateData.avatar_url = avatarUrl
+    }
+    if (nativeLanguage || ['vn', 'kr'].includes(nativeLanguage)) {
+      updateData.native_language = nativeLanguage
+    }
+    if (nickName) {
+      updateData.nick_name = nickName
+    }
+    if (Object.keys(updateData).length === 0) {
+      return null
+    }
+    const user = await UserModel.findByIdAndUpdate(userId, updateData, {
+      new: true
+    })
+    return {
+      nickName: user?.nick_name,
+      avatarUrl: user?.avatar_url,
+      nativeLanguage: user?.native_language
+    }
   }
 }

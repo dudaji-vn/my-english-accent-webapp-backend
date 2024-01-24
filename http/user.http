@@ -31,3 +31,17 @@ Content-Type: application/json
 ###
 GET  http://localhost:5000/api/dashboard/getTopUserCompleteLecture?country=vn
 
+###
+PATCH  http://localhost:5000/api/user/updateProfile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTUxYzE1ZDg3YTQxMDdkY2ViYTZjNjciLCJlbWFpbCI6ImhvcXVhbmdsaW5oMjcxMEBnbWFpbC5jb20iLCJpYXQiOjE3MDU5OTk3NjQsImV4cCI6MTcwODU5MTc2NH0.b7NN4b9Ztgpg9FNetZaSt-OGYJT87s3xz8a72lFLps8
+Content-Type: application/json
+
+{
+
+   "nickName":"Linh",
+   "avatarUrl":"https://lh3.googleusercontent.com/a/ACg8ocKvUL-nmfluws7Zezcv5hlCio571QBrCm4v5JoV2OyE=s96-c",
+   "nativeLanguage":"kr"
+   //https://lh3.googleusercontent.com/a/ACg8ocKvUL-nmfluws7Zezcv5hlCio571QBrCm4v5JoV2OyE=s96-c
+}
+
+
