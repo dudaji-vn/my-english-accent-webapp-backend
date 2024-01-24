@@ -36,7 +36,7 @@ export class AuthController {
     return res.success(dataRes)
   }
   async isLogin(req: IRequest, res: IResponse) {
-    const dataRes = await this.authService.isLogin()
+    const dataRes = await this.authService.isLogin(req.user)
     return res.success(dataRes)
   }
 }
