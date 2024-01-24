@@ -50,3 +50,10 @@ export interface IAddOrUpdateGoogleTranscriptRequest {
   }[]
   finalTranscript: string
 }
+
+export interface IUpdateProfile {
+  userId: string
+  nickName: string
+  avatarUrl: string
+  nativeLanguage: string
+}

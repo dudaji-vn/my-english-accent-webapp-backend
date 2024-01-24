@@ -32,6 +32,10 @@ userRouter.put(
   auth,
   catchAsync(userController.addOrUpdateGoogleTranscript.bind(userController))
 )
-
+userRouter.patch(
+  '/updateProfile',
+  auth,
+  catchAsync(userController.updateProfile.bind(userController))
+)
 
 export default userRouter
