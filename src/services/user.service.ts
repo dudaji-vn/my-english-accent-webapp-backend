@@ -344,7 +344,7 @@ export default class UserService extends BaseService {
       {
         $match: {
           user: { $in: userIds },
-          score: { $gt: 0 }
+          score: { $gte: 0 }
         }
       },
       {
