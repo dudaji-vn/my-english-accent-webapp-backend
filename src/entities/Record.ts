@@ -21,6 +21,10 @@ const recordSchema = new mongoose.Schema(
     final_transcript: {
       type: String
     },
+    score: {
+      type: Number,
+      default: 0
+    },
     isDeleted: {
       type: Boolean,
       default: false
@@ -33,6 +37,7 @@ const recordSchema = new mongoose.Schema(
     }
   }
 )
-
+recordSchema.index({ user: 1, vocabulary: 1 })
 const RecordModel = mongoose.model('record', recordSchema)
+
 export default RecordModel
