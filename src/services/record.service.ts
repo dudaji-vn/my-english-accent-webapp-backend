@@ -84,8 +84,14 @@ export default class RecordService {
     return data.map((item) => convertToRecordsByLectureDTO(item))[0]
   }
   async addOrUpdateRecord(payload: IRecordRequest) {
-    const { challengeId, userId, vocabularyId, voiceSrc, finalTranscript } =
-      payload
+    const {
+      challengeId,
+      userId,
+      vocabularyId,
+      voiceSrc,
+      finalTranscript,
+      score
+    } = payload
     if (!vocabularyId || !voiceSrc || !finalTranscript) {
       throw new BadRequestError(
         'Fields required: vocabularyId, voiceSrc, finalTranscript'
@@ -99,7 +105,11 @@ export default class RecordService {
           vocabulary: vocabularyId,
           challenge: null
         },
-        { voice_src: voiceSrc, final_transcript: finalTranscript },
+        {
+          voice_src: voiceSrc,
+          final_transcript: finalTranscript,
+          score: score
+        },
         { upsert: true, new: true }
       )
     } else {

@@ -2,6 +2,8 @@ import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
 import {
   IAddOrUpdateGoogleTranscriptRequest,
+  IUserRankingRequest,
+  IUpdateProfile,
   IUserEnrollRequest
 } from '../interfaces/dto/user.dto'
 import UserService from '../services/user.service'
@@ -42,6 +44,37 @@ export default class UserController {
     const payload = req.body as IAddOrUpdateGoogleTranscriptRequest
 
     const result = await this.userService.addOrUpdateGoogleTranscript(payload)
+    return res.success(result)
+  }
+  async updateProfile(req: IRequest, res: IResponse) {
+    const payload = req.body as IUpdateProfile
+    payload.userId = req.user._id
+    const result = await this.userService.updateProfile(payload)
+    return res.success(result)
+  }
+  async getUsersRanking(req: IRequest, res: IResponse) {
+    const data = await this.userService.getUsersRanking(req.user)
+    return res.success(data)
+  }
+  async getPlaylistSummaryByUser(req: IRequest, res: IResponse) {
+    const result = await this.userService.getPlaylistSummaryByUser(
+      req.query.userId
+    )
+    return res.success(result)
+  }
+  async getPlaylistByUser(req: IRequest, res: IResponse) {
+    const { lectureId, userId } = req.query as unknown as IUserRankingRequest
+    const result = await this.userService.getPlaylistByUser({
+      lectureId: lectureId,
+      userId: userId,
+      me: req.user._id
+    })
+    return res.success(result)
+  }
+  async likeOrUnlikePlaylistByUser(req: IRequest, res: IResponse) {
+    const payload = req.body as IUserRankingRequest
+    payload.me = req.user._id
+    const result = await this.userService.likeOrUnlikePlaylistByUser(payload)
     return res.success(result)
   }
 }

@@ -32,6 +32,30 @@ userRouter.put(
   auth,
   catchAsync(userController.addOrUpdateGoogleTranscript.bind(userController))
 )
-
+userRouter.patch(
+  '/updateProfile',
+  auth,
+  catchAsync(userController.updateProfile.bind(userController))
+)
+userRouter.get(
+  '/getUsersRanking',
+  auth,
+  catchAsync(userController.getUsersRanking.bind(userController))
+)
+userRouter.get(
+  '/getPlaylistByUser',
+  auth,
+  catchAsync(userController.getPlaylistByUser.bind(userController))
+)
+userRouter.get(
+  '/getPlaylistSummaryByUser',
+  auth,
+  catchAsync(userController.getPlaylistSummaryByUser.bind(userController))
+)
+userRouter.patch(
+  '/likeOrUnlikePlaylistByUser',
+  auth,
+  catchAsync(userController.likeOrUnlikePlaylistByUser.bind(userController))
+)
 
 export default userRouter

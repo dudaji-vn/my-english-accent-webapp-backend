@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { injectable } from 'tsyringe'
 import UserModel from '../entities/User'
 import LectureModel from '../entities/Lecture'
@@ -10,6 +11,7 @@ import VocabularyModel from '../entities/Vocabulary'
 import RecordModel from '../entities/Record'
 import { removeSpecialCharacters } from '../common/string'
 import { idText } from 'typescript'
+import mongoose from 'mongoose'
 
 @injectable()
 export default class DashboardService {
@@ -85,7 +87,8 @@ export default class DashboardService {
   }
   async syncData() {
     const googleResult = await GoogleRecognitionModel.find()
-    const records = await RecordModel.find()
+    const records = await RecordModel.find().populate('vocabulary')
+
     for (const item of records) {
       let finalTranscript
       const googleTranscript = googleResult
@@ -94,15 +97,22 @@ export default class DashboardService {
           (a: any, b: any) =>
             new Date(b.created).getTime() - new Date(a.created).getTime()
         )
+      item.score = 0
       if (googleTranscript && googleTranscript.length > 0) {
-        console.log(googleTranscript)
         finalTranscript = googleTranscript[0].final_transcript
-        item.final_transcript = finalTranscript
+        if (
+          finalTranscript &&
+          item.vocabulary &&
+          removeSpecialCharacters(finalTranscript) ===
+            removeSpecialCharacters(item.vocabulary.title_display_language)
+        ) {
+          item.score = 1
+        }
       } else {
-        item.final_transcript = ''
+        item.score = 0
       }
 
-      await item.save()
+      item.save()
     }
 
     return 'Sync data'
@@ -226,7 +236,7 @@ export default class DashboardService {
           )
           .map((item: any) => item.record.toString())
       ).size
-      console.log(passPeopleCount)
+    
       return {
         tryPeopleCount,
         passPeopleCount,

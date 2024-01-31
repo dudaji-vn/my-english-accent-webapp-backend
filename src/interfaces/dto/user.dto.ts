@@ -50,3 +50,17 @@ export interface IAddOrUpdateGoogleTranscriptRequest {
   }[]
   finalTranscript: string
 }
+
+export interface IUpdateProfile {
+  userId: string
+  nickName: string
+  avatarUrl: string
+  nativeLanguage: string
+}
+
+export interface IUserRankingRequest {
+  userId: string
+  lectureId: string
+  me: string
+  emoji?: 'like' | 'unlike'
+}

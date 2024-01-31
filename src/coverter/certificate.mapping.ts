@@ -5,7 +5,6 @@ export function convertToCertificateVocabularyContent(
   data: ICertificateDAO,
   nativeLanguage: string
 ): IContentCertificateDTO {
-  console.log(nativeLanguage)
   return {
     id: data._id,
     archivedImgUrl: data.archived_img_url,

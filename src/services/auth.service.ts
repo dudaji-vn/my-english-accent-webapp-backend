@@ -12,6 +12,7 @@ import { BaseService } from './base.service'
 import JwtService from './jwt.service'
 import UserAdminModel from '../entities/UserAdmin'
 import AuthenticatorService from './authenticator.service'
+import { IUserDAO } from '../interfaces/dao/user.dao'
 
 @injectable()
 export default class AuthService extends BaseService {
@@ -116,7 +117,11 @@ export default class AuthService extends BaseService {
     const token = this.jwtService.generateAccessToken(payload)
     return token
   }
-  async isLogin() {
-    return true
+  async isLogin(user: IUserDAO) {
+    return {
+      nickName: user.nick_name,
+      avatarUrl: user.avatar_url,
+      nativeLanguage: user.native_language
+    }
   }
 }
