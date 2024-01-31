@@ -164,87 +164,59 @@ export default class DashboardService {
     })
   }
   async getStatisticsScore() {
-    const statistics = await RecordModel.aggregate([
-      {
-        $lookup: {
-          from: 'google_recognitions',
-          localField: '_id',
-          foreignField: 'record',
-          as: 'google'
-        }
-      },
-      {
-        $unwind: {
-          path: '$google'
-        }
-      },
-      {
-        $group: {
-          _id: '$vocabulary',
-          google_recognition_list: {
-            $push: {
-              record: '$google.record',
-              final_transcript: '$google.final_transcript',
-              created: '$google.created'
-            }
-          }
-        }
-      },
-      {
-        $lookup: {
-          from: 'vocabularies',
-          localField: '_id',
-          foreignField: '_id',
-          as: 'vocabulary_info'
-        }
-      },
-      {
-        $unwind: '$vocabulary_info'
-      },
+    const aggQuery = [
       {
         $lookup: {
           from: 'lectures',
-          localField: 'vocabulary_info.lecture',
+          localField: 'lecture',
           foreignField: '_id',
           as: 'lectures'
         }
       },
       {
-        $unwind: '$lectures'
+        $lookup: {
+          from: 'records',
+          localField: '_id',
+          foreignField: 'vocabulary',
+          as: 'recordData'
+        }
+      },
+
+      {
+        $match: {
+          $expr: { $gt: [{ $size: '$recordData' }, 0] }
+        }
+      },
+      {
+        $addFields: {
+          totalPeople: { $size: '$recordData' },
+          lecture: { $first: '$lectures' },
+          passUser: {
+            $size: {
+              $filter: {
+                input: '$recordData',
+                as: 'record',
+                cond: { $eq: ['$$record.score', 1] }
+              }
+            }
+          }
+        }
       },
       {
         $project: {
-          _id: 0,
-          title_display_language: '$vocabulary_info.title_display_language',
-          lecture_name: '$lectures.lecture_name',
-          google_recognition_list: 1
+          tryPeopleCount: '$totalPeople',
+          passPeopleCount: '$passUser',
+          sentence: '$title_display_language',
+          lecture: '$lecture.lecture_name',
+          passRatio: { $round: [{ $divide: ['$passUser', '$totalPeople'] }, 2] }
+        }
+      },
+      {
+        $sort: {
+          lecture: 1
         }
       }
-    ])
-    const result = statistics.map((item) => {
-      const googleRecognitionList = item.google_recognition_list
-      const tryPeopleCount = new Set(
-        googleRecognitionList.map((item: any) => item.record.toString())
-      ).size
-
-      const passPeopleCount = new Set(
-        googleRecognitionList
-          .filter(
-            (googleRecognition: any) =>
-              removeSpecialCharacters(googleRecognition.final_transcript) ===
-              removeSpecialCharacters(item.title_display_language)
-          )
-          .map((item: any) => item.record.toString())
-      ).size
-    
-      return {
-        tryPeopleCount,
-        passPeopleCount,
-        sentence: item.title_display_language,
-        lecture: item.lecture_name,
-        passRatio: (passPeopleCount / tryPeopleCount).toFixed(2)
-      }
-    })
-    return result.sort((a, b) => a.lecture.localeCompare(b.lecture))
+    ]
+    return await VocabularyModel.aggregate(aggQuery)
   }
 }
