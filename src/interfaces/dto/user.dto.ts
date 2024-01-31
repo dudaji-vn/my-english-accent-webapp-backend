@@ -57,3 +57,10 @@ export interface IUpdateProfile {
   avatarUrl: string
   nativeLanguage: string
 }
+
+export interface IUserRankingRequest {
+  userId: string
+  lectureId: string
+  me: string
+  emoji?: 'like' | 'unlike'
+}

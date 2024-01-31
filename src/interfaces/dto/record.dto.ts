@@ -9,6 +9,7 @@ export interface IRecordRequest {
   challengeId: string | null
   recordId?: string
   finalTranscript: string
+  score?: number
 }
 export interface IRecordDTO {
   recordId: string

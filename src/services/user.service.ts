@@ -1,5 +1,5 @@
 // @ts-nocheck
-import mongoose from 'mongoose'
+import mongoose, { Mongoose } from 'mongoose'
 import { injectable } from 'tsyringe'
 import {
   EVENTS,
@@ -18,6 +18,7 @@ import UserModel from '../entities/User'
 import VocabularyModel from '../entities/Vocabulary'
 import {
   IAddOrUpdateGoogleTranscriptRequest,
+  IUserRankingRequest,
   IUpdateProfile,
   IUserEnrollRequest
 } from '../interfaces/dto/user.dto'
@@ -26,6 +27,8 @@ import { BaseService } from './base.service'
 import UserWinEventModel from '../entities/UserWinEvent'
 import GoogleRecognitionModel from '../entities/GoogleRecognition'
 import { IUserDAO } from '../interfaces/dao/user.dao'
+import RankingModel from '../entities/ranking.entity'
+import RecordModel from '../entities/Record'
 
 @injectable()
 export default class UserService extends BaseService {
@@ -153,50 +156,86 @@ export default class UserService extends BaseService {
         throw error
       }
     }
-    const getLecturesInProgress = async () => {
-      const enrollmentByUserInprogress = await EnrollmentModel.find({
-        user: me,
-        stage: StageExercise.Inprogress
-      }).populate('lecture')
 
-      return await Promise.all(
-        enrollmentByUserInprogress
-          .filter((item) => item?.lecture?.status === STATUS_LECTURE.PUBLIC)
-          .map(async (item: any) => {
-            const total_step = await VocabularyModel.countDocuments({
-              lecture: item.lecture
-            })
-            item.total_step = total_step
-            return convertToUserPractice(item)
-          })
-      )
-    }
-    const getLectureClose = async () => {
-      const enrollmentByUserClose = await EnrollmentModel.find({
-        user: me,
-        stage: StageExercise.Close
-      }).populate('lecture')
-      return await Promise.all(
-        enrollmentByUserClose
-          .filter((item) => item?.lecture?.status === STATUS_LECTURE.PUBLIC)
-          .map(async (item: any) => {
-            const total_step = await VocabularyModel.countDocuments({
-              lecture: item.lecture
-            })
-            item.total_step = total_step
-            return convertToUserPractice(item)
-          })
-      )
+    const getLecturesBy = async (userId: string, stage: StageExercise) => {
+      const aggQuery = [
+        {
+          $match: {
+            user: new mongoose.Types.ObjectId(userId),
+            stage: stage
+          }
+        },
+        {
+          $lookup: {
+            from: 'lectures',
+            localField: 'lecture',
+            foreignField: '_id',
+            as: 'lectures'
+          }
+        },
+        {
+          $lookup: {
+            from: 'vocabularies',
+            localField: 'lecture',
+            foreignField: 'lecture',
+            as: 'voca'
+          }
+        },
+
+        {
+          $lookup: {
+            from: 'records',
+            localField: 'voca._id',
+            foreignField: 'vocabulary',
+            pipeline: [
+              {
+                $match: { score: 1, user: new mongoose.Types.ObjectId(userId) }
+              }
+            ],
+            as: 'records'
+          }
+        },
+        {
+          $addFields: {
+            lecture: { $first: '$lectures' },
+            totalPoint: { $size: '$records' },
+            totalStep: { $size: '$voca' }
+          }
+        },
+        {
+          $match: {
+            'lecture.status': STATUS_LECTURE.PUBLIC,
+            totalStep: { $gt: 0 }
+          }
+        },
+        {
+          $project: {
+            _id: 0,
+            lectureId: '$lecture._id',
+            lectureName: '$lecture.lecture_name',
+            imgSrc: '$lecture.img_src',
+            stage: '$stage',
+            currentStep: '$current_step',
+            enrollmentId: '$_id',
+            userId: '$user',
+            totalStep: '$totalStep',
+            totalPoint: '$totalPoint'
+          }
+        },
+        {
+          $sort: {
+            lectureName: 1
+          }
+        }
+      ]
+      return await EnrollmentModel.aggregate(aggQuery)
     }
     switch (+stage) {
       case StageExercise.Inprogress:
-        return (await getLecturesInProgress())
-          .filter((item) => item.totalStep > 0)
-          .sort((a, b) => a.lectureName.localeCompare(b.lectureName))
+        return await getLecturesBy(me, StageExercise.Inprogress)
       case StageExercise.Close:
-        return (await getLectureClose())
-          .filter((item) => item.totalStep > 0)
-          .sort((a, b) => a.lectureName.localeCompare(b.lectureName))
+        return await getLecturesBy(me, StageExercise.Close)
+
       default:
         return (await getLecturesOpen()).filter((item) => item.totalStep > 0)
     }
@@ -289,5 +328,196 @@ export default class UserService extends BaseService {
       avatarUrl: user?.avatar_url,
       nativeLanguage: user?.native_language
     }
+  }
+  async getUsersRanking(user: IUserDAO) {
+    if (user.completed_lecture_ids?.length === 0) {
+      return null
+    }
+    const usersCompletedLectures = await UserModel.find({
+      'completed_lecture_ids.0': { $exists: true }
+    })
+      .select('_id')
+      .lean()
+    const userIds = usersCompletedLectures.map((item) => item._id)
+
+    const records = await RecordModel.aggregate([
+      {
+        $match: {
+          user: { $in: userIds },
+          score: { $gt: 0 }
+        }
+      },
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'user',
+          foreignField: '_id',
+          as: 'user'
+        }
+      },
+      {
+        $lookup: {
+          from: 'vocabularies',
+          localField: 'vocabulary',
+          foreignField: '_id',
+          as: 'vocabulary'
+        }
+      },
+      {
+        $addFields: {
+          user: { $arrayElemAt: ['$user', 0] },
+          vocabulary: { $arrayElemAt: ['$vocabulary', 0] }
+        }
+      },
+      {
+        $project: {
+          user: {
+            _id: 1,
+            nick_name: 1,
+            avatar_url: 1,
+            native_language: 1,
+            completed_lecture_ids: '$user.completed_lecture_ids'
+          },
+          vocabulary: 1,
+          score: 1
+        }
+      },
+      {
+        $match: {
+          $expr: { $in: ['$vocabulary.lecture', '$user.completed_lecture_ids'] }
+        }
+      },
+      {
+        $group: {
+          _id: '$user._id',
+          user: { $first: '$user' },
+          total_score: { $sum: '$score' }
+        }
+      },
+
+      {
+        $sort: {
+          total_score: -1
+        }
+      },
+      {
+        $project: {
+          userId: '$user._id',
+          nickName: '$user.nick_name',
+          avatarUrl: '$user.avatar_url',
+          totalScore: '$total_score',
+          isMe: {
+            $cond: {
+              if: {
+                $eq: ['$user._id', new mongoose.Types.ObjectId(user._id)]
+              },
+              then: true,
+              else: false
+            }
+          },
+          nativeLanguage: '$user.native_language'
+        }
+      }
+    ])
+    return records.map((item, index) => {
+      return {
+        ranking: index + 1,
+        ...item
+      }
+    })
+  }
+  async getPlaylistSummaryByUser(userId) {
+    const user = await UserModel.findById(userId)
+      .populate({
+        path: 'completed_lecture_ids',
+        match: { status: STATUS_LECTURE.PUBLIC }
+      })
+      .select('nick_name completed_lecture_ids')
+    if (!user) {
+      throw new BadRequestError('user not found')
+    }
+    return {
+      userId: user?._id,
+      nickName: user?.nick_name,
+      lectures: user.completed_lecture_ids
+        .map((item) => {
+          return {
+            lectureName: item.lecture_name,
+            imgSrc: item.img_src,
+            lectureId: item._id
+          }
+        })
+        .sort((a, b) => a.lectureName.localeCompare(b.lectureName))
+    }
+  }
+  async getPlaylistByUser(payload: IUserRankingRequest) {
+    const { lectureId, userId, me } = payload
+    const ranking = await RankingModel.findOne({
+      lecture: lectureId,
+      user: userId
+    })
+
+    const vocabularyIds = await VocabularyModel.find({
+      lecture: lectureId
+    })
+      .select('_id')
+      .lean()
+
+    const results = await RecordModel.find({
+      user: userId,
+      vocabulary: { $in: vocabularyIds.map((item) => item._id.toString()) }
+    })
+      .populate({
+        path: 'vocabulary',
+        select: 'title_display_language phonetic_display_language'
+      })
+      .select('voice_src vocabulary')
+      .lean()
+
+    return {
+      likes: ranking?.likes.length ?? 0,
+      isLiked: ranking?.likes.some((item) => item.toString() === me.toString()),
+      records: results.map((item) => {
+        return {
+          recordId: item._id,
+          voiceSrc: item.voice_src,
+          title: item.vocabulary.title_display_language,
+          phonetic: item.vocabulary.phonetic_display_language
+        }
+      })
+    }
+  }
+  async likeOrUnlikePlaylistByUser(payload: IUserRankingRequest) {
+    const { me, userId, lectureId, emoji } = payload
+
+    if (emoji === 'like') {
+      await RankingModel.findOneAndUpdate(
+        {
+          user: userId,
+          lecture: lectureId
+        },
+        {
+          $addToSet: { likes: [me] }
+        },
+        {
+          upsert: true
+        }
+      )
+      return true
+    }
+
+    await RankingModel.findOneAndUpdate(
+      {
+        user: userId,
+        lecture: lectureId
+      },
+      {
+        $pull: { likes: me }
+      },
+      {
+        upsert: true
+      }
+    )
+    return true
   }
 }
