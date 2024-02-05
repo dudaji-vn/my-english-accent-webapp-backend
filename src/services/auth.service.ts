@@ -1,16 +1,19 @@
 import { injectable } from 'tsyringe'
 import bcrypt from 'bcrypt'
 import { convertToUserDAO, convertToUserDTO } from '../coverter/user.mapping'
-import UserModel from '../entities/User'
+import UserModel from '../entities/user.entity'
 import {
   IUserAdminDTO,
   IUserDTO,
   IUserLoginDTO
 } from '../interfaces/dto/user.dto'
-import { BadRequestError, UnAuthorizeError } from '../middleware/error'
+import {
+  BadRequestError,
+  UnAuthorizeError
+} from '../middleware/error.middleware'
 import { BaseService } from './base.service'
 import JwtService from './jwt.service'
-import UserAdminModel from '../entities/UserAdmin'
+import UserAdminModel from '../entities/user-admin.entity'
 import AuthenticatorService from './authenticator.service'
 import { IUserDAO } from '../interfaces/dao/user.dao'
 

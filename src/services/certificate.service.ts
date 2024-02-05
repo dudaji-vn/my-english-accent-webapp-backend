@@ -11,9 +11,9 @@ import {
   IUserCertificateDTO
 } from '../interfaces/dto/certificate.dto'
 import UserCertificateModel from '../entities/user-certificate.entity'
-import VocabularyModel from '../entities/Vocabulary'
-import UserModel from '../entities/User'
-import { BadRequestError } from '../middleware/error'
+import VocabularyModel from '../entities/vocabulary.entity'
+import UserModel from '../entities/user.entity'
+import { BadRequestError } from '../middleware/error.middleware'
 @injectable()
 export default class CertificateService {
   private certificateStrategy

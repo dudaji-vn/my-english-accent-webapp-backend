@@ -1,6 +1,6 @@
 import { NextFunction } from 'express'
 import { IRequest, IResponse } from '../interfaces/common'
-import { UnAuthorizeError, BadRequestError } from './error'
+import { UnAuthorizeError, BadRequestError } from './error.middleware'
 
 type AsyncFunction = (
   req: IRequest,

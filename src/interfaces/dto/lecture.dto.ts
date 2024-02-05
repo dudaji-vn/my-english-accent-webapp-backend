@@ -1,4 +1,4 @@
-import { IVocabularyDTO, IVocabularyRequest } from './vocabulary.dto'
+import { IVocabularyRequest } from './vocabulary.dto'
 
 export interface ILectureDTO {
   lectureId?: string

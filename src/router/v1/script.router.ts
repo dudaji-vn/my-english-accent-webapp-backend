@@ -2,7 +2,7 @@
 import express from 'express'
 import { container } from 'tsyringe'
 import ScriptController from '../../controllers/script.controller'
-import { catchAsync } from '../../middleware/catchAsync'
+import { catchAsync } from '../../middleware/catch-async.middleware'
 const scriptController = container.resolve<ScriptController>(ScriptController)
 
 const scriptRouter = express.Router()

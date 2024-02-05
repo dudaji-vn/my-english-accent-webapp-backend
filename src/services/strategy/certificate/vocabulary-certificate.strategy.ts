@@ -8,7 +8,7 @@ import {
   IGetContentDTO,
   IUserCertificateDTO
 } from '../../../interfaces/dto/certificate.dto'
-import { BadRequestError } from '../../../middleware/error'
+import { BadRequestError } from '../../../middleware/error.middleware'
 import { ICertificateStrategy } from './certificate.strategy'
 
 export class VocabularyCertificateStrategy implements ICertificateStrategy {

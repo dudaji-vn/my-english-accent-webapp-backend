@@ -1,6 +1,6 @@
 import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
-import { BadRequestError } from '../middleware/error'
+import { BadRequestError } from '../middleware/error.middleware'
 import FileService from '../services/file.service'
 
 @injectable()

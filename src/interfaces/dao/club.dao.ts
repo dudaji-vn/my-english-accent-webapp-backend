@@ -1,4 +1,3 @@
-import { ILectureDTO } from '../dto/lecture.dto'
 import { ILectureDAO } from './lecture.dao'
 
 export interface IClubDAO {

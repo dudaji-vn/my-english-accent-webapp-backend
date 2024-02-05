@@ -6,17 +6,17 @@ import {
   convertToVocabularyWithRecordedDTO,
   convertToVocabularyWithTranslateDTO
 } from '../coverter/vocabulary.mapping'
-import EnrollmentModel from '../entities/Enrollment'
+import EnrollmentModel from '../entities/enrollment.entity'
 
-import VocabularyModel from '../entities/Vocabulary'
+import VocabularyModel from '../entities/vocabulary.entity'
 import { IVocaByLectureRequest } from '../interfaces/dto/record.dto'
 import {
   ITextTranslate,
   IVocabularyRequest,
   Language
 } from '../interfaces/dto/vocabulary.dto'
-import { BadRequestError } from '../middleware/error'
-import GoogleRecognitionModel from '../entities/GoogleRecognition'
+import { BadRequestError } from '../middleware/error.middleware'
+import GoogleRecognitionModel from '../entities/google-recognition.entity'
 
 @injectable()
 export default class VocabularyService {

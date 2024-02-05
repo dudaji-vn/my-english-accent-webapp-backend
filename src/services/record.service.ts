@@ -2,13 +2,13 @@ import mongoose from 'mongoose'
 import { injectable } from 'tsyringe'
 import { STATUS_LECTURE } from '../const/common'
 import { convertToRecordsByLectureDTO } from '../coverter/record.mapping'
-import LectureModel from '../entities/Lecture'
-import RecordModel from '../entities/Record'
+import LectureModel from '../entities/lecture.entity'
+import RecordModel from '../entities/record.entity'
 import {
   IRecordByLectureRequest,
   IRecordRequest
 } from '../interfaces/dto/record.dto'
-import { BadRequestError } from '../middleware/error'
+import { BadRequestError } from '../middleware/error.middleware'
 
 @injectable()
 export default class RecordService {

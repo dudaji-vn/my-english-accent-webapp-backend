@@ -3,11 +3,11 @@ import { CsvParserStream, ParserRow } from 'fast-csv'
 import fs from 'fs'
 import { ClientSession, startSession } from 'mongoose'
 import { injectable } from 'tsyringe'
-import LectureModel from '../entities/Lecture'
-import VocabularyModel from '../entities/Vocabulary'
+import LectureModel from '../entities/lecture.entity'
+import VocabularyModel from '../entities/vocabulary.entity'
 import { ICreateVocabularyDAO } from '../interfaces/dao/vocabulary.dao'
 import { IVocabularyRow } from '../interfaces/dto/vocabulary.dto'
-import { BadRequestError } from '../middleware/error'
+import { BadRequestError } from '../middleware/error.middleware'
 
 @injectable()
 export default class FileService {

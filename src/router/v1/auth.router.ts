@@ -1,9 +1,9 @@
 // @ts-nocheck
 import AuthController from '../../controllers/auth.controller'
-import { catchAsync } from '../../middleware/catchAsync'
+import { catchAsync } from '../../middleware/catch-async.middleware'
 import { container } from 'tsyringe'
 import express from 'express'
-import auth from '../../middleware/auth'
+import auth from '../../middleware/auth.middleware'
 const authController = container.resolve<AuthController>(AuthController)
 const authRouter = express.Router()
 authRouter.post(

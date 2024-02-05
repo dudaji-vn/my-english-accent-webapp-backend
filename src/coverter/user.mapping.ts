@@ -1,5 +1,4 @@
 import { IUserDAO } from '../interfaces/dao/user.dao'
-
 import { IUserDTO, IUserPracticeResponseType } from '../interfaces/dto/user.dto'
 
 export function convertToUserDAO(user: IUserDTO): IUserDAO {

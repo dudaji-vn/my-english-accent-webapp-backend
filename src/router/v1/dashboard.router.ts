@@ -2,12 +2,12 @@
 import express from 'express'
 import { container } from 'tsyringe'
 
-import { catchAsync } from '../../middleware/catchAsync'
+import { catchAsync } from '../../middleware/catch-async.middleware'
 import DashboardController from '../../controllers/dashboard.controller'
 const dashboardController =
   container.resolve<DashboardController>(DashboardController)
 
-import auth from '../../middleware/auth'
+import auth from '../../middleware/auth.middleware'
 
 const dashboardRouter = express.Router()
 
