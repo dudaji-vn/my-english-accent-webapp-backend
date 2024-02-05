@@ -2,8 +2,8 @@
 import express from 'express'
 import { container } from 'tsyringe'
 import ClubController from '../../controllers/club.controller'
-import { catchAsync } from '../../middleware/catchAsync'
-import auth from '../../middleware/auth'
+import { catchAsync } from '../../middleware/catch-async.middleware'
+import auth from '../../middleware/auth.middleware'
 const clubController = container.resolve<ClubController>(ClubController)
 
 const clubRouter = express.Router()

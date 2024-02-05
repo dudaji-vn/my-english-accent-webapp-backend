@@ -1,7 +1,4 @@
-import {
-  IEnrollmentResponse as IEnrollmentDTO,
-  IUserPracticeResponseType
-} from '../interfaces/dto/user.dto'
+import { IEnrollmentResponse as IEnrollmentDTO } from '../interfaces/dto/user.dto'
 
 export function convertToEnrollmentDTO(item: any): IEnrollmentDTO {
   return {

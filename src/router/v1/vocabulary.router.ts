@@ -2,8 +2,8 @@
 import express from 'express'
 import { container } from 'tsyringe'
 import VocabularyController from '../../controllers/vocabulary.controller'
-import auth from '../../middleware/auth'
-import { catchAsync } from '../../middleware/catchAsync'
+import auth from '../../middleware/auth.middleware'
+import { catchAsync } from '../../middleware/catch-async.middleware'
 const vocabularyController =
   container.resolve<VocabularyController>(VocabularyController)
 

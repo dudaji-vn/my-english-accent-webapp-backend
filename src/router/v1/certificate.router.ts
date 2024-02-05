@@ -1,8 +1,8 @@
 // @ts-nocheck
 import express from 'express'
 import { container } from 'tsyringe'
-import { catchAsync } from '../../middleware/catchAsync'
-import auth from '../../middleware/auth'
+import { catchAsync } from '../../middleware/catch-async.middleware'
+import auth from '../../middleware/auth.middleware'
 import CertificateController from '../../controllers/certificate.controler'
 const certificateController = container.resolve<CertificateController>(
   CertificateController

@@ -7,11 +7,11 @@ import {
   convertToRecordOfUser,
   convertToVocabularyDTO
 } from '../coverter/vocabulary.mapping'
-import EnrollmentModel from '../entities/Enrollment'
-import LectureModel from '../entities/Lecture'
-import RecordModel from '../entities/Record'
-import UserModel from '../entities/User'
-import VocabularyModel from '../entities/Vocabulary'
+import EnrollmentModel from '../entities/enrollment.entity'
+import LectureModel from '../entities/lecture.entity'
+import RecordModel from '../entities/record.entity'
+import UserModel from '../entities/user.entity'
+import VocabularyModel from '../entities/vocabulary.entity'
 import {
   IPlaylistListen,
   IPlaylistRequest,

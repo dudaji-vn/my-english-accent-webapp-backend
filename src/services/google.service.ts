@@ -2,7 +2,7 @@ import { injectable } from 'tsyringe'
 import { ITextToSpeakDTO } from '../interfaces/dto/google.dto'
 import { TextToSpeechClient } from '@google-cloud/text-to-speech'
 import { SpeechClient } from '@google-cloud/speech'
-import { BadRequestError } from '../middleware/error'
+import { BadRequestError } from '../middleware/error.middleware'
 @injectable()
 export default class GoogleService {
   private textToSpeakClient

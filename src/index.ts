@@ -4,7 +4,7 @@ import cors from 'cors'
 import express, { NextFunction, Request, Response } from 'express'
 import mongoose, { ConnectOptions } from 'mongoose'
 import { IResponse } from './interfaces/common'
-import customResponse from './middleware/customResponse'
+import customResponse from './middleware/custom-response.middleware'
 import apiRouterV1 from './router/v1/api.router'
 if (process.env.NODE_ENV) {
   dotenv.config({ path: `.env.${process.env.NODE_ENV}` })

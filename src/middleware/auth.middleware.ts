@@ -1,9 +1,9 @@
 import { NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
-import UserModel from '../entities/User'
+import UserModel from '../entities/user.entity'
 import { IRequest, IResponse } from '../interfaces/common'
-import UserAdminModel from '../entities/UserAdmin'
-import { UnAuthorizeError } from './error'
+import UserAdminModel from '../entities/user-admin.entity'
+import { UnAuthorizeError } from './error.middleware'
 const auth = async (req: IRequest, res: IResponse, next: NextFunction) => {
   try {
     let token = req.header('Authorization')

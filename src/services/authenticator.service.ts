@@ -1,7 +1,7 @@
 import { injectable } from 'tsyringe'
 
 import { OAuth2Client } from 'google-auth-library'
-import { UnAuthorizeError } from '../middleware/error'
+import { UnAuthorizeError } from '../middleware/error.middleware'
 @injectable()
 export default class AuthenticatorService {
   googleClient

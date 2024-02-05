@@ -1,5 +1,5 @@
 // @ts-nocheck
-import mongoose, { Mongoose } from 'mongoose'
+import mongoose from 'mongoose'
 import { injectable } from 'tsyringe'
 import {
   EVENTS,
@@ -8,27 +8,24 @@ import {
   StageExercise
 } from '../const/common'
 import { convertToEnrollmentDTO } from '../coverter/enrollment.mapping'
-import {
-  convertToUserDTO,
-  convertToUserPractice
-} from '../coverter/user.mapping'
-import EnrollmentModel from '../entities/Enrollment'
-import LectureModel from '../entities/Lecture'
-import UserModel from '../entities/User'
-import VocabularyModel from '../entities/Vocabulary'
+import { convertToUserDTO } from '../coverter/user.mapping'
+import EnrollmentModel from '../entities/enrollment.entity'
+import GoogleRecognitionModel from '../entities/google-recognition.entity'
+import LectureModel from '../entities/lecture.entity'
+import RankingModel from '../entities/ranking.entity'
+import RecordModel from '../entities/record.entity'
+import UserWinEventModel from '../entities/user-win-event.entity'
+import UserModel from '../entities/user.entity'
+import VocabularyModel from '../entities/vocabulary.entity'
+import { IUserDAO } from '../interfaces/dao/user.dao'
 import {
   IAddOrUpdateGoogleTranscriptRequest,
-  IUserRankingRequest,
   IUpdateProfile,
-  IUserEnrollRequest
+  IUserEnrollRequest,
+  IUserRankingRequest
 } from '../interfaces/dto/user.dto'
-import { BadRequestError } from '../middleware/error'
+import { BadRequestError } from '../middleware/error.middleware'
 import { BaseService } from './base.service'
-import UserWinEventModel from '../entities/UserWinEvent'
-import GoogleRecognitionModel from '../entities/GoogleRecognition'
-import { IUserDAO } from '../interfaces/dao/user.dao'
-import RankingModel from '../entities/ranking.entity'
-import RecordModel from '../entities/Record'
 
 @injectable()
 export default class UserService extends BaseService {

@@ -2,7 +2,7 @@ import { injectable } from 'tsyringe'
 import { IRequest, IResponse } from '../interfaces/common'
 import GoogleService from '../services/google.service'
 import { ITextToSpeakDTO } from '../interfaces/dto/google.dto'
-import { BadRequestError } from '../middleware/error'
+import { BadRequestError } from '../middleware/error.middleware'
 
 @injectable()
 export default class GoogleController {

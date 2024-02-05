@@ -3,7 +3,6 @@ import {
   IChallengeDetailDisplay,
   IChallengeDisplay
 } from '../interfaces/dto/challenge.dto'
-import { IUserDTO } from '../interfaces/dto/user.dto'
 
 export function convertToChallengeDisplayDTO(
   item: any,

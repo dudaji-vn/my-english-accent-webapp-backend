@@ -11,10 +11,10 @@ import {
   convertToVocabularyDTO,
   convertToVocabularyWithRecordedDTO
 } from '../coverter/vocabulary.mapping'
-import ChallengeModel from '../entities/Challenge'
-import ClubModel from '../entities/Club'
-import ClubVocabularyModel from '../entities/ClubVocabulary'
-import RecordModel from '../entities/Record'
+import ChallengeModel from '../entities/challenge.entity'
+import ClubModel from '../entities/club.entity'
+import ClubVocabularyModel from '../entities/club-vocabulary.entity'
+import RecordModel from '../entities/record.entity'
 import { IRecordOfUser, IRecordToListen } from '../interfaces/dto/record.dto'
 
 @injectable()

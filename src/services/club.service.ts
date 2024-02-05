@@ -1,14 +1,15 @@
 import { injectable } from 'tsyringe'
 import { IClubDisplay, IClubRequest } from '../interfaces/dto/club.dto'
-import ClubModel from '../entities/Club'
-import { BadRequestError } from '../middleware/error'
-import ChallengeModel from '../entities/Challenge'
-import ClubVocabularyModel from '../entities/ClubVocabulary'
-import VocabularyModel from '../entities/Vocabulary'
+import ClubModel from '../entities/club.entity'
+import { BadRequestError } from '../middleware/error.middleware'
+import ChallengeModel from '../entities/challenge.entity'
+import ClubVocabularyModel from '../entities/club-vocabulary.entity'
+import VocabularyModel from '../entities/vocabulary.entity'
 import { convertToGroupDTO } from '../coverter/club.mapping'
-import { findRandomIndexWord } from '../common/findRandomIndexWord'
+
 import { convertToUserDTO } from '../coverter/user.mapping'
 import { IClubDAO } from '../interfaces/dao/club.dao'
+import { findRandomIndexWord } from '../common/string'
 
 @injectable()
 export default class ClubService {

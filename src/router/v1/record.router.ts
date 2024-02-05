@@ -2,8 +2,8 @@
 import express from 'express'
 import { container } from 'tsyringe'
 import RecordController from '../../controllers/record.controller'
-import auth from '../../middleware/auth'
-import { catchAsync } from '../../middleware/catchAsync'
+import auth from '../../middleware/auth.middleware'
+import { catchAsync } from '../../middleware/catch-async.middleware'
 const recordController = container.resolve<RecordController>(RecordController)
 
 const recordRouter = express.Router()
