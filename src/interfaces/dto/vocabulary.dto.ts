@@ -1,9 +1,13 @@
+import { SentenceStatus } from '../../const/common'
+
 export type Language = 'vn' | 'en' | 'kr'
 
 export interface IRecorded {
   voiceSrc: string
   recordId: string
   finalTranscript: string
+  score: number
+  status: SentenceStatus
 }
 export interface IClubVocabularyTypeResponse {
   challengeId: string
