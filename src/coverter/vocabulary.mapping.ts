@@ -1,3 +1,4 @@
+import { SentenceStatus } from '../const/common'
 import { IVocabularyDAO } from '../interfaces/dao/vocabulary.dao'
 import { IRecordDTO } from '../interfaces/dto/record.dto'
 import { IUserDTO } from '../interfaces/dto/user.dto'
@@ -59,7 +60,15 @@ export function convertToVocabularyWithRecordedDTO(
     voiceSrc: item?.vocabulary.voice_src ?? '',
     recordId: item?.vocabulary.record_id ?? '',
     finalTranscript: item?.vocabulary?.final_transcript ?? '',
-    numberOrder: item?.vocabulary?.number_order
+    numberOrder: item?.vocabulary?.number_order,
+    status:
+      item.vocabulary?.score === 1
+        ? SentenceStatus.Pass
+        : item?.vocabulary.record_id
+        ? SentenceStatus.NotPass
+        : SentenceStatus.NotRecord,
+
+    score: item?.vocabulary?.score
   }
 }
 
