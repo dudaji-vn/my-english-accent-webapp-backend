@@ -57,5 +57,9 @@ userRouter.patch(
   auth,
   catchAsync(userController.likeOrUnlikePlaylistByUser.bind(userController))
 )
-
+userRouter.get(
+  '/getSummary',
+  auth,
+  catchAsync(userController.getSummary.bind(userController))
+)
 export default userRouter

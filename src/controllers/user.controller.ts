@@ -77,4 +77,9 @@ export default class UserController {
     const result = await this.userService.likeOrUnlikePlaylistByUser(payload)
     return res.success(result)
   }
+  async getSummary(req: IRequest, res: IResponse) {
+    const me = req.user._id
+    const result = await this.userService.getSummary(me)
+    return res.success(result)
+  }
 }

@@ -26,6 +26,9 @@ import {
 } from '../interfaces/dto/user.dto'
 import { BadRequestError } from '../middleware/error.middleware'
 import { BaseService } from './base.service'
+import { Certificate } from 'crypto'
+import CertificateModel from '../entities/certificate.entity'
+import UserCertificateModel from '../entities/user-certificate.entity'
 
 @injectable()
 export default class UserService extends BaseService {
@@ -516,5 +519,84 @@ export default class UserService extends BaseService {
       }
     )
     return true
+  }
+  async getSummary(userId: string) {
+    const aggQuery = [
+      {
+        $match: {
+          user: new mongoose.Types.ObjectId(userId),
+          stage: StageExercise.Inprogress
+        }
+      },
+      {
+        $sort: {
+          updated: 1
+        }
+      },
+      {
+        $limit: 1
+      },
+      {
+        $lookup: {
+          from: 'lectures',
+          localField: 'lecture',
+          foreignField: '_id',
+          as: 'lecture'
+        }
+      },
+      {
+        $addFields: {
+          lecture: { $first: '$lecture' }
+        }
+      },
+      {
+        $lookup: {
+          from: 'vocabularies',
+          localField: 'lecture._id',
+          foreignField: 'lecture',
+          as: 'vocabularies'
+        }
+      },
+      {
+        $lookup: {
+          from: 'records',
+          localField: 'vocabularies._id',
+          foreignField: 'vocabulary',
+          as: 'record',
+          pipeline: [
+            {
+              $match: { score: 1, user: new mongoose.Types.ObjectId(userId) }
+            }
+          ]
+        }
+      },
+      {
+        $project: {
+          lectureId: '$lecture._id',
+          lectureName: '$lecture.lecture_name',
+          lectureImgSrc: '$lecture.img_src',
+          point: { $size: '$record' },
+          totalPoint: { $size: '$vocabularies' },
+          totalSentences: { $size: '$vocabularies' },
+          currentStep: '$current_step'
+        }
+      }
+    ]
+    const totalCertificatePromise = CertificateModel.countDocuments()
+    const totalArchivedCertificatePromise = UserCertificateModel.find({
+      user: userId
+    }).countDocuments()
+    const resumeLecturePromise = EnrollmentModel.aggregate(aggQuery)
+    const [totalCertificate, totalArchivedCertificate, resumeLecture] =
+      await Promise.all([
+        totalCertificatePromise,
+        totalArchivedCertificatePromise,
+        resumeLecturePromise
+      ])
+    return {
+      resumeLecture: resumeLecture[0] ?? null,
+      totalArchivedCertificate: totalArchivedCertificate,
+      totalCertificate: totalCertificate
+    }
   }
 }
